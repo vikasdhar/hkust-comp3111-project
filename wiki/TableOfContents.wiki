@@ -6,7 +6,6 @@
 
 [https://code.google.com/p/hkust-comp3111-project/wiki/Minutes_3rd Minute_3rd]
 
-[https://code.google.com/p/hkust-comp3111-
-project/wiki/Minutes_4th Minute_4th]
+[https://code.google.com/p/hkust-comp3111-project/wiki/Minutes_4th Minute_4th]
 
 [https://code.google.com/p/hkust-comp3111-project/wiki/SprintBacklog SprintBacklog]
