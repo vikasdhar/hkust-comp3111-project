@@ -1,10 +1,3 @@
-<html>
-<head>
-<title>
-</title>
-</head>
-<body>
-
 <table border=0>
 	<tr align = "center">
 		<td><b>Sprint ID</b></td>
@@ -310,6 +303,3 @@
 		<td></td>
 	</tr>
 </table>
-
-</body>
-</html>
