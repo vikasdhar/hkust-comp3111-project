@@ -38,7 +38,7 @@ Recorder: Chung Chun Cheung
 
 *2. Discussion of impediments and resolution*
 
-After finishing the requirement, we come back to the implementation of the project. Chung Chun Cheung has done with the ��sign in�� part of the Facebook. In addition to the requirement, project backlog is also done last week.
+After finishing the requirement, we come back to the implementation of the project. Chan Chun Hang| has done with the ��sign in�� part of the Facebook. In addition to the requirement, project backlog is also done last week.
 
 This week, we have learnt about the SVN in the tutorial and lab session. We tried to use it in our project, so that the upload of documents like minutes and requirement becomes more efficient.
 
