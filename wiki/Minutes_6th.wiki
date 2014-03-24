@@ -28,8 +28,8 @@ Recorder: Chung Chun Cheung
 
 
 || *Name* || *Std.ID* || *Tasks worked on in the past week*|| *Total hours* ||
-||Chan Chun Hang||659||made a class related to some statistical data||6||
-||Chung Chun Cheung||897||working on Database||7||
+||Chan Chun Hang||659||made a class related to some statistical data||7||
+||Chung Chun Cheung||897||working on Database||6||
 ||Leung Wai Man||015||working on music player prototype||7||
 ||Chau Ho Yin||811||working on pedometer||8||
 ||Tai Sze Pok Alfred||129||working on Database||7||
