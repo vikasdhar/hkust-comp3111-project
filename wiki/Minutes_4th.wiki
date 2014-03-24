@@ -4,7 +4,7 @@
 =Pace-Keeper=
 ----
  
-Date: 14/3/2014
+Date: 7/3/2014
 
 Time: 5pm
 
@@ -28,8 +28,8 @@ Recorder: Chung Chun Cheung
 
 
 || *Name* || *Std.ID* || *Tasks worked on in the past week*|| *Total hours* ||
-||Chan Chun Hang||659||working on Facebook linkage||6||
-||Chung Chun Cheung||897||working on Facebook linkage, done with sign in part, done with project backlog||7||
+||Chung Chun Cheung||659||working on Facebook linkage||6||
+||Chan Chun Hang||897||working on Facebook linkage, done with sign in part, done with project backlog||7||
 ||Leung Wai Man||015||Understanding some sample code, working on music player prototype||7||
 ||Chau Ho Yin||811||working on pedometer; migrated the project into Google Code page||8||
 ||Tai Sze Pok Alfred||129||working on Database||7||
@@ -38,7 +38,7 @@ Recorder: Chung Chun Cheung
 
 *2. Discussion of impediments and resolution*
 
-After finishing the requirement, we come back to the implementation of the project. Chung Chun Cheung has done with the ¡§sign in¡¨ part of the Facebook. In addition to the requirement, project backlog is also done last week.
+After finishing the requirement, we come back to the implementation of the project. Chung Chun Cheung has done with the ï¿½ï¿½sign inï¿½ï¿½ part of the Facebook. In addition to the requirement, project backlog is also done last week.
 
 This week, we have learnt about the SVN in the tutorial and lab session. We tried to use it in our project, so that the upload of documents like minutes and requirement becomes more efficient.
 
