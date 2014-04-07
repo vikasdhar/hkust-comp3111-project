@@ -1,6 +1,10 @@
 package pacekeeper.musicplayerpackage;
 
+import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -16,8 +20,11 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
@@ -30,6 +37,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TabHost;
+import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.TabHost.TabContentFactory;
@@ -40,12 +48,12 @@ import android.widget.TabHost.TabContentFactory;
  * The <code>TabsViewPagerFragmentActivity</code> class implements the Fragment
  * activity that maintains a TabHost using a ViewPager.
  */
-public class TabsViewPagerFragmentActivity extends FragmentActivity implements
+public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 		TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
 
 	private TabHost mTabHost;
 	private ViewPager mViewPager;
-	private HashMap<String, TabInfo> mapTabInfo = new HashMap<String, TabsViewPagerFragmentActivity.TabInfo>();
+	private HashMap<String, TabInfo> mapTabInfo = new HashMap<String, MusicPlayer_with_SongsLists.TabInfo>();
 	private PagerAdapter mPagerAdapter;
 
 	/**
@@ -89,6 +97,7 @@ public class TabsViewPagerFragmentActivity extends FragmentActivity implements
 			v.setMinimumWidth(0);
 			v.setMinimumHeight(0);
 			return v;
+			
 		}
 
 	}
@@ -96,6 +105,8 @@ public class TabsViewPagerFragmentActivity extends FragmentActivity implements
 	// Music part starts
 	private static final int UPDATE_FREQUENCY = 50;
 	private static final int STEP_VALUE = 4000;
+	private static final int LENGHT_LONG = 0;
+	private static final int LENGTH_LONG = 0;
 
 	private MediaCursorAdapter mediaAdapter = null;
 	private TextView selectedFile = null;
@@ -110,9 +121,9 @@ public class TabsViewPagerFragmentActivity extends FragmentActivity implements
 	static String currentFile = "";
 	private boolean isMoveingSeekBar = false;
 
-	public SongsList songsList_sortedby_TITLE;
-	public SongsList songsList_sortedby_ARTIST;
-	public SongsList songsList_sortedby_ALBUM;
+	public MediaList songsList_sortedby_TITLE;
+	public MediaList songsList_sortedby_ARTIST;
+	public MediaList songsList_sortedby_ALBUM;
 
 	private final Handler handler = new Handler();
 
@@ -122,32 +133,48 @@ public class TabsViewPagerFragmentActivity extends FragmentActivity implements
 		}
 	};
 
-	void startPlay(String file) {
+	void startPlay(String file)  {
 		Log.i("Selected: ", file);
 		int listPosition = songsList_sortedby_TITLE.matchWithName(currentFile);
 		
 		
-//		MediaMetadataRetriever md = new MediaMetadataRetriever();
-//		md.setDataSource(file);
-//
-//		byte[] art = md.getEmbeddedPicture();
-//		if (art != null) {
-//			InputStream is = new ByteArrayInputStream(md.getEmbeddedPicture());
-//			Bitmap bm = BitmapFactory.decodeStream(is);
-//			showalbumartButton.setImageBitmap(bm);
-//		} else {
-//			showalbumartButton.setImageDrawable(getResources().getDrawable(
-//					android.R.drawable.ic_dialog_dialer));
-//		}
+		
+		
+		
+		String albumArtUri =songsList_sortedby_TITLE.getArt(listPosition);
+		
+		if (albumArtUri != null){
+			File albumArt = new File(albumArtUri);
+			InputStream in = null;
+			try {
+				in = new BufferedInputStream(new FileInputStream(albumArt));
+				Bitmap bm = BitmapFactory.decodeStream(in);
+				showalbumartButton.setImageBitmap(bm);
+			} catch (FileNotFoundException e) {
+				MediaMetadataRetriever md = new MediaMetadataRetriever();
+				md.setDataSource(file);
+				byte[] art = md.getEmbeddedPicture();
+				if (art != null) {
+					InputStream is = new ByteArrayInputStream(md.getEmbeddedPicture());
+					Bitmap bm = BitmapFactory.decodeStream(is);
+					showalbumartButton.setImageBitmap(bm);
+				} else {
+					showalbumartButton.setImageDrawable(getResources().getDrawable(
+							android.R.drawable.ic_dialog_dialer));
+				}
+				
+				//showalbumartButton.setImageURI(Uri.parse(albumArtUri));
+			}
+		}
+		else {
+			showalbumartButton.setImageDrawable(getResources().getDrawable(
+					android.R.drawable.ic_dialog_dialer));
+		}
 		
 		selectedFile.setText(songsList_sortedby_TITLE.getTitle(listPosition)
 				+ "-" + songsList_sortedby_TITLE.getArtist(listPosition));
 
-		// selectedFile
-		// .setText(md
-		// .extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE)
-		// + "-"
-		// + md.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST));
+		
 		seekbar.setProgress(0);
 
 		player.stop();
@@ -350,11 +377,11 @@ public class TabsViewPagerFragmentActivity extends FragmentActivity implements
 		showalbumartButton.setImageDrawable(getResources().getDrawable(
 				android.R.drawable.ic_dialog_dialer));
 
-		songsList_sortedby_TITLE = new SongsList(this,
+		songsList_sortedby_TITLE = new MediaList(this,
 				MediaStore.Audio.Media.TITLE_KEY);
-		songsList_sortedby_ARTIST = new SongsList(this,
+		songsList_sortedby_ARTIST = new MediaList(this,
 				MediaStore.Audio.Media.ARTIST_KEY);
-		songsList_sortedby_ALBUM = new SongsList(this,
+		songsList_sortedby_ALBUM = new MediaList(this,
 				MediaStore.Audio.Media.ARTIST_KEY);
 	}
 
@@ -408,19 +435,25 @@ public class TabsViewPagerFragmentActivity extends FragmentActivity implements
 	 * Initialise the Tab Host
 	 */
 	private void initialiseTabHost(Bundle args) {
+		
+		
+		
+		
 		mTabHost = (TabHost) findViewById(android.R.id.tabhost);
 		mTabHost.setup();
 		TabInfo tabInfo = null;
-		TabsViewPagerFragmentActivity.AddTab(this, this.mTabHost, this.mTabHost
-				.newTabSpec("Tab1").setIndicator("Tab 1"),
+		
+		
+		MusicPlayer_with_SongsLists.AddTab(this, this.mTabHost, this.mTabHost
+				.newTabSpec("Tab1").setIndicator("Songs"),
 				(tabInfo = new TabInfo("Tab1", Tab1Fragment.class, args)));
 		this.mapTabInfo.put(tabInfo.tag, tabInfo);
-		TabsViewPagerFragmentActivity.AddTab(this, this.mTabHost, this.mTabHost
-				.newTabSpec("Tab2").setIndicator("Tab 2"),
+		MusicPlayer_with_SongsLists.AddTab(this, this.mTabHost, this.mTabHost
+				.newTabSpec("Tab2").setIndicator("Artist"),
 				(tabInfo = new TabInfo("Tab2", Tab2Fragment.class, args)));
 		this.mapTabInfo.put(tabInfo.tag, tabInfo);
-		TabsViewPagerFragmentActivity.AddTab(this, this.mTabHost, this.mTabHost
-				.newTabSpec("Tab3").setIndicator("Tab 3"),
+		MusicPlayer_with_SongsLists.AddTab(this, this.mTabHost, this.mTabHost
+				.newTabSpec("Tab3").setIndicator("Album"),
 				(tabInfo = new TabInfo("Tab3", Tab3Fragment.class, args)));
 		this.mapTabInfo.put(tabInfo.tag, tabInfo);
 		// Default to first tab
@@ -438,7 +471,7 @@ public class TabsViewPagerFragmentActivity extends FragmentActivity implements
 	 * @param clss
 	 * @param args
 	 */
-	private static void AddTab(TabsViewPagerFragmentActivity activity,
+	private static void AddTab(MusicPlayer_with_SongsLists activity,
 			TabHost tabHost, TabHost.TabSpec tabSpec, TabInfo tabInfo) {
 		// Attach a Tab view factory to the spec
 		tabSpec.setContent(activity.new TabFactory(activity));

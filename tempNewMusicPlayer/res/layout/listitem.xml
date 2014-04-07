@@ -3,6 +3,7 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:minHeight="50dp"
     	style="@style/nowCardStyle">
          
         <TextView
@@ -11,6 +12,15 @@
                 android:id="@+id/displayname"
                 android:textSize="18dip"
                 android:textColor="#444444"
+                android:singleLine="true"
+                android:ellipsize="end"/>
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/trash"
+                android:text="test"
+                android:textSize="4dip"
+                android:textColor="#FFFFFF"
                 android:singleLine="true"
                 android:ellipsize="end"/>
  

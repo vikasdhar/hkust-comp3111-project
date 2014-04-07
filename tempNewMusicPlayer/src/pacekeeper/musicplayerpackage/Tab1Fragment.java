@@ -35,11 +35,11 @@ public class Tab1Fragment extends ListFragment {
 
 
 	private MediaCursorAdapter mediaAdapter = null;
-	private TabsViewPagerFragmentActivity activity;
+	private MusicPlayer_with_SongsLists activity;
 	@Override
 	public void onAttach(Activity activity){
 		super.onAttach(activity);
-		this.activity=(TabsViewPagerFragmentActivity)activity;
+		this.activity=(MusicPlayer_with_SongsLists)activity;
 	}
 	
 	@Override

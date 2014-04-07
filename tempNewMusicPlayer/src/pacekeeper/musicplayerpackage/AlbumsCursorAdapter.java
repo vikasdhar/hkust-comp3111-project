@@ -16,14 +16,14 @@ import android.widget.TextView;
 
 
 
-public class MediaCursorAdapter extends SimpleCursorAdapter {
+public class AlbumsCursorAdapter extends SimpleCursorAdapter {
 
 		
-		public MediaCursorAdapter(Context context, int layout, Cursor c) {
+		public AlbumsCursorAdapter(Context context, int layout, Cursor c) {
 			super(context, layout, c, new String[] {
-					MediaStore.Audio.Media.TITLE,
-					MediaStore.Audio.Media.ARTIST,
-					MediaStore.Audio.Media.DURATION }, new int[] {
+					MediaStore.Audio.Albums.ALBUM,
+					MediaStore.Audio.Albums.ARTIST,
+					MediaStore.Audio.Albums.NUMBER_OF_SONGS}, new int[] {
 					R.id.displayname, R.id.title, R.id.duration });
 		}
 
@@ -31,26 +31,21 @@ public class MediaCursorAdapter extends SimpleCursorAdapter {
 		public void bindView(View view, Context context, Cursor cursor) {
 			TextView title = (TextView) view.findViewById(R.id.title);
 			TextView name = (TextView) view.findViewById(R.id.displayname);
-			TextView duration = (TextView) view.findViewById(R.id.duration);
+			TextView numberofAlbums = (TextView) view.findViewById(R.id.duration);
 
 			name.setText(cursor.getString(cursor
-					.getColumnIndex(MediaStore.Audio.Media.TITLE)));
+					.getColumnIndex(MediaStore.Audio.Albums.ALBUM)));
 
 			title.setText(cursor.getString(cursor
-					.getColumnIndex(MediaStore.Audio.Media.ARTIST)));
+					.getColumnIndex(MediaStore.Audio.Albums.ARTIST)));
 
-			long durationInMs = Long.parseLong(cursor.getString(cursor
-					.getColumnIndex(MediaStore.Audio.Media.DURATION)));
+			int numberOfSongs = (cursor.getInt(cursor
+					.getColumnIndex(MediaStore.Audio.Albums.NUMBER_OF_SONGS)));
 
-			double durationInMin = ((double) durationInMs / 1000.0) / 60.0;
+			numberofAlbums.setText("" + numberOfSongs);
 
-			durationInMin = new BigDecimal(Double.toString(durationInMin))
-					.setScale(2, BigDecimal.ROUND_UP).doubleValue();
-
-			duration.setText("" + durationInMin);
-
-			view.setTag(cursor.getString(cursor
-					.getColumnIndex(MediaStore.Audio.Media.DATA)));
+//			view.setTag(cursor.getString(cursor
+//					.getColumnIndex(MediaStore.Audio.Media.DATA)));
 		}
 
 		@Override

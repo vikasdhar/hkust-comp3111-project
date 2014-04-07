@@ -9,4 +9,7 @@
     <declare-styleable name="MultiLineListView"> 
         <attr name="android:text" /> 
     </declare-styleable>
+    
+
+
 </resources>

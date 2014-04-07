@@ -22,7 +22,7 @@ import android.widget.LinearLayout;
  *
  */
 public class Tab2Fragment extends ListFragment {
-	private MediaCursorAdapter mediaAdapter = null;
+	private ArtistsCursorAdapter artistsAdapter = null;
 	/* (non-Javadoc)
 	 * @see android.support.v4.app.Fragment#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)
 	 */
@@ -40,19 +40,19 @@ public class Tab2Fragment extends ListFragment {
             // the view hierarchy; it would just never be used.
             return null;
         }
-		View view=(LinearLayout)inflater.inflate(R.layout.tab_frag3_layout, container, false);
+		View view=(LinearLayout)inflater.inflate(R.layout.tab_frag2_layout, container, false);
 	
 		Cursor cursor = view.getContext().getContentResolver().query(
-				MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, null, null, null,
-				null);
+				MediaStore.Audio.Artists.EXTERNAL_CONTENT_URI, null, null, null,
+				MediaStore.Audio.Artists.ARTIST_KEY);
 
 		if (null != cursor) {
 			cursor.moveToFirst();
 
-			mediaAdapter = new MediaCursorAdapter(view.getContext(), R.layout.listitem,
+			artistsAdapter = new ArtistsCursorAdapter(view.getContext(), R.layout.listitem,
 					cursor);
 
-			setListAdapter(mediaAdapter);
+			setListAdapter(artistsAdapter);
 		
 		
 	}

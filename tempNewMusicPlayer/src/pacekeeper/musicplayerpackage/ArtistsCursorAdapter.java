@@ -16,41 +16,38 @@ import android.widget.TextView;
 
 
 
-public class MediaCursorAdapter extends SimpleCursorAdapter {
+public class ArtistsCursorAdapter extends SimpleCursorAdapter {
 
 		
-		public MediaCursorAdapter(Context context, int layout, Cursor c) {
+		public ArtistsCursorAdapter(Context context, int layout, Cursor c) {
 			super(context, layout, c, new String[] {
-					MediaStore.Audio.Media.TITLE,
-					MediaStore.Audio.Media.ARTIST,
-					MediaStore.Audio.Media.DURATION }, new int[] {
+					MediaStore.Audio.Artists.ARTIST,
+					MediaStore.Audio.Artists.NUMBER_OF_ALBUMS,
+					MediaStore.Audio.Artists.NUMBER_OF_TRACKS}, new int[] {
 					R.id.displayname, R.id.title, R.id.duration });
 		}
 
 		@Override
 		public void bindView(View view, Context context, Cursor cursor) {
-			TextView title = (TextView) view.findViewById(R.id.title);
+			TextView numberofAlbums = (TextView) view.findViewById(R.id.title);
 			TextView name = (TextView) view.findViewById(R.id.displayname);
-			TextView duration = (TextView) view.findViewById(R.id.duration);
+			TextView numberofSongs = (TextView) view.findViewById(R.id.duration);
 
 			name.setText(cursor.getString(cursor
-					.getColumnIndex(MediaStore.Audio.Media.TITLE)));
+					.getColumnIndex(MediaStore.Audio.Artists.ARTIST)));
 
-			title.setText(cursor.getString(cursor
-					.getColumnIndex(MediaStore.Audio.Media.ARTIST)));
+			int numberOfAlbums =(cursor.getInt(cursor
+					.getColumnIndex(MediaStore.Audio.Artists.NUMBER_OF_ALBUMS)));
 
-			long durationInMs = Long.parseLong(cursor.getString(cursor
-					.getColumnIndex(MediaStore.Audio.Media.DURATION)));
+			numberofAlbums.setText("#Albums: " + numberOfAlbums);
+			
+			int numberOfSongs = (cursor.getInt(cursor
+					.getColumnIndex(MediaStore.Audio.Artists.NUMBER_OF_TRACKS)));
 
-			double durationInMin = ((double) durationInMs / 1000.0) / 60.0;
+			numberofSongs.setText("#Songs: " + numberOfSongs);
 
-			durationInMin = new BigDecimal(Double.toString(durationInMin))
-					.setScale(2, BigDecimal.ROUND_UP).doubleValue();
-
-			duration.setText("" + durationInMin);
-
-			view.setTag(cursor.getString(cursor
-					.getColumnIndex(MediaStore.Audio.Media.DATA)));
+//			view.setTag(cursor.getString(cursor
+//					.getColumnIndex(MediaStore.Audio.Media.DATA)));
 		}
 
 		@Override

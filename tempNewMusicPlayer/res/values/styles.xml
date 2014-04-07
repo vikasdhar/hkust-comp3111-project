@@ -21,7 +21,7 @@
     <style name="nowCardStyle">
         <item name="android:background">@drawable/card_background_new</item>
         <item name="android:gravity">center</item>
-        <item name="android:minHeight">20dp</item>
+        <item name="android:minHeight">50dp</item>
         <item name="android:minWidth">20dp</item>
         <item name="android:textColor">#707070</item>
     </style>
@@ -40,6 +40,8 @@
         <item name="android:textColor">#707070</item>
     </style>
     
+    
+    
     <!-- colors for layouts -->
 	<drawable name="color_black">#FF000000</drawable>
 	<drawable name="color_white">#FFFFFFFF</drawable>
@@ -49,5 +51,7 @@
 	<drawable name="color_green">#FF109D59</drawable>
 	<drawable name="color_lightgreen">#FF99CC00</drawable>
 	<drawable name="color_purple">#FFAA66CC</drawable>
-
+	   
+	<color name="text_tab_selected">#ffffff</color>
+	<color name="text_tab_unselected">#95ab45</color>
 </resources>

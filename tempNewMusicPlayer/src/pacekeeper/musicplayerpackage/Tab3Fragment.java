@@ -20,7 +20,7 @@ import android.widget.LinearLayout;
  *
  */
 public class Tab3Fragment extends ListFragment {
-	private MediaCursorAdapter mediaAdapter = null;
+	private AlbumsCursorAdapter albumsAdapter = null;
 	/* (non-Javadoc)
 	 * @see android.support.v4.app.Fragment#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)
 	 */
@@ -41,16 +41,16 @@ public class Tab3Fragment extends ListFragment {
 		View view=(LinearLayout)inflater.inflate(R.layout.tab_frag3_layout, container, false);
 	
 		Cursor cursor = view.getContext().getContentResolver().query(
-				MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, null, null, null,
-				null);
+				MediaStore.Audio.Albums.EXTERNAL_CONTENT_URI, null, null, null,
+				MediaStore.Audio.Albums.ALBUM_KEY);
 
 		if (null != cursor) {
 			cursor.moveToFirst();
 
-			mediaAdapter = new MediaCursorAdapter(view.getContext(), R.layout.listitem,
+			albumsAdapter = new AlbumsCursorAdapter(view.getContext(), R.layout.listitem,
 					cursor);
 
-			setListAdapter(mediaAdapter);
+			setListAdapter(albumsAdapter);
 		
 		
 	}
