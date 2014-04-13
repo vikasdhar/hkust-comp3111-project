@@ -7,7 +7,7 @@
     <uses-sdk android:minSdkVersion="14" />
 
     <instrumentation
-        android:name="com.zutubi.android.junitreport.JUnitReportTestRunner"
+        android:name="android.test.InstrumentationTestRunner"
         android:targetPackage="com.comp3111.pacekeeper" />
 
     <application
