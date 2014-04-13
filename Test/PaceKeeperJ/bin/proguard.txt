@@ -1,0 +1,30 @@
+# view res/layout/activity_pedo_viewpager.xml #generated:151
+-keep class android.support.v4.view.ViewPager { <init>(...); }
+
+# view AndroidManifest.xml #generated:53
+-keep class com.comp3111.pacekeeper.CalibrateActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:38
+-keep class com.comp3111.pacekeeper.GoalActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:63
+-keep class com.comp3111.pacekeeper.GreetActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:18
+-keep class com.comp3111.pacekeeper.MainActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:33
+-keep class com.comp3111.pacekeeper.MusicActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:28
+-keep class com.comp3111.pacekeeper.PedoActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:58
+-keep class com.comp3111.pacekeeper.ProfileActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:43
+-keep class com.comp3111.pacekeeper.SocialActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:48
+-keep class com.comp3111.pacekeeper.StatActivity { <init>(...); }
+
