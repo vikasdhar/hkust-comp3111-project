@@ -38,4 +38,5 @@ LOCAL_LDLIBS    += -llog
 # added "-marm" switch to use arm instruction set instead of thumb for improved calculation performance.
 LOCAL_CFLAGS += -Wall -fvisibility=hidden -I soundtouch/source/../include -D ST_NO_EXCEPTION_HANDLING -fdata-sections -ffunction-sections -marm
 
-include $(BUILD_SHARED_LIBRARY)
+#include $(BUILD_SHARED_LIBRARY)
+include $(BUILD_STATIC_LIBRARY)
