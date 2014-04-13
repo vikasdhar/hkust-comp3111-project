@@ -7,7 +7,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
@@ -16,19 +15,13 @@ import pacekeeper.musicplayerpackage.R;
 
 import android.support.v4.app.ListFragment;
 import android.content.Context;
-import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -37,12 +30,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TabHost;
-import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.TabHost.TabContentFactory;
-
-
 
 /**
  * The <code>TabsViewPagerFragmentActivity</code> class implements the Fragment
@@ -97,7 +87,7 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 			v.setMinimumWidth(0);
 			v.setMinimumHeight(0);
 			return v;
-			
+
 		}
 
 	}
@@ -105,10 +95,9 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 	// Music part starts
 	private static final int UPDATE_FREQUENCY = 50;
 	private static final int STEP_VALUE = 4000;
-	private static final int LENGHT_LONG = 0;
 	private static final int LENGTH_LONG = 0;
+	private static final int LENGTH_SHORT = 0;
 
-	private MediaCursorAdapter mediaAdapter = null;
 	private TextView selectedFile = null;
 	private SeekBar seekbar = null;
 	private MediaPlayer player = null;
@@ -118,12 +107,11 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 	private ImageView showalbumartButton = null;
 
 	private boolean isStarted = true;
-	static String currentFile = "";
 	private boolean isMoveingSeekBar = false;
 
-	public MediaList songsList_sortedby_TITLE;
-	public MediaList songsList_sortedby_ARTIST;
-	public MediaList songsList_sortedby_ALBUM;
+	static String currentFile = "";
+	static MediaList2 songsList2;
+	static AlbumList albumsList;
 
 	private final Handler handler = new Handler();
 
@@ -133,48 +121,17 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 		}
 	};
 
-	void startPlay(String file)  {
+	void startPlay(String file) {
 		Log.i("Selected: ", file);
-		int listPosition = songsList_sortedby_TITLE.matchWithName(currentFile);
-		
-		
-		
-		
-		
-		String albumArtUri =songsList_sortedby_TITLE.getArt(listPosition);
-		
-		if (albumArtUri != null){
-			File albumArt = new File(albumArtUri);
-			InputStream in = null;
-			try {
-				in = new BufferedInputStream(new FileInputStream(albumArt));
-				Bitmap bm = BitmapFactory.decodeStream(in);
-				showalbumartButton.setImageBitmap(bm);
-			} catch (FileNotFoundException e) {
-				MediaMetadataRetriever md = new MediaMetadataRetriever();
-				md.setDataSource(file);
-				byte[] art = md.getEmbeddedPicture();
-				if (art != null) {
-					InputStream is = new ByteArrayInputStream(md.getEmbeddedPicture());
-					Bitmap bm = BitmapFactory.decodeStream(is);
-					showalbumartButton.setImageBitmap(bm);
-				} else {
-					showalbumartButton.setImageDrawable(getResources().getDrawable(
-							android.R.drawable.ic_dialog_dialer));
-				}
-				
-				//showalbumartButton.setImageURI(Uri.parse(albumArtUri));
-			}
-		}
-		else {
-			showalbumartButton.setImageDrawable(getResources().getDrawable(
-					android.R.drawable.ic_dialog_dialer));
-		}
-		
-		selectedFile.setText(songsList_sortedby_TITLE.getTitle(listPosition)
-				+ "-" + songsList_sortedby_TITLE.getArtist(listPosition));
 
-		
+		setAlbumArt(showalbumartButton, file, false);
+
+		// selectedFile.setText(songsList.getTitle(listPosition)
+		// + "-" + songsList.getArtist(listPosition));
+
+		selectedFile.setText(songsList2.getTitle(currentFile) + "-"
+				+ songsList2.getArtist(currentFile));
+
 		seekbar.setProgress(0);
 
 		player.stop();
@@ -204,7 +161,7 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 	private void stopPlay() {
 		player.stop();
 		player.reset();
-		playButton.setImageResource(android.R.drawable.ic_media_play);
+		playButton.setImageResource(R.drawable.ic_action_play);
 		handler.removeCallbacks(updatePositionRunnable);
 		seekbar.setProgress(0);
 
@@ -247,13 +204,11 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 				if (player.isPlaying()) {
 					handler.removeCallbacks(updatePositionRunnable);
 					player.pause();
-					playButton
-							.setImageResource(R.drawable.ic_action_play);
+					playButton.setImageResource(R.drawable.ic_action_play);
 				} else {
 					if (isStarted) {
 						player.start();
-						playButton
-								.setImageResource(R.drawable.ic_action_pause);
+						playButton.setImageResource(R.drawable.ic_action_pause);
 
 						updatePosition();
 					} else {
@@ -272,13 +227,10 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 				// player.pause();
 				// player.seekTo(seekto);
 				// player.start();
-				
-			
-				
-				
-				currentFile = songsList_sortedby_TITLE
-						.getPath(songsList_sortedby_TITLE
-								.matchWithName(currentFile) + 1);
+
+//				currentFile = songsList.getPath(songsList
+//						.matchWithPath(currentFile) + 1);
+				currentFile=songsList2.nextFile(currentFile);
 				startPlay(currentFile);
 				break;
 			}
@@ -291,11 +243,10 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 				// player.pause();
 				// player.seekTo(seekto);
 				// player.start();
-				
-				
-				currentFile = songsList_sortedby_TITLE
-						.getPath(songsList_sortedby_TITLE
-								.matchWithName(currentFile) - 1);
+
+//				currentFile = songsList.getPath(songsList
+//						.matchWithPath(currentFile) - 1);
+				currentFile=songsList2.prevFile(currentFile);
 				startPlay(currentFile);
 				break;
 			}
@@ -341,6 +292,115 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 		}
 	};
 
+	public void setAlbumArt(ImageView imageview, String file, boolean compress) {
+
+		String albumArtpath = MusicPlayer_with_SongsLists.songsList2
+				.getAlbumArt(file);
+
+		if (albumArtpath != null) {
+			File albumArtFile = new File(albumArtpath);
+			Bitmap bm = null;
+			InputStream iStream1 = null;
+			InputStream iStream2 = null;
+
+			try {
+
+				iStream1 = new BufferedInputStream(new FileInputStream(albumArtFile));
+				if (!compress) {
+					bm = BitmapFactory.decodeStream(iStream1);
+				} else {
+					iStream2 = new BufferedInputStream(new FileInputStream(
+							albumArtFile));
+					bm = decodeFile2(iStream1, iStream2, 100, 100);
+				}
+				imageview.setImageBitmap(bm);
+
+			} catch (FileNotFoundException e) {
+
+				MediaMetadataRetriever md = new MediaMetadataRetriever();
+				md.setDataSource(file);
+				byte[] art = md.getEmbeddedPicture();
+				if (art != null) {
+
+					iStream1 = new ByteArrayInputStream(md.getEmbeddedPicture());
+
+					if (!compress) {
+
+						bm = BitmapFactory.decodeStream(iStream1);
+					} else {
+						iStream2 = new ByteArrayInputStream(md.getEmbeddedPicture());
+						bm = decodeFile2(iStream1, iStream2, 100, 100);
+					}
+					imageview.setImageBitmap(bm);
+				} else {
+					imageview.setImageDrawable(getResources().getDrawable(
+							R.drawable.ic_expandplayer_placeholder));
+				}
+
+			}
+		} else {
+			imageview.setImageDrawable(getResources().getDrawable(
+					R.drawable.ic_expandplayer_placeholder));
+		}
+	}
+
+	// public Bitmap decodeFile(String f,int WIDTH,int HIGHT) throws
+	// FileNotFoundException{
+	//
+	// //Decode image size
+	// BitmapFactory.Options o = new BitmapFactory.Options();
+	// o.inJustDecodeBounds = true;
+	// BitmapFactory.decodeStream((InputStream)new BufferedInputStream(new
+	// FileInputStream(new File(f))),null,o);
+	//
+	// //The new size we want to scale to
+	// final int REQUIRED_WIDTH=WIDTH;
+	// final int REQUIRED_HIGHT=HIGHT;
+	// //Find the correct scale value. It should be the power of 2.
+	// int scale=1;
+	// while(o.outWidth/scale/2>=REQUIRED_WIDTH &&
+	// o.outHeight/scale/2>=REQUIRED_HIGHT)
+	// scale*=2;
+	//
+	// //Decode with inSampleSize
+	// BitmapFactory.Options o2 = new BitmapFactory.Options();
+	// o2.inSampleSize=scale;
+	//
+	// return BitmapFactory.decodeStream((InputStream)new
+	// BufferedInputStream(new FileInputStream(new File(f))), null, o2);
+	//
+	//
+	// }
+	public Bitmap decodeFile2(InputStream iStream1, InputStream iStream2,
+			int WIDTH, int HIGHT) {
+
+		// Decode image size
+		BitmapFactory.Options o = new BitmapFactory.Options();
+		o.inJustDecodeBounds = true;
+		BitmapFactory.decodeStream(iStream1, null, o);
+
+		// The new size we want to scale to
+		final int REQUIRED_WIDTH = WIDTH;
+		final int REQUIRED_HIGHT = HIGHT;
+		// Find the correct scale value. It should be the power of 2.
+		int scale = 1;
+
+		while (o.outWidth / scale / 2 >= REQUIRED_WIDTH
+				&& o.outHeight / scale / 2 >= REQUIRED_HIGHT)
+			scale *= 2;
+
+		// Decode with inSampleSize
+		BitmapFactory.Options o2 = new BitmapFactory.Options();
+		o2.inSampleSize = scale;
+		Bitmap B = BitmapFactory.decodeStream(iStream2, null, o2);
+		if (B == null)
+			Toast.makeText(this, "" + o.outWidth / scale / 2, LENGTH_SHORT)
+					.show();
+
+		return B;
+
+	}
+
 	// music part methods end
 
 	/**
@@ -352,7 +412,12 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 		super.onCreate(savedInstanceState);
 		// Inflate the layout
 		setContentView(R.layout.tabs_viewpager_layout);
+
+		albumsList = new AlbumList(this);
+		songsList2 = new MediaList2(this, "1==1");
+
 		// Initialise the TabHost
+
 		this.initialiseTabHost(savedInstanceState);
 		this.intialiseViewPager();
 
@@ -375,14 +440,7 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 		prevButton.setOnClickListener(onButtonClick);
 		showalbumartButton.setOnClickListener(onButtonClick);
 		showalbumartButton.setImageDrawable(getResources().getDrawable(
-				android.R.drawable.ic_dialog_dialer));
-
-		songsList_sortedby_TITLE = new MediaList(this,
-				MediaStore.Audio.Media.TITLE_KEY);
-		songsList_sortedby_ARTIST = new MediaList(this,
-				MediaStore.Audio.Media.ARTIST_KEY);
-		songsList_sortedby_ALBUM = new MediaList(this,
-				MediaStore.Audio.Media.ARTIST_KEY);
+				R.drawable.ic_expandplayer_placeholder));
 	}
 
 	/**
@@ -435,15 +493,11 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 	 * Initialise the Tab Host
 	 */
 	private void initialiseTabHost(Bundle args) {
-		
-		
-		
-		
+
 		mTabHost = (TabHost) findViewById(android.R.id.tabhost);
 		mTabHost.setup();
 		TabInfo tabInfo = null;
-		
-		
+
 		MusicPlayer_with_SongsLists.AddTab(this, this.mTabHost, this.mTabHost
 				.newTabSpec("Tab1").setIndicator("Songs"),
 				(tabInfo = new TabInfo("Tab1", Tab1Fragment.class, args)));

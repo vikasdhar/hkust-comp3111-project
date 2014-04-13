@@ -52,6 +52,5 @@
 	<drawable name="color_lightgreen">#FF99CC00</drawable>
 	<drawable name="color_purple">#FFAA66CC</drawable>
 	   
-	<color name="text_tab_selected">#ffffff</color>
-	<color name="text_tab_unselected">#95ab45</color>
+
 </resources>

@@ -5,6 +5,7 @@ package pacekeeper.musicplayerpackage;
 
 import java.math.BigDecimal;
 
+import pacekeeper.musicplayerpackage.MediaCursorAdapter.MediaViewHolder;
 import pacekeeper.musicplayerpackage.R;
 
 import android.support.v4.app.ListFragment;
@@ -21,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 
@@ -36,6 +38,7 @@ public class Tab1Fragment extends ListFragment {
 
 	private MediaCursorAdapter mediaAdapter = null;
 	private MusicPlayer_with_SongsLists activity;
+	
 	@Override
 	public void onAttach(Activity activity){
 		super.onAttach(activity);
@@ -65,7 +68,7 @@ public class Tab1Fragment extends ListFragment {
 		if (null != cursor) {
 			cursor.moveToFirst();
 
-			mediaAdapter = new MediaCursorAdapter(view.getContext(), R.layout.listitem,
+			mediaAdapter = new MediaCursorAdapter(activity, view.getContext(), R.layout.listitem,
 					cursor);
 
 			setListAdapter(mediaAdapter);
@@ -79,9 +82,8 @@ public class Tab1Fragment extends ListFragment {
 	public void onListItemClick(ListView list, View view, int position,
 			long id) {
 		super.onListItemClick(list, view, position, id);
-		
-		activity.currentFile = (String) view.getTag();
-		
+		MediaViewHolder holder=(MediaViewHolder) view.getTag();
+		activity.currentFile = (String)holder.path ;
 		activity.startPlay(activity.currentFile);
 	}
 }
