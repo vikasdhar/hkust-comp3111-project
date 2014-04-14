@@ -10,14 +10,13 @@ import android.provider.MediaStore;
 import android.widget.Toast;
 
 public class AlbumList {
-	private Activity activity;
+	private Activity mainActivity;
 	private Hashtable<String, String> albumsList;
-	private Hashtable<String, String> artsList;
-	
 	public AlbumList(Activity activity) {
-		this.activity=activity;
+		this.mainActivity=activity;
+		
 		this.albumsList=new Hashtable<String,String>();
-		this.artsList= new Hashtable<String, String>();
+		new Hashtable<String, String>();
 		
 		String[] projection = {
 		MediaStore.Audio.Albums.ALBUM, MediaStore.Audio.Albums.ALBUM_ART };
@@ -36,10 +35,7 @@ public class AlbumList {
 				this.albumsList.put(album,art);
 				}
 			}
-				
-//			if (!this.artsList.containsKey(art)) {
-//				if(album!=null&&art!=null){this.artsList.put(art,album);}
-//			}
+
 				
 		}
 		
@@ -50,11 +46,6 @@ public class AlbumList {
 		
 		return this.albumsList.get(key);
 	}
-	
-//	public String getAlbum(String key){
-//		
-//		return this.artsList.get(key);
-//		
-//	}
+
 	
 }

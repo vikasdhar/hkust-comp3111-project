@@ -124,7 +124,7 @@ public class MediaCursorAdapter extends SimpleCursorAdapter {
 			
 			holder.path=filePath;
 			
-			((MusicPlayer_with_SongsLists) mainActivity).setAlbumArt(holder.albumArt,filePath,true);
+			PlayerInfoHolder.setAlbumArt(holder.albumArt,filePath,true);
 			
 			return convertView;
 		}

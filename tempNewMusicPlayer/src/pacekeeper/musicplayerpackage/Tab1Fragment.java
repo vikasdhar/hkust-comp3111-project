@@ -83,7 +83,7 @@ public class Tab1Fragment extends ListFragment {
 			long id) {
 		super.onListItemClick(list, view, position, id);
 		MediaViewHolder holder=(MediaViewHolder) view.getTag();
-		activity.currentFile = (String)holder.path ;
-		activity.startPlay(activity.currentFile);
+		PlayerInfoHolder.getInstance().currentFile = (String)holder.path ;
+		activity.startPlay(PlayerInfoHolder.getInstance().currentFile);
 	}
 }

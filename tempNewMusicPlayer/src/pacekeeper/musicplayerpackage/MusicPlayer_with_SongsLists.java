@@ -14,7 +14,9 @@ import java.util.Vector;
 import pacekeeper.musicplayerpackage.R;
 
 import android.support.v4.app.ListFragment;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaMetadataRetriever;
@@ -100,18 +102,13 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 
 	private TextView selectedFile = null;
 	private SeekBar seekbar = null;
-	private MediaPlayer player = null;
+
 	private ImageButton playButton = null;
 	private ImageButton prevButton = null;
 	private ImageButton nextButton = null;
-	private ImageView showalbumartButton = null;
-
-	private boolean isStarted = true;
-	private boolean isMoveingSeekBar = false;
-
-	static String currentFile = "";
-	static MediaList2 songsList2;
-	static AlbumList albumsList;
+	private ImageView showAlbumArtButton = null;
+	
+	private PlayerInfoHolder playerInfoHolder = PlayerInfoHolder.getInstance();
 
 	private final Handler handler = new Handler();
 
@@ -124,23 +121,26 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 	void startPlay(String file) {
 		Log.i("Selected: ", file);
 
-		setAlbumArt(showalbumartButton, file, false);
+		playerInfoHolder.setAlbumArt(showAlbumArtButton, file, false);
 
 		// selectedFile.setText(songsList.getTitle(listPosition)
 		// + "-" + songsList.getArtist(listPosition));
 
-		selectedFile.setText(songsList2.getTitle(currentFile) + "-"
-				+ songsList2.getArtist(currentFile));
+		selectedFile.setText(playerInfoHolder.songsList
+				.getTitle(playerInfoHolder.currentFile)
+				+ "-"
+				+ playerInfoHolder.songsList
+						.getArtist(playerInfoHolder.currentFile));
 
 		seekbar.setProgress(0);
 
-		player.stop();
-		player.reset();
+		playerInfoHolder.player.stop();
+		playerInfoHolder.player.reset();
 
 		try {
-			player.setDataSource(file);
-			player.prepare();
-			player.start();
+			playerInfoHolder.player.setDataSource(file);
+			playerInfoHolder.player.prepare();
+			playerInfoHolder.player.start();
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		} catch (IllegalStateException e) {
@@ -149,30 +149,30 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 			e.printStackTrace();
 		}
 
-		seekbar.setMax(player.getDuration());
+		seekbar.setMax(playerInfoHolder.player.getDuration());
 
 		playButton.setImageResource(R.drawable.ic_action_pause);
 
 		updatePosition();
 
-		isStarted = true;
+		playerInfoHolder.isStarted = true;
 	}
 
 	private void stopPlay() {
-		player.stop();
-		player.reset();
+		playerInfoHolder.player.stop();
+		playerInfoHolder.player.reset();
 		playButton.setImageResource(R.drawable.ic_action_play);
 		handler.removeCallbacks(updatePositionRunnable);
 		seekbar.setProgress(0);
 
-		isStarted = false;
+		playerInfoHolder.isStarted = false;
 	}
 
 	private void updatePosition() {
 		handler.removeCallbacks(updatePositionRunnable);
 
-		seekbar.setProgress(player.getCurrentPosition());
-
+		seekbar.setProgress(playerInfoHolder.player.getCurrentPosition());
+		
 		handler.postDelayed(updatePositionRunnable, UPDATE_FREQUENCY);
 	}
 
@@ -181,11 +181,11 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 		super.onDestroy();
 
 		handler.removeCallbacks(updatePositionRunnable);
-		player.stop();
-		player.reset();
-		player.release();
+		playerInfoHolder.player.stop();
+		playerInfoHolder.player.reset();
+		playerInfoHolder.player.release();
 
-		player = null;
+		playerInfoHolder.player = null;
 	}
 
 	private MediaPlayer.OnCompletionListener onCompletion = new MediaPlayer.OnCompletionListener() {
@@ -195,24 +195,33 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 			stopPlay();
 		}
 	};
+
 	private View.OnClickListener onButtonClick = new View.OnClickListener() {
 
 		@Override
 		public void onClick(View v) {
 			switch (v.getId()) {
-			case R.id.play: {
-				if (player.isPlaying()) {
+			case (R.id.play): {
+				if (playerInfoHolder.player.isPlaying()) {
+
 					handler.removeCallbacks(updatePositionRunnable);
-					player.pause();
+					playerInfoHolder.player.pause();
 					playButton.setImageResource(R.drawable.ic_action_play);
 				} else {
-					if (isStarted) {
-						player.start();
-						playButton.setImageResource(R.drawable.ic_action_pause);
+					if (playerInfoHolder.isStarted) {
 
+						playerInfoHolder.player.start();
+						playButton.setImageResource(R.drawable.ic_action_pause);
 						updatePosition();
+
 					} else {
-						startPlay(currentFile);
+						if (playerInfoHolder.currentFile != null) {
+							startPlay(playerInfoHolder.currentFile);
+						} else {
+							Toast.makeText((Activity) v.getContext(),
+									"Please select a music!", LENGTH_SHORT)
+									.show();
+						}
 					}
 				}
 
@@ -228,10 +237,17 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 				// player.seekTo(seekto);
 				// player.start();
 
-//				currentFile = songsList.getPath(songsList
-//						.matchWithPath(currentFile) + 1);
-				currentFile=songsList2.nextFile(currentFile);
-				startPlay(currentFile);
+				// currentFile = songsList.getPath(songsList
+				// .matchWithPath(currentFile) + 1);
+				if (playerInfoHolder.currentFile != null) {
+					playerInfoHolder.currentFile = playerInfoHolder.songsList
+							.nextFile(playerInfoHolder.currentFile);
+					startPlay(playerInfoHolder.currentFile);
+				} else {
+					Toast.makeText((Activity) v.getContext(),
+							"Please select a music!", LENGTH_SHORT).show();
+				}
+
 				break;
 			}
 			case R.id.prev: {
@@ -244,18 +260,25 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 				// player.seekTo(seekto);
 				// player.start();
 
-//				currentFile = songsList.getPath(songsList
-//						.matchWithPath(currentFile) - 1);
-				currentFile=songsList2.prevFile(currentFile);
-				startPlay(currentFile);
+				// currentFile = songsList.getPath(songsList
+				// .matchWithPath(currentFile) - 1);
+				if (playerInfoHolder.currentFile != null) {
+					playerInfoHolder.currentFile = playerInfoHolder.songsList
+							.prevFile(playerInfoHolder.currentFile);
+					startPlay(playerInfoHolder.currentFile);
+				} else {
+					Toast.makeText((Activity) v.getContext(),
+							"Please select a music!", LENGTH_SHORT).show();
+				}
+
 				break;
 			}
 			case R.id.showalbumart: {
 
-				// Intent intObj = new Intent(PlayAudioExample.this,
-				// GreetingActivity.class);
-				// intObj.putExtra("USERNAME", "this is a test");
-				// startActivity(intObj);
+				Intent intObj = new Intent(MusicPlayer_with_SongsLists.this,
+						MusicPlayerActivity.class);
+				intObj.putExtra("USERNAME", "this is a test");
+				startActivity(intObj);
 				break;
 			}
 			}
@@ -273,133 +296,27 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 	private SeekBar.OnSeekBarChangeListener seekBarChanged = new SeekBar.OnSeekBarChangeListener() {
 		@Override
 		public void onStopTrackingTouch(SeekBar seekBar) {
-			isMoveingSeekBar = false;
+			playerInfoHolder.isMoveingSeekBar = false;
 		}
 
 		@Override
 		public void onStartTrackingTouch(SeekBar seekBar) {
-			isMoveingSeekBar = true;
+			playerInfoHolder.isMoveingSeekBar = true;
 		}
 
 		@Override
 		public void onProgressChanged(SeekBar seekBar, int progress,
 				boolean fromUser) {
-			if (isMoveingSeekBar) {
-				player.seekTo(progress);
+			if (playerInfoHolder.isMoveingSeekBar) {
+				playerInfoHolder.player.seekTo(progress);
 
 				Log.i("OnSeekBarChangeListener", "onProgressChanged");
 			}
 		}
 	};
 
-	public void setAlbumArt(ImageView imageview, String file, boolean compress) {
 
-		String albumArtpath = MusicPlayer_with_SongsLists.songsList2
-				.getAlbumArt(file);
-
-		if (albumArtpath != null) {
-			File albumArtFile = new File(albumArtpath);
-			Bitmap bm = null;
-			InputStream iStream1 = null;
-			InputStream iStream2 = null;
-
-			try {
-
-				iStream1 = new BufferedInputStream(new FileInputStream(albumArtFile));
-				if (!compress) {
-					bm = BitmapFactory.decodeStream(iStream1);
-				} else {
-					iStream2 = new BufferedInputStream(new FileInputStream(
-							albumArtFile));
-					bm = decodeFile2(iStream1, iStream2, 100, 100);
-				}
-				imageview.setImageBitmap(bm);
-
-			} catch (FileNotFoundException e) {
-
-				MediaMetadataRetriever md = new MediaMetadataRetriever();
-				md.setDataSource(file);
-				byte[] art = md.getEmbeddedPicture();
-				if (art != null) {
-
-					iStream1 = new ByteArrayInputStream(md.getEmbeddedPicture());
-
-					if (!compress) {
-
-						bm = BitmapFactory.decodeStream(iStream1);
-					} else {
-						iStream2 = new ByteArrayInputStream(md.getEmbeddedPicture());
-						bm = decodeFile2(iStream1, iStream2, 100, 100);
-					}
-					imageview.setImageBitmap(bm);
-				} else {
-					imageview.setImageDrawable(getResources().getDrawable(
-							R.drawable.ic_expandplayer_placeholder));
-				}
-
-			}
-		} else {
-			imageview.setImageDrawable(getResources().getDrawable(
-					R.drawable.ic_expandplayer_placeholder));
-		}
-	}
-
-	// public Bitmap decodeFile(String f,int WIDTH,int HIGHT) throws
-	// FileNotFoundException{
-	//
-	// //Decode image size
-	// BitmapFactory.Options o = new BitmapFactory.Options();
-	// o.inJustDecodeBounds = true;
-	// BitmapFactory.decodeStream((InputStream)new BufferedInputStream(new
-	// FileInputStream(new File(f))),null,o);
-	//
-	// //The new size we want to scale to
-	// final int REQUIRED_WIDTH=WIDTH;
-	// final int REQUIRED_HIGHT=HIGHT;
-	// //Find the correct scale value. It should be the power of 2.
-	// int scale=1;
-	// while(o.outWidth/scale/2>=REQUIRED_WIDTH &&
-	// o.outHeight/scale/2>=REQUIRED_HIGHT)
-	// scale*=2;
-	//
-	// //Decode with inSampleSize
-	// BitmapFactory.Options o2 = new BitmapFactory.Options();
-	// o2.inSampleSize=scale;
-	//
-	// return BitmapFactory.decodeStream((InputStream)new
-	// BufferedInputStream(new FileInputStream(new File(f))), null, o2);
-	//
-	//
-	// }
-	public Bitmap decodeFile2(InputStream iStream1, InputStream iStream2,
-			int WIDTH, int HIGHT) {
-
-		// Decode image size
-		BitmapFactory.Options o = new BitmapFactory.Options();
-		o.inJustDecodeBounds = true;
-		BitmapFactory.decodeStream(iStream1, null, o);
-
-		// The new size we want to scale to
-		final int REQUIRED_WIDTH = WIDTH;
-		final int REQUIRED_HIGHT = HIGHT;
-		// Find the correct scale value. It should be the power of 2.
-		int scale = 1;
-
-		while (o.outWidth / scale / 2 >= REQUIRED_WIDTH
-				&& o.outHeight / scale / 2 >= REQUIRED_HIGHT)
-			scale *= 2;
-
-		// Decode with inSampleSize
-		BitmapFactory.Options o2 = new BitmapFactory.Options();
-		o2.inSampleSize = scale;
-		Bitmap B = BitmapFactory.decodeStream(iStream2, null, o2);
-		if (B == null)
-			Toast.makeText(this, "" + o.outWidth / scale / 2, LENGTH_SHORT)
-					.show();
-
-		return B;
-
-	}
+	
 
 	// music part methods end
 
@@ -413,8 +330,11 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 		// Inflate the layout
 		setContentView(R.layout.tabs_viewpager_layout);
 
-		albumsList = new AlbumList(this);
-		songsList2 = new MediaList2(this, "1==1");
+		// albumsList = new AlbumList(this);
+		// songsList = new MediaList(this, "1==1");
+
+		PlayerInfoHolder.getInstance().albumsList = new AlbumList(this);
+		PlayerInfoHolder.getInstance().songsList = new MediaList(this, "1==1");
 
 		// Initialise the TabHost
 
@@ -424,22 +344,25 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 		// Music part
 		selectedFile = (TextView) findViewById(R.id.selectedfile);
 		seekbar = (SeekBar) findViewById(R.id.seekbar);
+
+		
 		playButton = (ImageButton) findViewById(R.id.play);
 		prevButton = (ImageButton) findViewById(R.id.prev);
 		nextButton = (ImageButton) findViewById(R.id.next);
-		showalbumartButton = (ImageView) findViewById(R.id.showalbumart);
+		showAlbumArtButton = (ImageView) findViewById(R.id.showalbumart);
 
-		player = new MediaPlayer();
+		playerInfoHolder.player = new MediaPlayer();
 
-		player.setOnCompletionListener(onCompletion);
-		player.setOnErrorListener(onError);
+		playerInfoHolder.player
+				.setOnCompletionListener(onCompletion);
+		playerInfoHolder.player.setOnErrorListener(onError);
 		seekbar.setOnSeekBarChangeListener(seekBarChanged);
-
+		
 		playButton.setOnClickListener(onButtonClick);
 		nextButton.setOnClickListener(onButtonClick);
 		prevButton.setOnClickListener(onButtonClick);
-		showalbumartButton.setOnClickListener(onButtonClick);
-		showalbumartButton.setImageDrawable(getResources().getDrawable(
+		showAlbumArtButton.setOnClickListener(onButtonClick);
+		showAlbumArtButton.setImageDrawable(getResources().getDrawable(
 				R.drawable.ic_expandplayer_placeholder));
 	}
 

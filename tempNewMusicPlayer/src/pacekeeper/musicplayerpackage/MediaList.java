@@ -11,7 +11,7 @@ import android.database.Cursor;
 import android.provider.MediaStore;
 import android.widget.Toast;
 
-public class MediaList2 {
+public class MediaList {
 
 	
 	private class Song {
@@ -40,7 +40,7 @@ public class MediaList2 {
 	private HashMap<Integer, Song> cachedSongs;
 	private Activity activity;
 
-	public MediaList2(Activity activity, String filter) {
+	public MediaList(Activity activity, String filter) {
 		this.activity = activity;
 
 		String[] projection = { MediaStore.Audio.Media.DATA,
@@ -64,7 +64,7 @@ public class MediaList2 {
 			this.songsList.add(path);
 
 			if (currentAlbum != null)
-				currentAlbumArt = MusicPlayer_with_SongsLists.albumsList
+				currentAlbumArt = PlayerInfoHolder.getInstance().albumsList
 						.getAlbumArt(currentAlbum);
 
 			song = new Song(cursor.getString(1), cursor.getString(2),

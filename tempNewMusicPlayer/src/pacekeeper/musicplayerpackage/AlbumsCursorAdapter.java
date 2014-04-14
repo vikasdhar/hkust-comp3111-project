@@ -123,11 +123,11 @@ public class AlbumsCursorAdapter extends SimpleCursorAdapter {
 
 		holder.numberofAlbums.setText("#Songs: " + numberOfSongs);
 
-		String file = MusicPlayer_with_SongsLists.songsList2
+		String file = PlayerInfoHolder.getInstance().songsList
 		.matchWithAlbum(currentAlbum);
 		
 		
-			((MusicPlayer_with_SongsLists) mainActivity).setAlbumArt(
+			PlayerInfoHolder.setAlbumArt(
 					holder.albumArt, file ,true);
 				
 		return convertView;
