@@ -109,8 +109,11 @@ public class MediaCursorAdapter extends SimpleCursorAdapter {
 			holder.title.setText(cursor.getString(cursor
 					.getColumnIndex(MediaStore.Audio.Media.ARTIST)));
 
-			long durationInMs = Long.parseLong(cursor.getString(cursor
-					.getColumnIndex(MediaStore.Audio.Media.DURATION)));
+			String tempDur= cursor.getString(cursor
+					.getColumnIndex(MediaStore.Audio.Media.DURATION));
+			
+			long durationInMs = 0;
+			if (tempDur != null) durationInMs=Long.parseLong(tempDur);
 
 			double durationInMin = ((double) durationInMs / 1000.0) / 60.0;
 

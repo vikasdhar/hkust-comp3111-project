@@ -126,8 +126,9 @@ public class MediaList {
 
 	public double getDuration(int position) {
 		String dur = cachedSongs.get(position).duration;
-
-		Long durationInMs = Long.parseLong(dur);
+		Long durationInMs = (long) 0.0;
+		if (dur!=null)durationInMs = Long.parseLong(dur);
+		
 		double durationInMin = ((double) durationInMs / 1000.0) / 60.0;
 
 		durationInMin = new BigDecimal(Double.toString(durationInMin))
@@ -184,7 +185,9 @@ public class MediaList {
 			return 0;
 		else {
 			String dur = cachedSongs.get(pos).title;
-			Long durationInMs = Long.parseLong(dur);
+			Long durationInMs = (long) 0.0;
+			if (dur!=null)durationInMs = Long.parseLong(dur);
+			
 			double durationInMin = ((double) durationInMs / 1000.0) / 60.0;
 
 			durationInMin = new BigDecimal(Double.toString(durationInMin))
