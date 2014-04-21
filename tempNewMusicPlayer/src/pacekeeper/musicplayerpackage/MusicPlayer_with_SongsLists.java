@@ -1,29 +1,20 @@
 package pacekeeper.musicplayerpackage;
 
-import java.io.BufferedInputStream;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 
 import pacekeeper.musicplayerpackage.R;
-
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -44,7 +35,7 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 		TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
 
 	private TabHost mTabHost;
-	private ViewPager mViewPager;
+	protected ViewPager mViewPager;
 	private HashMap<String, TabInfo> mapTabInfo = new HashMap<String, MusicPlayer_with_SongsLists.TabInfo>();
 	private PagerAdapter mPagerAdapter;
 
@@ -279,6 +270,7 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 						MusicPlayerActivity.class);
 				intObj.putExtra("USERNAME", "this is a test");
 				startActivity(intObj);
+
 				break;
 			}
 			}
@@ -397,6 +389,7 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 	private void intialiseViewPager() {
 
 		List<ListFragment> fragments = new Vector<ListFragment>();
+		
 		fragments.add((ListFragment) ListFragment.instantiate(this,
 				Tab1Fragment.class.getName()));
 		fragments.add((ListFragment) ListFragment.instantiate(this,
@@ -477,7 +470,6 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 	public void onPageScrolled(int position, float positionOffset,
 			int positionOffsetPixels) {
 		// TODO Auto-generated method stub
-
 	}
 
 	/*

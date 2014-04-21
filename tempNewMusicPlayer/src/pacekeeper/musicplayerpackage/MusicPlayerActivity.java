@@ -73,6 +73,13 @@ public class MusicPlayerActivity extends Activity {
 
 		resetStatic();
 	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+
+		handler.removeCallbacks(updatePositionRunnable2);
+	}
 
 	/**
 	 * Reset the state base on MusicPlayer_with_songslist
