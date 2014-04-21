@@ -14,8 +14,8 @@ import android.media.MediaPlayer;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-public class PlayerInfoHolder {
-	private static PlayerInfoHolder uniqueInstance;
+public class Singleton_PlayerInfoHolder {
+	private static Singleton_PlayerInfoHolder uniqueInstance;
 
 	static boolean isStarted = false;
 	static boolean isMoveingSeekBar = false;
@@ -30,9 +30,9 @@ public class PlayerInfoHolder {
 	static MediaList songsList;
 	static AlbumList albumsList;
 
-	public static PlayerInfoHolder getInstance() {
+	public static Singleton_PlayerInfoHolder getInstance() {
 		if (uniqueInstance == null) {
-			uniqueInstance = new PlayerInfoHolder();
+			uniqueInstance = new Singleton_PlayerInfoHolder();
 		}
 		return uniqueInstance;
 	}

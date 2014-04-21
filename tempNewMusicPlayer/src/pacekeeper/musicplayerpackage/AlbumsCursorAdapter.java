@@ -35,7 +35,7 @@ public class AlbumsCursorAdapter extends SimpleCursorAdapter {
 		super(context, layout, c, new String[] { MediaStore.Audio.Albums.ALBUM,
 				MediaStore.Audio.Albums.ARTIST,
 				MediaStore.Audio.Albums.NUMBER_OF_SONGS }, new int[] {
-				R.id.displayname, R.id.title, R.id.duration });
+				R.id.displayname, R.id.title, R.id.duration },2);
 
 		this.mainActivity = activity;
 		this.context = context;
@@ -123,11 +123,11 @@ public class AlbumsCursorAdapter extends SimpleCursorAdapter {
 
 		holder.numberofAlbums.setText("#Songs: " + numberOfSongs);
 
-		String file = PlayerInfoHolder.getInstance().songsList
+		String file = Singleton_PlayerInfoHolder.getInstance().songsList
 		.matchWithAlbum(currentAlbum);
 		
 		
-			PlayerInfoHolder.setAlbumArt(
+			Singleton_PlayerInfoHolder.setAlbumArt(
 					holder.albumArt, file ,true);
 				
 		return convertView;

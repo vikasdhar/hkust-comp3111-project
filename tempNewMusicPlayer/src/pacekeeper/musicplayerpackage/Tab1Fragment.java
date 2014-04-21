@@ -86,38 +86,38 @@ public class Tab1Fragment extends ListFragment {
 	public void onActivityCreated (Bundle savedInstanceState){
 		super.onActivityCreated (savedInstanceState);
 		
-		SwipeListViewTouchListener touchListener =
-			    new SwipeListViewTouchListener(
-			        getListView(),
-			        new SwipeListViewTouchListener.OnSwipeCallback() {
-			            @Override
-			            public void onSwipeLeft(ListView listView, int [] reverseSortedPositions) {
-			                //  Log.i(this.getClass().getName(), "swipe left : pos="+reverseSortedPositions[0]);
-			                // TODO : YOUR CODE HERE FOR LEFT ACTION
-			            	Toast.makeText(activity, "it work on left", Toast.LENGTH_SHORT).show();
-			            }
-
-			            @Override
-			            public void onSwipeRight(ListView listView, int [] reverseSortedPositions) {
-			                //  Log.i(ProfileMenuActivity.class.getClass().getName(), "swipe right : pos="+reverseSortedPositions[0]);
-			                // TODO : YOUR CODE HERE FOR RIGHT ACTION
-			            	Toast.makeText(activity, "it work on right", Toast.LENGTH_SHORT).show();
-			            }
-			        },
-			        true, // example : left action = dismiss
-			        false); // example : right action without dismiss animation
-		getListView().setOnTouchListener(touchListener);
-			// Setting this scroll listener is required to ensure that during ListView scrolling,
-			// we don't look for swipes.
-		getListView().setOnScrollListener(touchListener.makeScrollListener());
+//		SwipeListViewTouchListener touchListener =
+//			    new SwipeListViewTouchListener(
+//			        getListView(),
+//			        new SwipeListViewTouchListener.OnSwipeCallback() {
+//			            @Override
+//			            public void onSwipeLeft(ListView listView, int [] reverseSortedPositions) {
+//			                //  Log.i(this.getClass().getName(), "swipe left : pos="+reverseSortedPositions[0]);
+//			                // TODO : YOUR CODE HERE FOR LEFT ACTION
+//			            	Toast.makeText(activity, "it work on left", Toast.LENGTH_SHORT).show();
+//			            }
+//
+//			            @Override
+//			            public void onSwipeRight(ListView listView, int [] reverseSortedPositions) {
+//			                //  Log.i(ProfileMenuActivity.class.getClass().getName(), "swipe right : pos="+reverseSortedPositions[0]);
+//			                // TODO : YOUR CODE HERE FOR RIGHT ACTION
+//			            	Toast.makeText(activity, "it work on right", Toast.LENGTH_SHORT).show();
+//			            }
+//			        },
+//			        true, // example : left action = dismiss
+//			        false); // example : right action without dismiss animation
+//		getListView().setOnTouchListener(touchListener);
+//			// Setting this scroll listener is required to ensure that during ListView scrolling,
+//			// we don't look for swipes.
+//		getListView().setOnScrollListener(touchListener.makeScrollListener());
 	}
 
 	@Override
 	public void onListItemClick(ListView list, View view, int position, long id) {
 		super.onListItemClick(list, view, position, id);
 		MediaViewHolder holder = (MediaViewHolder) view.getTag();
-		PlayerInfoHolder.getInstance().currentFile = (String) holder.path;
-		activity.startPlay(PlayerInfoHolder.getInstance().currentFile);
+		Singleton_PlayerInfoHolder.getInstance().currentFile = (String) holder.path;
+		activity.startPlay(Singleton_PlayerInfoHolder.getInstance().currentFile);
 	}
 
 }

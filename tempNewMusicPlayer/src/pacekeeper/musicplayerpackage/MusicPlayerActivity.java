@@ -19,7 +19,7 @@ public class MusicPlayerActivity extends Activity {
 	
 	private static final long UPDATE_FREQUENCY = 50;
 	
-	private PlayerInfoHolder playerInfoHolder = PlayerInfoHolder.getInstance();
+	private Singleton_PlayerInfoHolder playerInfoHolder = Singleton_PlayerInfoHolder.getInstance();
 	private ImageButton playButton = null;
 	private ImageButton prevButton = null;
 	private ImageButton nextButton = null;

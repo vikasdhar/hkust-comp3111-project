@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Vector;
 
 import pacekeeper.musicplayerpackage.R;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
 import android.app.Activity;
 import android.content.Context;
@@ -16,13 +14,14 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TabHost;
+import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.TabHost.TabContentFactory;
@@ -31,11 +30,9 @@ import android.widget.TabHost.TabContentFactory;
  * The <code>TabsViewPagerFragmentActivity</code> class implements the Fragment
  * activity that maintains a TabHost using a ViewPager.
  */
-public class MusicPlayer_with_SongsLists extends FragmentActivity implements
-		TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
+public class MusicPlayer_with_SongsLists extends FragmentActivity{
 
-	private TabHost mTabHost;
-	protected ViewPager mViewPager;
+	private Singleton_TabInfoHolder tabInfoHolder=Singleton_TabInfoHolder.getInstance();
 	private HashMap<String, TabInfo> mapTabInfo = new HashMap<String, MusicPlayer_with_SongsLists.TabInfo>();
 	private PagerAdapter mPagerAdapter;
 
@@ -98,8 +95,9 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 	private ImageButton prevButton = null;
 	private ImageButton nextButton = null;
 	private ImageView showAlbumArtButton = null;
-	
-	private PlayerInfoHolder playerInfoHolder = PlayerInfoHolder.getInstance();
+
+	private Singleton_PlayerInfoHolder playerInfoHolder = Singleton_PlayerInfoHolder
+			.getInstance();
 
 	private final Handler handler = new Handler();
 
@@ -163,7 +161,7 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 		handler.removeCallbacks(updatePositionRunnable);
 
 		seekbar.setProgress(playerInfoHolder.player.getCurrentPosition());
-		
+
 		handler.postDelayed(updatePositionRunnable, UPDATE_FREQUENCY);
 	}
 
@@ -268,7 +266,6 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 
 				Intent intObj = new Intent(MusicPlayer_with_SongsLists.this,
 						MusicPlayerActivity.class);
-				intObj.putExtra("USERNAME", "this is a test");
 				startActivity(intObj);
 
 				break;
@@ -307,9 +304,6 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 		}
 	};
 
-
-	
-
 	// music part methods end
 
 	/**
@@ -325,8 +319,10 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 		// albumsList = new AlbumList(this);
 		// songsList = new MediaList(this, "1==1");
 
-		PlayerInfoHolder.getInstance().albumsList = new AlbumList(this);
-		PlayerInfoHolder.getInstance().songsList = new MediaList(this, "1==1");
+		Singleton_PlayerInfoHolder.getInstance().albumsList = new AlbumList(
+				this);
+		Singleton_PlayerInfoHolder.getInstance().songsList = new MediaList(
+				this, "1==1");
 
 		// Initialise the TabHost
 
@@ -337,7 +333,6 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 		selectedFile = (TextView) findViewById(R.id.selectedfile);
 		seekbar = (SeekBar) findViewById(R.id.seekbar);
 
-		
 		playButton = (ImageButton) findViewById(R.id.play);
 		prevButton = (ImageButton) findViewById(R.id.prev);
 		nextButton = (ImageButton) findViewById(R.id.next);
@@ -345,11 +340,10 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 
 		playerInfoHolder.player = new MediaPlayer();
 
-		playerInfoHolder.player
-				.setOnCompletionListener(onCompletion);
+		playerInfoHolder.player.setOnCompletionListener(onCompletion);
 		playerInfoHolder.player.setOnErrorListener(onError);
 		seekbar.setOnSeekBarChangeListener(seekBarChanged);
-		
+
 		playButton.setOnClickListener(onButtonClick);
 		nextButton.setOnClickListener(onButtonClick);
 		prevButton.setOnClickListener(onButtonClick);
@@ -364,7 +358,7 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 	 * @see android.support.v4.app.FragmentActivity#onSaveInstanceState(android.os.Bundle)
 	 */
 	protected void onSaveInstanceState(Bundle outState) {
-		outState.putString("tab", mTabHost.getCurrentTabTag()); // save the tab
+		outState.putString("tab", tabInfoHolder.mTabHost.getCurrentTabTag()); // save the tab
 																// selected
 		super.onSaveInstanceState(outState);
 	}
@@ -377,7 +371,7 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 	@Override
 	protected void onRestoreInstanceState(Bundle savedInstanceState) {
 		if (savedInstanceState != null) {
-			this.mTabHost.setCurrentTabByTag(savedInstanceState
+			tabInfoHolder.mTabHost.setCurrentTabByTag(savedInstanceState
 					.getString("tab")); // set the tab as per the saved state
 		}
 		super.onRestoreInstanceState(savedInstanceState);
@@ -389,7 +383,7 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 	private void intialiseViewPager() {
 
 		List<ListFragment> fragments = new Vector<ListFragment>();
-		
+
 		fragments.add((ListFragment) ListFragment.instantiate(this,
 				Tab1Fragment.class.getName()));
 		fragments.add((ListFragment) ListFragment.instantiate(this,
@@ -400,9 +394,10 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 				super.getSupportFragmentManager(), fragments);
 
 		//
-		this.mViewPager = (ViewPager) super.findViewById(R.id.tabviewpager);
-		this.mViewPager.setAdapter(this.mPagerAdapter);
-		this.mViewPager.setOnPageChangeListener(this);
+		tabInfoHolder.mViewPager = (CustomViewPager) super
+				.findViewById(R.id.tabviewpager);
+		tabInfoHolder.mViewPager.setAdapter(this.mPagerAdapter);
+		tabInfoHolder.mViewPager.setOnPageChangeListener(myOnPageChangeListener);
 	}
 
 	/**
@@ -410,26 +405,27 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 	 */
 	private void initialiseTabHost(Bundle args) {
 
-		mTabHost = (TabHost) findViewById(android.R.id.tabhost);
-		mTabHost.setup();
+		tabInfoHolder.mTabHost = (TabHost) findViewById(android.R.id.tabhost);
+		tabInfoHolder.mTabHost.setup();
 		TabInfo tabInfo = null;
 
-		MusicPlayer_with_SongsLists.AddTab(this, this.mTabHost, this.mTabHost
+		MusicPlayer_with_SongsLists.AddTab(this, tabInfoHolder.mTabHost, tabInfoHolder.mTabHost
 				.newTabSpec("Tab1").setIndicator("Songs"),
 				(tabInfo = new TabInfo("Tab1", Tab1Fragment.class, args)));
 		this.mapTabInfo.put(tabInfo.tag, tabInfo);
-		MusicPlayer_with_SongsLists.AddTab(this, this.mTabHost, this.mTabHost
+		MusicPlayer_with_SongsLists.AddTab(this, tabInfoHolder.mTabHost, tabInfoHolder.mTabHost
 				.newTabSpec("Tab2").setIndicator("Artist"),
 				(tabInfo = new TabInfo("Tab2", Tab2Fragment.class, args)));
 		this.mapTabInfo.put(tabInfo.tag, tabInfo);
-		MusicPlayer_with_SongsLists.AddTab(this, this.mTabHost, this.mTabHost
+		MusicPlayer_with_SongsLists.AddTab(this, tabInfoHolder.mTabHost, tabInfoHolder.mTabHost
 				.newTabSpec("Tab3").setIndicator("Album"),
 				(tabInfo = new TabInfo("Tab3", Tab3Fragment.class, args)));
 		this.mapTabInfo.put(tabInfo.tag, tabInfo);
 		// Default to first tab
 		// this.onTabChanged("Tab1");
 		//
-		mTabHost.setOnTabChangedListener(this);
+		tabInfoHolder.mTabHost.setOnTabChangedListener(myOnTabChangedListener);
+
 	}
 
 	/**
@@ -448,52 +444,59 @@ public class MusicPlayer_with_SongsLists extends FragmentActivity implements
 		tabHost.addTab(tabSpec);
 	}
 
+	private OnTabChangeListener myOnTabChangedListener = new OnTabChangeListener() {
+		Singleton_TabInfoHolder tabInfoHolder=Singleton_TabInfoHolder.getInstance();
 	/**
 	 * (non-Javadoc)
 	 * 
 	 * @see android.widget.TabHost.OnTabChangeListener#onTabChanged(java.lang.String)
 	 */
 	public void onTabChanged(String tag) {
+		
 		// TabInfo newTab = this.mapTabInfo.get(tag);
-		int pos = this.mTabHost.getCurrentTab();
-		this.mViewPager.setCurrentItem(pos);
+		int pos = tabInfoHolder.mTabHost.getCurrentTab();
+		tabInfoHolder.mViewPager.setCurrentItem(pos);
 	}
+	};
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * android.support.v4.view.ViewPager.OnPageChangeListener#onPageScrolled
-	 * (int, float, int)
-	 */
-	@Override
-	public void onPageScrolled(int position, float positionOffset,
-			int positionOffsetPixels) {
-		// TODO Auto-generated method stub
-	}
+	private OnPageChangeListener myOnPageChangeListener = new android.support.v4.view.ViewPager.OnPageChangeListener() {
+		Singleton_TabInfoHolder tabInfoHolder=Singleton_TabInfoHolder.getInstance();
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * android.support.v4.view.ViewPager.OnPageChangeListener#onPageScrolled
+		 * (int, float, int)
+		 */
+		@Override
+		public void onPageScrolled(int position, float positionOffset,
+				int positionOffsetPixels) {
+			// TODO Auto-generated method stub
+		}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * android.support.v4.view.ViewPager.OnPageChangeListener#onPageSelected
-	 * (int)
-	 */
-	@Override
-	public void onPageSelected(int position) {
-		// TODO Auto-generated method stub
-		this.mTabHost.setCurrentTab(position);
-	}
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * android.support.v4.view.ViewPager.OnPageChangeListener#onPageSelected
+		 * (int)
+		 */
+		@Override
+		public void onPageSelected(int position) {
+			// TODO Auto-generated method stub
+			tabInfoHolder.mTabHost.setCurrentTab(position);
+		}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.support.v4.view.ViewPager.OnPageChangeListener#
-	 * onPageScrollStateChanged(int)
-	 */
-	@Override
-	public void onPageScrollStateChanged(int state) {
-		// TODO Auto-generated method stub
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see android.support.v4.view.ViewPager.OnPageChangeListener#
+		 * onPageScrollStateChanged(int)
+		 */
+		@Override
+		public void onPageScrollStateChanged(int state) {
+			// TODO Auto-generated method stub
 
-	}
+		}
+	};
 }

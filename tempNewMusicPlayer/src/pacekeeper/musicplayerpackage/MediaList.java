@@ -64,7 +64,7 @@ public class MediaList {
 			this.songsList.add(path);
 
 			if (currentAlbum != null)
-				currentAlbumArt = PlayerInfoHolder.getInstance().albumsList
+				currentAlbumArt = Singleton_PlayerInfoHolder.getInstance().albumsList
 						.getAlbumArt(currentAlbum);
 
 			song = new Song(cursor.getString(1), cursor.getString(2),

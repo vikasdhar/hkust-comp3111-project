@@ -27,7 +27,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="0" />
 
-            <android.support.v4.view.ViewPager
+            <!-- android.support.v4.view.ViewPager -->
+            <pacekeeper.musicplayerpackage.CustomViewPager
                 android:id="@+id/tabviewpager"
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"

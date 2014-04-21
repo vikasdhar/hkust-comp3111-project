@@ -29,9 +29,8 @@ public class MediaCursorAdapter extends SimpleCursorAdapter {
 					MediaStore.Audio.Media.TITLE,
 					MediaStore.Audio.Media.ARTIST,
 					MediaStore.Audio.Media.DURATION,
-					MediaStore.Audio.Media.DATA,
-					MediaStore.Audio.Media.TITLE_KEY}, new int[] {
-					R.id.displayname, R.id.title, R.id.duration });
+					MediaStore.Audio.Media.DATA}, new int[] {
+					R.id.displayname, R.id.title, R.id.duration },2);
 			
 			this.mainActivity = activity;
 			this.context = context;
@@ -127,7 +126,7 @@ public class MediaCursorAdapter extends SimpleCursorAdapter {
 			
 			holder.path=filePath;
 			
-			PlayerInfoHolder.setAlbumArt(holder.albumArt,filePath,true);
+			Singleton_PlayerInfoHolder.setAlbumArt(holder.albumArt,filePath,true);
 			
 			return convertView;
 		}
