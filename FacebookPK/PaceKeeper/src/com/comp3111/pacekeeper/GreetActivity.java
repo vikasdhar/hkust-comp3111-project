@@ -34,7 +34,7 @@ public class GreetActivity extends Activity implements OnClickListener{
         DisplayMetrics dm = getResources().getDisplayMetrics();
         screenW = dm.widthPixels;
         screenH = dm.heightPixels;
-		
+        
 		// set up lower ImageButtons onClick action
 		ImageButton greetStatAndAchievement = (ImageButton)findViewById(R.id.greet_stat);
 		ImageButton greetCalibrate = (ImageButton)findViewById(R.id.greet_profilelist);
