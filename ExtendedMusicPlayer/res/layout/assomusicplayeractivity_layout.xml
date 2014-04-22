@@ -71,7 +71,7 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1.2"
-                android:src="@drawable/ic_action_next" />
+                android:src="@drawable/ic_action_unmute" />
         </LinearLayout>
 
         <ImageView
@@ -100,7 +100,7 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1.2"
-                android:src="@drawable/ic_action_previous" />
+                android:src="@drawable/ic_action_shuffle" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -137,7 +137,7 @@
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:layout_weight="1.1"
-                android:src="@drawable/ic_action_next" />
+                android:src="@drawable/ic_action_repeat_a" />
         </LinearLayout>
 
         <SeekBar
