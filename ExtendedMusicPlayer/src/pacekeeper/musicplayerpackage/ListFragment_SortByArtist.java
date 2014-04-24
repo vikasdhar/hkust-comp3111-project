@@ -117,7 +117,9 @@ public class ListFragment_SortByArtist extends ListFragment {
 									Toast.LENGTH_SHORT).show();
 						}
 					}, false, // example : left action =without dismiss
-					false); // example : right action without dismiss animation
+					false, // example : right action without dismiss animation
+			        false,
+			        false); 
 			getListView().setOnTouchListener(touchListener);
 			// Setting this scroll listener is required to ensure that during
 			// ListView scrolling,

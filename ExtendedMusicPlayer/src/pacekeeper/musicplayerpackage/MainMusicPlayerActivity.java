@@ -92,7 +92,7 @@ public class MainMusicPlayerActivity extends FragmentActivity{
 	private static final int LENGTH_LONG = 0;
 	private static final int LENGTH_SHORT = 0;
 
-	private TextView selectedFile = null;
+	private TextView songInfoTextView = null;
 	private SeekBar seekbar = null;
 
 	private ImageButton playButton = null;
@@ -119,7 +119,7 @@ public class MainMusicPlayerActivity extends FragmentActivity{
 		// selectedFile.setText(songsList.getTitle(listPosition)
 		// + "-" + songsList.getArtist(listPosition));
 
-		selectedFile.setText(playerInfoHolder.songsList
+		songInfoTextView.setText(playerInfoHolder.songsList
 				.getTitle(playerInfoHolder.currentFile)
 				+ "-"
 				+ playerInfoHolder.songsList
@@ -331,7 +331,7 @@ public class MainMusicPlayerActivity extends FragmentActivity{
 		this.intialiseViewPager();
 
 		// Music part
-		selectedFile = (TextView) findViewById(R.id.selectedfile);
+		songInfoTextView = (TextView) findViewById(R.id.selectedfile);
 		seekbar = (SeekBar) findViewById(R.id.seekbar);
 
 		playButton = (ImageButton) findViewById(R.id.play);
@@ -352,44 +352,50 @@ public class MainMusicPlayerActivity extends FragmentActivity{
 		showAlbumArtButton.setImageDrawable(getResources().getDrawable(
 				R.drawable.ic_expandplayer_placeholder));
 		
-		ContentResolver cr = this.getContentResolver();
-	    final Uri uri=MediaStore.Audio.Playlists.EXTERNAL_CONTENT_URI;
-	    final String id=MediaStore.Audio.Playlists._ID;
-	    final String name=MediaStore.Audio.Playlists.NAME;
-	    final String[]columns={id,name};
-	    Cursor playlists= cr.query(uri, columns, null, null, null);
-	        if(playlists==null)
-	            {
-	                Toast.makeText(this," Not Found playlists", Toast.LENGTH_SHORT).show();
-	                    return;
-	            }
-	        Toast.makeText(this, "Found playlists"+
-                    playlists.getCount(), Toast.LENGTH_SHORT).show();
-            playlists.moveToFirst();
-            Toast.makeText(this, "Found playlists"+
-
-            playlists.getColumnIndex(name), Toast.LENGTH_SHORT).show();
-            playlists.moveToFirst();
-           
-
-            Long idoflist=playlists.getLong(playlists.getColumnIndex(id));
-           
-            
-            String[] projection = {
-                    MediaStore.Audio.Playlists.Members.AUDIO_ID,
-                    MediaStore.Audio.Playlists.Members.ARTIST,
-                    MediaStore.Audio.Playlists.Members.TITLE,
-                     MediaStore.Audio.Playlists.Members._ID
-                 };
-            playlists = null;
-            playlists = this.managedQuery(
-                     MediaStore.Audio.Playlists.Members.getContentUri("external",idoflist ),
-                     projection,
-                     MediaStore.Audio.Media.IS_MUSIC +" != 0 ",
-                     null,
-                     null);
-
-            
+		
+//		ContentResolver cr = this.getContentResolver();
+//	    final Uri uri=MediaStore.Audio.Playlists.EXTERNAL_CONTENT_URI;
+//	    final String id=MediaStore.Audio.Playlists._ID;
+//	    final String name=MediaStore.Audio.Playlists.NAME;
+//	    final String[]columns={id,name};
+//	    
+//	    Cursor playlists= cr.query(uri, columns, null, null, null);
+//
+//	        Toast.makeText(this, "Found playlists"+
+//                    playlists.getCount(), Toast.LENGTH_SHORT).show();
+//	        
+//            playlists.moveToFirst();
+//            playlists.moveToNext();
+//            Toast.makeText(this, "name:"+
+//            playlists.getString(playlists.getColumnIndex(name)), Toast.LENGTH_SHORT).show();
+//            
+//
+//            Long idoflist=playlists.getLong(playlists.getColumnIndex(id));
+//           
+//            
+//            String[] projection = {
+//                    MediaStore.Audio.Playlists.Members.AUDIO_ID,
+//                    MediaStore.Audio.Playlists.Members.ARTIST,
+//                    MediaStore.Audio.Playlists.Members.TITLE,
+//                     MediaStore.Audio.Playlists.Members._ID
+//                 };
+//            playlists = null;
+//            playlists = this.managedQuery(
+//                     MediaStore.Audio.Playlists.Members.getContentUri("external",idoflist ),
+//                     projection,
+//                     MediaStore.Audio.Media.IS_MUSIC +" != 0 ",
+//                     null,
+//                     null);
+//            
+//            playlists.moveToFirst();
+//            
+//            Toast.makeText(this, ".Members.TITLE :"+
+//            playlists.getString(playlists.getColumnIndex(MediaStore.Audio.Playlists.Members.AUDIO_ID)), Toast.LENGTH_SHORT).show();
+//            
+//            Toast.makeText(this, "You have a total of :"+
+//                    playlists.getCount(), Toast.LENGTH_SHORT).show();
+//            
+//            
 	    return;
 	}
 
@@ -431,6 +437,7 @@ public class MainMusicPlayerActivity extends FragmentActivity{
 				ListFragment_SortByArtist.class.getName()));
 		fragments.add((ListFragment) ListFragment.instantiate(this,
 				ListFragment_SortByAlbum.class.getName()));
+
 		this.mPagerAdapter = new PagerAdapter(
 				super.getSupportFragmentManager(), fragments);
 
@@ -462,6 +469,7 @@ public class MainMusicPlayerActivity extends FragmentActivity{
 				.newTabSpec("Tab3").setIndicator("Album"),
 				(tabInfo = new TabInfo("Tab3", ListFragment_SortByAlbum.class, args)));
 		this.mapTabInfo.put(tabInfo.tag, tabInfo);
+
 		// Default to first tab
 		// this.onTabChanged("Tab1");
 		//

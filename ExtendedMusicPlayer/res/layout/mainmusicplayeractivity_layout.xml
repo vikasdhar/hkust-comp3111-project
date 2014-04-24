@@ -14,13 +14,34 @@
             android:layout_height="fill_parent"
             android:orientation="vertical" >
 
-            <TabWidget
-                android:id="@android:id/tabs"
+ <!-- <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:orientation="horizontal" />
+                android:fillViewport="true"
+                android:orientation="horizontal" >
 
+                <ImageButton
+                    android:id="@+id/tabsong"
+                    style="?android:borderlessButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.15"
+                    android:src="@drawable/ic_action_play" />
+
+                <TabWidget
+                    android:id="@android:id/tabs"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.85"
+                    android:orientation="horizontal" />
+            </LinearLayout> -->           
+<TabWidget
+                    android:id="@android:id/tabs"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:orientation="horizontal" />
             <FrameLayout
                 android:id="@android:id/tabcontent"
                 android:layout_width="0dp"
@@ -28,6 +49,7 @@
                 android:layout_weight="0" />
 
             <!-- android.support.v4.view.ViewPager -->
+
             <pacekeeper.musicplayerpackage.CustomViewPager
                 android:id="@+id/tabviewpager"
                 android:layout_width="fill_parent"
@@ -40,8 +62,6 @@
                 android:layout_height="0dp"
                 android:layout_weight="0.2"
                 android:orientation="horizontal"
-                
-                
                 android:paddingBottom="10dip"
                 android:paddingLeft="10dip"
                 android:paddingRight="5dip"
@@ -61,7 +81,6 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    
                     android:orientation="vertical"
                     android:paddingLeft="5dip" >
 
@@ -88,10 +107,9 @@
                         android:gravity="center"
                         android:orientation="horizontal" >
 
-
                         <ImageButton
                             android:id="@+id/prev"
-		       				style="?android:borderlessButtonStyle"
+                            style="?android:borderlessButtonStyle"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -99,7 +117,7 @@
 
                         <ImageButton
                             android:id="@+id/play"
-		       				style="?android:borderlessButtonStyle"
+                            style="?android:borderlessButtonStyle"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -107,7 +125,7 @@
 
                         <ImageButton
                             android:id="@+id/next"
-		       				style="?android:borderlessButtonStyle"
+                            style="?android:borderlessButtonStyle"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"

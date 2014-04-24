@@ -12,8 +12,10 @@ import android.support.v4.app.ListFragment;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnDragListener;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
@@ -84,6 +86,7 @@ public class ListFragment_SortByAlbum extends ListFragment {
 				
 				}
 			});
+			
 			return view;
 		}
 
@@ -114,7 +117,9 @@ public class ListFragment_SortByAlbum extends ListFragment {
 									Toast.LENGTH_SHORT).show();
 						}
 					}, false, // example : left action =without dismiss
-					false); // example : right action without dismiss animation
+					false, // example : right action without dismiss animation
+			        false,
+			        false);
 			getListView().setOnTouchListener(touchListener);
 			// Setting this scroll listener is required to ensure that during
 			// ListView scrolling,
