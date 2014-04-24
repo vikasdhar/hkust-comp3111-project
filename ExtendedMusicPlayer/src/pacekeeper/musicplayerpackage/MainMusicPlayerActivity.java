@@ -8,9 +8,12 @@ import java.util.Vector;
 import pacekeeper.musicplayerpackage.R;
 import android.support.v4.app.ListFragment;
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
@@ -348,6 +351,46 @@ public class MainMusicPlayerActivity extends FragmentActivity{
 		showAlbumArtButton.setOnClickListener(onButtonClick);
 		showAlbumArtButton.setImageDrawable(getResources().getDrawable(
 				R.drawable.ic_expandplayer_placeholder));
+		
+		ContentResolver cr = this.getContentResolver();
+	    final Uri uri=MediaStore.Audio.Playlists.EXTERNAL_CONTENT_URI;
+	    final String id=MediaStore.Audio.Playlists._ID;
+	    final String name=MediaStore.Audio.Playlists.NAME;
+	    final String[]columns={id,name};
+	    Cursor playlists= cr.query(uri, columns, null, null, null);
+	        if(playlists==null)
+	            {
+	                Toast.makeText(this," Not Found playlists", Toast.LENGTH_SHORT).show();
+	                    return;
+	            }
+	        Toast.makeText(this, "Found playlists"+
+                    playlists.getCount(), Toast.LENGTH_SHORT).show();
+            playlists.moveToFirst();
+            Toast.makeText(this, "Found playlists"+
+
+            playlists.getColumnIndex(name), Toast.LENGTH_SHORT).show();
+            playlists.moveToFirst();
+           
+
+            Long idoflist=playlists.getLong(playlists.getColumnIndex(id));
+           
+            
+            String[] projection = {
+                    MediaStore.Audio.Playlists.Members.AUDIO_ID,
+                    MediaStore.Audio.Playlists.Members.ARTIST,
+                    MediaStore.Audio.Playlists.Members.TITLE,
+                     MediaStore.Audio.Playlists.Members._ID
+                 };
+            playlists = null;
+            playlists = this.managedQuery(
+                     MediaStore.Audio.Playlists.Members.getContentUri("external",idoflist ),
+                     projection,
+                     MediaStore.Audio.Media.IS_MUSIC +" != 0 ",
+                     null,
+                     null);
+
+            
+	    return;
 	}
 
 	/**
