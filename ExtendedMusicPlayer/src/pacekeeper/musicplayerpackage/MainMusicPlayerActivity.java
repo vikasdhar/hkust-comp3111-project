@@ -437,6 +437,8 @@ public class MainMusicPlayerActivity extends FragmentActivity{
 				ListFragment_SortByArtist.class.getName()));
 		fragments.add((ListFragment) ListFragment.instantiate(this,
 				ListFragment_SortByAlbum.class.getName()));
+		fragments.add((ListFragment) ListFragment.instantiate(this,
+				ListFragment_SortByPlayList.class.getName()));
 
 		this.mPagerAdapter = new PagerAdapter(
 				super.getSupportFragmentManager(), fragments);
@@ -468,6 +470,10 @@ public class MainMusicPlayerActivity extends FragmentActivity{
 		MainMusicPlayerActivity.AddTab(this, tabInfoHolder.mTabHost, tabInfoHolder.mTabHost
 				.newTabSpec("Tab3").setIndicator("Album"),
 				(tabInfo = new TabInfo("Tab3", ListFragment_SortByAlbum.class, args)));
+		this.mapTabInfo.put(tabInfo.tag, tabInfo);
+		MainMusicPlayerActivity.AddTab(this, tabInfoHolder.mTabHost, tabInfoHolder.mTabHost
+				.newTabSpec("Tab3").setIndicator("Playlist"),
+				(tabInfo = new TabInfo("Tab4", ListFragment_SortByPlayList.class, args)));
 		this.mapTabInfo.put(tabInfo.tag, tabInfo);
 
 		// Default to first tab

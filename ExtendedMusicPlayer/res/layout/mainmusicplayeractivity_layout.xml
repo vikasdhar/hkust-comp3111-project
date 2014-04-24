@@ -14,34 +14,29 @@
             android:layout_height="fill_parent"
             android:orientation="vertical" >
 
- <!-- <LinearLayout
+            <HorizontalScrollView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0"
                 android:fillViewport="true"
+                android:layout_weight="0"
+                android:scrollbars="none"
                 android:orientation="horizontal" >
-
-                <ImageButton
-                    android:id="@+id/tabsong"
-                    style="?android:borderlessButtonStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="0.15"
-                    android:src="@drawable/ic_action_play" />
 
                 <TabWidget
                     android:id="@android:id/tabs"
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="0.85"
-                    android:orientation="horizontal" />
-            </LinearLayout> -->           
-<TabWidget
-                    android:id="@android:id/tabs"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0"
                     android:orientation="horizontal" />
+            </HorizontalScrollView>
+            <!--
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:orientation="horizontal" />
+            -->
+
             <FrameLayout
                 android:id="@android:id/tabcontent"
                 android:layout_width="0dp"
