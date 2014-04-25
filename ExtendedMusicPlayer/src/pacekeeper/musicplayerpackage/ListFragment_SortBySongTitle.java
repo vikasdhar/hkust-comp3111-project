@@ -7,7 +7,6 @@ import java.math.BigDecimal;
 
 import pacekeeper.musicplayerpackage.MediaCursorAdapter.MediaViewHolder;
 import pacekeeper.musicplayerpackage.R;
-
 import android.support.v4.app.ListFragment;
 import android.app.Activity;
 import android.content.Context;
@@ -19,6 +18,8 @@ import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -37,12 +38,14 @@ public class ListFragment_SortBySongTitle extends ListFragment {
 	 */
 
 	private MediaCursorAdapter mediaAdapter = null;
-	private MainMusicPlayerActivity activity;
+	private MainMusicPlayerActivity mainMusicPlayerActivity;
+	private TextView indicater;
+	private ImageButton playAllButton;
 
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
-		this.activity = (MainMusicPlayerActivity) activity;
+		this.mainMusicPlayerActivity = (MainMusicPlayerActivity) activity;
 	}
 
 	@Override
@@ -60,8 +63,8 @@ public class ListFragment_SortBySongTitle extends ListFragment {
 			return null;
 		}
 
-		View view = (LinearLayout) inflater.inflate(R.layout.lf_sortbysongtitle_layout,
-				container, false);
+		View view = (LinearLayout) inflater.inflate(
+				R.layout.lf_sortbysongtitle_layout, container, false);
 
 		Cursor cursor = view
 				.getContext()
@@ -73,44 +76,68 @@ public class ListFragment_SortBySongTitle extends ListFragment {
 		if (null != cursor) {
 			cursor.moveToFirst();
 
-			mediaAdapter = new MediaCursorAdapter(activity, view.getContext(),
-					R.layout.musicplayer_listitem, cursor);
+			mediaAdapter = new MediaCursorAdapter(mainMusicPlayerActivity,
+					view.getContext(), R.layout.musicplayer_listitem, cursor);
 
 			setListAdapter(mediaAdapter);
 
 		}
-		
+
+		indicater = (TextView) view
+				.findViewById(R.id.sortBySongTitle_Indicator);
+		playAllButton = (ImageButton) view
+				.findViewById(R.id.sortBySongTitle_playAll);
+		playAllButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+				Singleton_PlayerInfoHolder.getInstance().currentList = new MediaList(
+						mainMusicPlayerActivity,
+						MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
+						MediaStore.Audio.Media.IS_MUSIC + " != 0 ", null,
+						MediaStore.Audio.Media.TITLE_KEY);
+				Singleton_PlayerInfoHolder.getInstance().currentFile = Singleton_PlayerInfoHolder
+						.getInstance().currentList.getPath(0);
+				mainMusicPlayerActivity.startPlay(Singleton_PlayerInfoHolder
+						.getInstance().currentFile);
+			}
+		});
 		return view;
 	}
-	@Override
-	public void onActivityCreated (Bundle savedInstanceState){
-		super.onActivityCreated (savedInstanceState);
-		
-		SwipeListViewTouchListener touchListener =
-			    new SwipeListViewTouchListener(
-			        getListView(),
-			        new SwipeListViewTouchListener.OnSwipeCallback() {
-			            @Override
-			            public void onSwipeLeft(ListView listView, int [] reverseSortedPositions) {
-			                //  Log.i(this.getClass().getName(), "swipe left : pos="+reverseSortedPositions[0]);
-			                // TODO : YOUR CODE HERE FOR LEFT ACTION
-			            	Toast.makeText(activity, "it work on left", Toast.LENGTH_SHORT).show();
-			            }
 
-			            @Override
-			            public void onSwipeRight(ListView listView, int [] reverseSortedPositions) {
-			                //  Log.i(ProfileMenuActivity.class.getClass().getName(), "swipe right : pos="+reverseSortedPositions[0]);
-			                // TODO : YOUR CODE HERE FOR RIGHT ACTION
-			            	Toast.makeText(activity, "it work on right", Toast.LENGTH_SHORT).show();
-			            }
-			        },
-			        true, // example : left action = dismiss
-			        false, // example : right action without dismiss animation
-			        false,
-			        true); 
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+
+		SwipeListViewTouchListener touchListener = new SwipeListViewTouchListener(
+				getListView(),
+				new SwipeListViewTouchListener.OnSwipeCallback() {
+					@Override
+					public void onSwipeLeft(ListView listView,
+							int[] reverseSortedPositions) {
+						// Log.i(this.getClass().getName(),
+						// "swipe left : pos="+reverseSortedPositions[0]);
+						// TODO : YOUR CODE HERE FOR LEFT ACTION
+						Toast.makeText(mainMusicPlayerActivity,
+								"it work on left", Toast.LENGTH_SHORT).show();
+					}
+
+					@Override
+					public void onSwipeRight(ListView listView,
+							int[] reverseSortedPositions) {
+						// Log.i(ProfileMenuActivity.class.getClass().getName(),
+						// "swipe right : pos="+reverseSortedPositions[0]);
+						// TODO : YOUR CODE HERE FOR RIGHT ACTION
+						Toast.makeText(mainMusicPlayerActivity,
+								"it work on right", Toast.LENGTH_SHORT).show();
+					}
+				}, true, // example : left action = dismiss
+				false, // example : right action without dismiss animation
+				false, true);
 		getListView().setOnTouchListener(touchListener);
-			// Setting this scroll listener is required to ensure that during ListView scrolling,
-			// we don't look for swipes.
+		// Setting this scroll listener is required to ensure that during
+		// ListView scrolling,
+		// we don't look for swipes.
 		getListView().setOnScrollListener(touchListener.makeScrollListener());
 	}
 
@@ -119,7 +146,16 @@ public class ListFragment_SortBySongTitle extends ListFragment {
 		super.onListItemClick(list, view, position, id);
 		MediaViewHolder holder = (MediaViewHolder) view.getTag();
 		Singleton_PlayerInfoHolder.getInstance().currentFile = (String) holder.path;
-		activity.startPlay(Singleton_PlayerInfoHolder.getInstance().currentFile);
+
+		String[] whereVal = { (String) holder.path };
+		Singleton_PlayerInfoHolder.getInstance().currentList = new MediaList(
+				mainMusicPlayerActivity,
+				MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
+				MediaStore.Audio.Media.IS_MUSIC + " != 0 and "
+						+ MediaStore.Audio.Media.DATA + " = ?", whereVal,
+				MediaStore.Audio.Media.TITLE_KEY);
+		mainMusicPlayerActivity.startPlay(Singleton_PlayerInfoHolder
+				.getInstance().currentFile);
 	}
 
 }

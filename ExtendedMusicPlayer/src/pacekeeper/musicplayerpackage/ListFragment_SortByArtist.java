@@ -27,7 +27,7 @@ import android.widget.Toast;
  */
 public class ListFragment_SortByArtist extends ListFragment {
 
-	private static MainMusicPlayerActivity activity;
+	private static MainMusicPlayerActivity mainMusicPlayerActivity;
 	private Singleton_TabInfoHolder tabInfoHolder = Singleton_TabInfoHolder
 			.getInstance();
 
@@ -45,7 +45,7 @@ public class ListFragment_SortByArtist extends ListFragment {
 	public static class ListFragment_SortByArtistChild extends ListFragment {
 		private TextView artistIndicater;
 		private ImageButton playAllButton;
-		
+
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
@@ -68,23 +68,37 @@ public class ListFragment_SortByArtist extends ListFragment {
 				cursor.moveToFirst();
 
 				MediaCursorAdapter mediaAdapter = new MediaCursorAdapter(
-						ListFragment_SortByArtist.activity, view.getContext(),
-						R.layout.musicplayer_listitem, cursor);
+						ListFragment_SortByArtist.mainMusicPlayerActivity,
+						view.getContext(), R.layout.musicplayer_listitem,
+						cursor);
 
 				setListAdapter(mediaAdapter);
 
 			}
-			
-			artistIndicater=(TextView) view.findViewById(R.id.sortByArtistChild_artistIndicator);
+
+			artistIndicater = (TextView) view
+					.findViewById(R.id.sortByArtistChild_artistIndicator);
 			artistIndicater.setText(artistName);
-			playAllButton=(ImageButton) view.findViewById(R.id.sortByArtistChild_playAll);
-			playAllButton.setOnClickListener(new OnClickListener(){
+			playAllButton = (ImageButton) view
+					.findViewById(R.id.sortByArtistChild_playAll);
+			playAllButton.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
-				
+
+					String whereValue[] = { artistName };
+					Singleton_PlayerInfoHolder.getInstance().currentList = new MediaList(
+							mainMusicPlayerActivity,
+							MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
+							MediaStore.Audio.Media.IS_MUSIC + " != 0 and "
+									+ MediaStore.Audio.Media.ARTIST + " =?",
+							whereValue, MediaStore.Audio.Media.TITLE_KEY);
+					Singleton_PlayerInfoHolder.getInstance().currentFile = Singleton_PlayerInfoHolder
+							.getInstance().currentList.getPath(0);
+					mainMusicPlayerActivity
+							.startPlay(Singleton_PlayerInfoHolder.getInstance().currentFile);
 				}
 			});
-			
+
 			return view;
 		}
 
@@ -101,8 +115,9 @@ public class ListFragment_SortByArtist extends ListFragment {
 							// Log.i(this.getClass().getName(),
 							// "swipe left : pos="+reverseSortedPositions[0]);
 							// TODO : YOUR CODE HERE FOR LEFT ACTION
-							Toast.makeText(activity, "it work on left",
-									Toast.LENGTH_SHORT).show();
+							Toast.makeText(mainMusicPlayerActivity,
+									"it work on left", Toast.LENGTH_SHORT)
+									.show();
 						}
 
 						@Override
@@ -111,13 +126,13 @@ public class ListFragment_SortByArtist extends ListFragment {
 							// Log.i(ProfileMenuActivity.class.getClass().getName(),
 							// "swipe right : pos="+reverseSortedPositions[0]);
 							// TODO : YOUR CODE HERE FOR RIGHT ACTION
-							Toast.makeText(activity, "it work on right",
-									Toast.LENGTH_SHORT).show();
+							Toast.makeText(mainMusicPlayerActivity,
+									"it work on right", Toast.LENGTH_SHORT)
+									.show();
 						}
 					}, false, // example : left action =without dismiss
 					false, // example : right action without dismiss animation
-			        false,
-			        false); 
+					false, false);
 			getListView().setOnTouchListener(touchListener);
 			// Setting this scroll listener is required to ensure that during
 			// ListView scrolling,
@@ -152,7 +167,17 @@ public class ListFragment_SortByArtist extends ListFragment {
 			super.onListItemClick(list, view, position, id);
 			MediaViewHolder holder = (MediaViewHolder) view.getTag();
 			Singleton_PlayerInfoHolder.getInstance().currentFile = (String) holder.path;
-			activity.startPlay(Singleton_PlayerInfoHolder.getInstance().currentFile);
+
+			String whereValue[] = { (String) holder.path };
+			Singleton_PlayerInfoHolder.getInstance().currentList = new MediaList(
+					mainMusicPlayerActivity,
+					MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
+					MediaStore.Audio.Media.IS_MUSIC + " != 0 and "
+							+ MediaStore.Audio.Media.DATA + " =?", whereValue,
+					MediaStore.Audio.Media.TITLE_KEY);
+
+			mainMusicPlayerActivity.startPlay(Singleton_PlayerInfoHolder
+					.getInstance().currentFile);
 
 		}
 	}
@@ -160,7 +185,7 @@ public class ListFragment_SortByArtist extends ListFragment {
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
-		this.activity = (MainMusicPlayerActivity) activity;
+		this.mainMusicPlayerActivity = (MainMusicPlayerActivity) activity;
 	}
 
 	/*
@@ -196,7 +221,7 @@ public class ListFragment_SortByArtist extends ListFragment {
 		if (null != cursor) {
 			cursor.moveToFirst();
 
-			artistsAdapter = new ArtistsCursorAdapter(activity,
+			artistsAdapter = new ArtistsCursorAdapter(mainMusicPlayerActivity,
 					view.getContext(), R.layout.musicplayer_listitem, cursor);
 
 			setListAdapter(artistsAdapter);

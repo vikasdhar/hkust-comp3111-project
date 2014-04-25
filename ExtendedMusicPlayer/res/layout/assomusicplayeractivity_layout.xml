@@ -16,7 +16,7 @@
             android:orientation="horizontal" >
 
             <ImageButton
-                android:id="@+id/player_speed"
+                android:id="@+id/assoplayer_speed"
                 style="?android:borderlessButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
@@ -32,7 +32,7 @@
                 android:orientation="vertical" >
 
                 <TextView
-                    android:id="@+id/player_artist"
+                    android:id="@+id/assoplayer_artist"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="middle"
@@ -43,7 +43,7 @@
                     android:textSize="17sp" />
 
                 <TextView
-                    android:id="@+id/player_song_title"
+                    android:id="@+id/assoplayer_song_title"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="middle"
@@ -54,7 +54,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/player_album"
+                    android:id="@+id/assoplayer_album"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="middle"
@@ -66,7 +66,7 @@
             </LinearLayout>
 
             <ImageButton
-                android:id="@+id/player_volume"
+                android:id="@+id/assoplayer_volume"
                 style="?android:borderlessButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
@@ -75,7 +75,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/player_showalbumart"
+            android:id="@+id/assoplayer_showalbumart"
             android:layout_width="fill_parent"
             android:layout_height="300dp"
             android:scaleType="fitXY" >
@@ -95,7 +95,7 @@
             android:orientation="horizontal" >
 
             <ImageButton
-                android:id="@+id/player_shuffle"
+                android:id="@+id/assoplayer_shuffle"
                 style="?android:borderlessButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
@@ -111,7 +111,7 @@
                 android:orientation="vertical" >
 
                 <TextView
-                    android:id="@+id/player_prevSongDescription"
+                    android:id="@+id/assoplayer_prevSongDescription"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="middle"
@@ -121,7 +121,7 @@
                     android:textColor="#666666" />
 
                 <TextView
-                    android:id="@+id/player_nextSongDescription"
+                    android:id="@+id/assoplayer_nextSongDescription"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="middle"
@@ -132,7 +132,7 @@
             </LinearLayout>
 
             <ImageButton
-                android:id="@+id/player_repeat"
+                android:id="@+id/assoplayer_repeat"
                 style="?android:borderlessButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
@@ -141,7 +141,7 @@
         </LinearLayout>
 
         <SeekBar
-            android:id="@+id/player_seekbar"
+            android:id="@+id/assoplayer_seekbar"
             android:layout_width="fill_parent"
             android:layout_height="dp"
             android:layout_weight="1.2"
@@ -155,7 +155,7 @@
             android:orientation="horizontal" >
 
             <ImageButton
-                android:id="@+id/player_prev"
+                android:id="@+id/assoplayer_prev"
                 style="?android:borderlessButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -163,7 +163,7 @@
                 android:src="@drawable/ic_action_previous" />
 
             <ImageButton
-                android:id="@+id/player_play"
+                android:id="@+id/assoplayer_play"
                 style="?android:borderlessButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -171,7 +171,7 @@
                 android:src="@drawable/ic_action_play" />
 
             <ImageButton
-                android:id="@+id/player_next"
+                android:id="@+id/assoplayer_next"
                 style="?android:borderlessButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

@@ -8,6 +8,7 @@ import java.util.HashMap;
 
 import android.app.Activity;
 import android.database.Cursor;
+import android.net.Uri;
 import android.provider.MediaStore;
 import android.widget.Toast;
 
@@ -38,20 +39,21 @@ public class MediaList {
 	private ArrayList<String> songsList;
 	private Song song;
 	private HashMap<Integer, Song> cachedSongs;
-	private Activity activity;
+	private Activity mainActivity;
 
-	public MediaList(Activity activity, String filter) {
-		this.activity = activity;
+	public MediaList(Activity activity,Uri from ,String where, String[] whereVal, String orderBy) {
+		this.mainActivity = activity;
 
 		String[] projection = { MediaStore.Audio.Media.DATA,
 				MediaStore.Audio.Media._ID, MediaStore.Audio.Media.TITLE,
 				MediaStore.Audio.Media.ARTIST, MediaStore.Audio.Media.DURATION,
 				MediaStore.Audio.Media.ALBUM };
 
-		Cursor cursor = activity.managedQuery(
-				MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, projection,
-				MediaStore.Audio.Media.IS_MUSIC + " != 0 and " + filter, null,
-				MediaStore.Audio.Media.TITLE_KEY);
+		Cursor cursor = activity.getContentResolver()
+				.query(
+				from, projection,
+				where, whereVal,
+				orderBy);
 
 		this.songsList = new ArrayList<String>();
 		this.cachedSongs = new HashMap<Integer, Song>();
@@ -91,6 +93,24 @@ public class MediaList {
 //		if (index < 0)
 //			return -1;
 		return  this.songsList.indexOf(path);
+	}
+	
+	public boolean addSong(String filePath){
+		String _ID = Singleton_PlayerInfoHolder.getInstance().songsList.getID(filePath);
+		String title = Singleton_PlayerInfoHolder.getInstance().songsList.getID(filePath);
+		String artist = Singleton_PlayerInfoHolder.getInstance().songsList.getID(filePath);
+		String duration = Singleton_PlayerInfoHolder.getInstance().songsList.getID(filePath);
+		
+		String album = Singleton_PlayerInfoHolder.getInstance().songsList.getID(filePath);
+		String albumArt = Singleton_PlayerInfoHolder.getInstance().songsList.getID(filePath);
+		
+		if(!songsList.contains(filePath)){
+			songsList.add(filePath);
+			cachedSongs.put(songsList.indexOf(filePath), new Song(_ID, title,  artist,  duration,
+					filePath,  album,  albumArt));
+			return true;
+		}
+		return false;
 	}
 
 	public String matchWithAlbum(String album) {
@@ -220,12 +240,32 @@ public class MediaList {
 			return null;
 	}
 	
-	public String nextFile(String currentFile){
+	public String nextFileLoop(String currentFile){
 		int pos=adjustPos(songsList.indexOf(currentFile)+1);
 		return songsList.get(pos);
 	}
-	public String prevFile(String currentFile){
+	
+	public String nextFile(String currentFile){
+		Toast.makeText(mainActivity,
+				" "+songsList.indexOf(currentFile),
+				Toast.LENGTH_SHORT).show();
+		if (songsList.indexOf(currentFile)>=songsList.size()-1||songsList.indexOf(currentFile)<0){
+			return null;
+		}
+		int pos=songsList.indexOf(currentFile)+1;
+		return songsList.get(pos);
+	}
+	
+	public String prevFileLoop(String currentFile){
 		int pos=adjustPos(songsList.indexOf(currentFile)-1);
+		return songsList.get(pos);
+	}
+	
+	public String prevFile(String currentFile){
+		if (songsList.indexOf(currentFile)>songsList.size()-1||songsList.indexOf(currentFile)<=0){
+			return null;
+		}
+		int pos=songsList.indexOf(currentFile)-1;
 		return songsList.get(pos);
 	}
 }

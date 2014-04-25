@@ -16,10 +16,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class AssoMusicPlayerActivity extends Activity {
-	
+
 	private static final long UPDATE_FREQUENCY = 50;
-	
-	private Singleton_PlayerInfoHolder playerInfoHolder = Singleton_PlayerInfoHolder.getInstance();
+
+	private Singleton_PlayerInfoHolder playerInfoHolder = Singleton_PlayerInfoHolder
+			.getInstance();
 	private ImageButton playButton = null;
 	private ImageButton prevButton = null;
 	private ImageButton nextButton = null;
@@ -40,40 +41,60 @@ public class AssoMusicPlayerActivity extends Activity {
 			updatePosition2();
 		}
 	};
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+
+		   
 		setContentView(R.layout.assomusicplayeractivity_layout);
-		
-		textSongTitle = (TextView) findViewById(R.id.player_song_title);
-		textArtist = (TextView) findViewById(R.id.player_artist);
-		textAlbum = (TextView) findViewById(R.id.player_album);
-		textPrev = (TextView) findViewById(R.id.player_prevSongDescription);
-		textNext = (TextView) findViewById(R.id.player_nextSongDescription);
-		seekbar = (SeekBar) findViewById(R.id.player_seekbar);
-		playButton = (ImageButton) findViewById(R.id.player_play);
-		prevButton = (ImageButton) findViewById(R.id.player_prev);
-		nextButton = (ImageButton) findViewById(R.id.player_next);
-		shuffleButton = (ImageButton) findViewById(R.id.player_shuffle);
-		repeatButton = (ImageButton) findViewById(R.id.player_repeat);
-		showAlbumArtButton = (ImageView) findViewById(R.id.player_showalbumart);
-		
-		
+
+		textSongTitle = (TextView) findViewById(R.id.assoplayer_song_title);
+		textArtist = (TextView) findViewById(R.id.assoplayer_artist);
+		textAlbum = (TextView) findViewById(R.id.assoplayer_album);
+		textPrev = (TextView) findViewById(R.id.assoplayer_prevSongDescription);
+		textNext = (TextView) findViewById(R.id.assoplayer_nextSongDescription);
+		seekbar = (SeekBar) findViewById(R.id.assoplayer_seekbar);
+		playButton = (ImageButton) findViewById(R.id.assoplayer_play);
+		prevButton = (ImageButton) findViewById(R.id.assoplayer_prev);
+		nextButton = (ImageButton) findViewById(R.id.assoplayer_next);
+		shuffleButton = (ImageButton) findViewById(R.id.assoplayer_shuffle);
+		repeatButton = (ImageButton) findViewById(R.id.assoplayer_repeat);
+		showAlbumArtButton = (ImageView) findViewById(R.id.assoplayer_showalbumart);
+
 		playButton.setOnClickListener(onButtonClick);
 		nextButton.setOnClickListener(onButtonClick);
 		prevButton.setOnClickListener(onButtonClick);
+		repeatButton.setOnClickListener(onButtonClick);
 		showAlbumArtButton.setOnClickListener(onButtonClick);
 		seekbar.setOnSeekBarChangeListener(seekBarChanged);
-		
+
+		switch (playerInfoHolder.repeatMode) {
+
+		// Repeat all
+		case 2: {
+			repeatButton.setImageResource(R.drawable.ic_action_repeat_a);
+			break;
+		}
+		// Repeat once
+		case 1: {
+			repeatButton.setImageResource(R.drawable.ic_action_repeat_1);
+			break;
+		}
+		// No repeat
+		case 0: {
+			repeatButton.setImageResource(R.drawable.ic_action_repeat_once);
+			break;
+		}
+		}
 		// Intent intename = getIntent();
 		// String uname = (String) intename.getSerializableExtra("USERNAME");
 		// textSongTitle.setText(uname);
 
 		resetStatic();
 	}
-	
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
@@ -97,21 +118,22 @@ public class AssoMusicPlayerActivity extends Activity {
 					.getArtist(playerInfoHolder.currentFile));
 			textAlbum.setText(playerInfoHolder.songsList
 					.getAlbum(playerInfoHolder.currentFile));
-			playerInfoHolder.setAlbumArt(showAlbumArtButton, playerInfoHolder.currentFile, false);
-			
-		       // album art part; to resize after knowing the actual image height
-	       
-	        ViewTreeObserver vto = showAlbumArtButton.getViewTreeObserver();
-	        vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-	            public boolean onPreDraw() {
-	            	
-	                int temp = showAlbumArtButton.getMeasuredWidth();
-	                showAlbumArtButton.getLayoutParams().height = temp;
-	                return true;
-	            }
-	        });
-	        
-	        seekbar.setMax(playerInfoHolder.player.getDuration());
+			playerInfoHolder.setAlbumArt(showAlbumArtButton,
+					playerInfoHolder.currentFile, false);
+
+			// album art part; to resize after knowing the actual image height
+
+			ViewTreeObserver vto = showAlbumArtButton.getViewTreeObserver();
+			vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+				public boolean onPreDraw() {
+
+					int temp = showAlbumArtButton.getMeasuredWidth();
+					showAlbumArtButton.getLayoutParams().height = temp;
+					return true;
+				}
+			});
+
+			seekbar.setMax(playerInfoHolder.player.getDuration());
 			if (playerInfoHolder.player.isPlaying()) {
 				playButton.setImageResource(R.drawable.ic_action_pause);
 			} else {
@@ -124,24 +146,24 @@ public class AssoMusicPlayerActivity extends Activity {
 		handler.removeCallbacks(updatePositionRunnable2);
 
 		seekbar.setProgress(playerInfoHolder.player.getCurrentPosition());
-		
+
 		handler.postDelayed(updatePositionRunnable2, UPDATE_FREQUENCY);
 	}
-	
+
 	void startPlay(String file) {
 		Log.i("Selected: ", file);
 
 		playerInfoHolder.setAlbumArt(showAlbumArtButton, file, false);
 		ViewTreeObserver vto = showAlbumArtButton.getViewTreeObserver();
-        vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-            public boolean onPreDraw() {
-            	
-                int temp = showAlbumArtButton.getMeasuredWidth();
-                showAlbumArtButton.getLayoutParams().height = temp;
-                return true;
-            }
-        });
-		
+		vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+			public boolean onPreDraw() {
+
+				int temp = showAlbumArtButton.getMeasuredWidth();
+				showAlbumArtButton.getLayoutParams().height = temp;
+				return true;
+			}
+		});
+
 		textSongTitle.setText(playerInfoHolder.songsList
 				.getTitle(playerInfoHolder.currentFile));
 		textArtist.setText(playerInfoHolder.songsList
@@ -174,6 +196,7 @@ public class AssoMusicPlayerActivity extends Activity {
 
 		playerInfoHolder.isStarted = true;
 	}
+
 	private void stopPlay() {
 		playerInfoHolder.player.stop();
 		playerInfoHolder.player.reset();
@@ -183,45 +206,137 @@ public class AssoMusicPlayerActivity extends Activity {
 
 		playerInfoHolder.isStarted = false;
 	}
-	
+
 	private View.OnClickListener onButtonClick = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
 			switch (v.getId()) {
-			case R.id.player_play:{
+			case R.id.assoplayer_play: {
 				if (playerInfoHolder.player.isPlaying()) {
 
-				handler.removeCallbacks(updatePositionRunnable2);
-				playerInfoHolder.player.pause();
-				playButton.setImageResource(R.drawable.ic_action_play);
-			} else {
-				if (playerInfoHolder.isStarted) {
-
-					playerInfoHolder.player.start();
-					playButton.setImageResource(R.drawable.ic_action_pause);
-					updatePosition2();
-
+					handler.removeCallbacks(updatePositionRunnable2);
+					playerInfoHolder.player.pause();
+					playButton.setImageResource(R.drawable.ic_action_play);
 				} else {
-					if (playerInfoHolder.currentFile != null) {
-						startPlay(playerInfoHolder.currentFile);
+					if (playerInfoHolder.isStarted) {
+
+						playerInfoHolder.player.start();
+						playButton.setImageResource(R.drawable.ic_action_pause);
+						updatePosition2();
+
 					} else {
-						Toast.makeText((Activity) v.getContext(),
-								"Please select a music!", Toast.LENGTH_SHORT)
-								.show();
+						if (playerInfoHolder.currentFile != null) {
+							startPlay(playerInfoHolder.currentFile);
+						} else {
+							Toast.makeText((Activity) v.getContext(),
+									"Please select a music!",
+									Toast.LENGTH_SHORT).show();
+						}
 					}
 				}
+
+				break;
 			}
 
-			break;
-		}
-			
-			case R.id.player_prev:{
-				
+			case R.id.assoplayer_prev: {
+
+				if (playerInfoHolder.currentFile != null) {
+					switch (playerInfoHolder.repeatMode) {
+
+					// Repeat all
+					case 2: {
+						playerInfoHolder.currentFile = playerInfoHolder.currentList
+								.prevFileLoop(playerInfoHolder.currentFile);
+						startPlay(playerInfoHolder.currentFile);
+						break;
+					}
+					// Repeat once
+					case 1: {
+						startPlay(playerInfoHolder.currentFile);
+						break;
+					}
+					// No repeat
+					case 0: {
+						playerInfoHolder.currentFile = playerInfoHolder.currentList
+								.prevFile(playerInfoHolder.currentFile);
+						if (playerInfoHolder.currentFile == null) {
+							Toast.makeText((Activity) v.getContext(),
+									"This is the first song!",
+									Toast.LENGTH_SHORT).show();
+						} else
+							startPlay(playerInfoHolder.currentFile);
+						break;
+					}
+					}
+				} else {
+					Toast.makeText((Activity) v.getContext(),
+							"Please select a music!", Toast.LENGTH_SHORT)
+							.show();
 				}
-			
-			case R.id.player_next:{
-				
+				break;
 			}
+
+			case R.id.assoplayer_next: {
+				
+				if (playerInfoHolder.currentFile != null) {
+					switch (playerInfoHolder.repeatMode) {
+
+					// Repeat all
+					case 2: {
+						playerInfoHolder.currentFile = playerInfoHolder.currentList
+								.nextFileLoop(playerInfoHolder.currentFile);
+						startPlay(playerInfoHolder.currentFile);
+						break;
+					}
+					// Repeat once
+					case 1: {
+						startPlay(playerInfoHolder.currentFile);
+						break;
+					}
+					// No repeat
+					case 0: {
+						playerInfoHolder.currentFile = playerInfoHolder.currentList
+								.nextFile(playerInfoHolder.currentFile);
+						if (playerInfoHolder.currentFile == null) {
+							Toast.makeText((Activity) v.getContext(),
+									"This is the last song!",
+									Toast.LENGTH_SHORT).show();
+						} else
+							startPlay(playerInfoHolder.currentFile);
+						break;
+					}
+					}
+				} else {
+					Toast.makeText((Activity) v.getContext(),
+							"Please select a music!", Toast.LENGTH_SHORT)
+							.show();
+				}
+
+				break;
+			}
+			case R.id.assoplayer_repeat: {
+				switch (playerInfoHolder.repeatMode) {
+				case 2: {
+					repeatButton
+							.setImageResource(R.drawable.ic_action_repeat_1);
+					playerInfoHolder.repeatMode = 1;
+					break;
+				}
+				case 1: {
+					repeatButton
+							.setImageResource(R.drawable.ic_action_repeat_once);
+					playerInfoHolder.repeatMode = 0;
+					break;
+				}
+				case 0: {
+					repeatButton
+							.setImageResource(R.drawable.ic_action_repeat_a);
+					playerInfoHolder.repeatMode = 2;
+					break;
+				}
+				}
+			}
+
 			}
 		}
 	};

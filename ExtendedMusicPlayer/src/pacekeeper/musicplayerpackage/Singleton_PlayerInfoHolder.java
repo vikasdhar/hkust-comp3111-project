@@ -24,10 +24,11 @@ public class Singleton_PlayerInfoHolder {
 	 * @param 1:Single repeat
 	 * @param 2:List repeat
 	 */
-	static int repeatMode = 0;
+	static int repeatMode = 2;
 	static MediaPlayer player = null;
 	static String currentFile = null;
 	static MediaList songsList;
+	static MediaList currentList;
 	static AlbumList albumsList;
 
 	public static Singleton_PlayerInfoHolder getInstance() {

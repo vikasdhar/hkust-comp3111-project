@@ -34,9 +34,10 @@ import android.widget.TabHost.TabContentFactory;
  * The <code>TabsViewPagerFragmentActivity</code> class implements the Fragment
  * activity that maintains a TabHost using a ViewPager.
  */
-public class MainMusicPlayerActivity extends FragmentActivity{
+public class MainMusicPlayerActivity extends FragmentActivity {
 
-	private Singleton_TabInfoHolder tabInfoHolder=Singleton_TabInfoHolder.getInstance();
+	private Singleton_TabInfoHolder tabInfoHolder = Singleton_TabInfoHolder
+			.getInstance();
 	private HashMap<String, TabInfo> mapTabInfo = new HashMap<String, MainMusicPlayerActivity.TabInfo>();
 	private PagerAdapter mPagerAdapter;
 
@@ -111,7 +112,7 @@ public class MainMusicPlayerActivity extends FragmentActivity{
 		}
 	};
 
-	void startPlay(String file) {
+	public void startPlay(String file) {
 		Log.i("Selected: ", file);
 
 		playerInfoHolder.setAlbumArt(showAlbumArtButton, file, false);
@@ -186,6 +187,31 @@ public class MainMusicPlayerActivity extends FragmentActivity{
 		@Override
 		public void onCompletion(MediaPlayer mp) {
 			stopPlay();
+			switch (playerInfoHolder.repeatMode) {
+
+			// Repeat all
+			case 2: {
+				playerInfoHolder.currentFile = playerInfoHolder.currentList
+						.nextFileLoop(playerInfoHolder.currentFile);
+				startPlay(playerInfoHolder.currentFile);
+				break;
+			}
+			// Repeat once
+			case 1: {
+				startPlay(playerInfoHolder.currentFile);
+				break;
+			}
+			// No repeat
+			case 0: {
+				playerInfoHolder.currentFile = playerInfoHolder.currentList
+						.nextFile(playerInfoHolder.currentFile);
+				if (playerInfoHolder.currentFile == null)
+					break;
+				else
+					startPlay(playerInfoHolder.currentFile);
+				break;
+			}
+			}
 		}
 	};
 
@@ -233,9 +259,33 @@ public class MainMusicPlayerActivity extends FragmentActivity{
 				// currentFile = songsList.getPath(songsList
 				// .matchWithPath(currentFile) + 1);
 				if (playerInfoHolder.currentFile != null) {
-					playerInfoHolder.currentFile = playerInfoHolder.songsList
-							.nextFile(playerInfoHolder.currentFile);
-					startPlay(playerInfoHolder.currentFile);
+					switch (playerInfoHolder.repeatMode) {
+
+					// Repeat all
+					case 2: {
+						playerInfoHolder.currentFile = playerInfoHolder.currentList
+								.nextFileLoop(playerInfoHolder.currentFile);
+						startPlay(playerInfoHolder.currentFile);
+						break;
+					}
+					// Repeat once
+					case 1: {
+						startPlay(playerInfoHolder.currentFile);
+						break;
+					}
+					// No repeat
+					case 0: {
+						playerInfoHolder.currentFile = playerInfoHolder.currentList
+								.nextFile(playerInfoHolder.currentFile);
+						if (playerInfoHolder.currentFile == null) {
+							Toast.makeText((Activity) v.getContext(),
+									"This is the last song!", LENGTH_SHORT)
+									.show();
+						} else
+							startPlay(playerInfoHolder.currentFile);
+						break;
+					}
+					}
 				} else {
 					Toast.makeText((Activity) v.getContext(),
 							"Please select a music!", LENGTH_SHORT).show();
@@ -256,9 +306,34 @@ public class MainMusicPlayerActivity extends FragmentActivity{
 				// currentFile = songsList.getPath(songsList
 				// .matchWithPath(currentFile) - 1);
 				if (playerInfoHolder.currentFile != null) {
-					playerInfoHolder.currentFile = playerInfoHolder.songsList
-							.prevFile(playerInfoHolder.currentFile);
-					startPlay(playerInfoHolder.currentFile);
+					switch (playerInfoHolder.repeatMode) {
+
+					// Repeat all
+					case 2: {
+						playerInfoHolder.currentFile = playerInfoHolder.currentList
+								.prevFileLoop(playerInfoHolder.currentFile);
+						startPlay(playerInfoHolder.currentFile);
+						break;
+					}
+					// Repeat once
+					case 1: {
+						startPlay(playerInfoHolder.currentFile);
+						break;
+					}
+					// No repeat
+					case 0: {
+						playerInfoHolder.currentFile = playerInfoHolder.currentList
+								.prevFile(playerInfoHolder.currentFile);
+						if (playerInfoHolder.currentFile == null) {
+							Toast.makeText((Activity) v.getContext(),
+									"This is the first song!", LENGTH_SHORT)
+									.show();
+						} else
+							startPlay(playerInfoHolder.currentFile);
+						break;
+					}
+					}
+
 				} else {
 					Toast.makeText((Activity) v.getContext(),
 							"Please select a music!", LENGTH_SHORT).show();
@@ -270,6 +345,8 @@ public class MainMusicPlayerActivity extends FragmentActivity{
 
 				Intent intObj = new Intent(MainMusicPlayerActivity.this,
 						AssoMusicPlayerActivity.class);
+				
+				intObj.putExtra("address", (CharSequence) MainMusicPlayerActivity.this);
 				startActivity(intObj);
 
 				break;
@@ -323,7 +400,9 @@ public class MainMusicPlayerActivity extends FragmentActivity{
 		Singleton_PlayerInfoHolder.getInstance().albumsList = new AlbumList(
 				this);
 		Singleton_PlayerInfoHolder.getInstance().songsList = new MediaList(
-				this, MediaStore.Audio.Media.IS_MUSIC + " != 0");
+				this, MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
+				MediaStore.Audio.Media.IS_MUSIC + " != 0", null,
+				MediaStore.Audio.Media.TITLE_KEY);
 
 		// Initialise the TabHost
 
@@ -351,52 +430,54 @@ public class MainMusicPlayerActivity extends FragmentActivity{
 		showAlbumArtButton.setOnClickListener(onButtonClick);
 		showAlbumArtButton.setImageDrawable(getResources().getDrawable(
 				R.drawable.ic_expandplayer_placeholder));
-		
-		
-//		ContentResolver cr = this.getContentResolver();
-//	    final Uri uri=MediaStore.Audio.Playlists.EXTERNAL_CONTENT_URI;
-//	    final String id=MediaStore.Audio.Playlists._ID;
-//	    final String name=MediaStore.Audio.Playlists.NAME;
-//	    final String[]columns={id,name};
-//	    
-//	    Cursor playlists= cr.query(uri, columns, null, null, null);
-//
-//	        Toast.makeText(this, "Found playlists"+
-//                    playlists.getCount(), Toast.LENGTH_SHORT).show();
-//	        
-//            playlists.moveToFirst();
-//            playlists.moveToNext();
-//            Toast.makeText(this, "name:"+
-//            playlists.getString(playlists.getColumnIndex(name)), Toast.LENGTH_SHORT).show();
-//            
-//
-//            Long idoflist=playlists.getLong(playlists.getColumnIndex(id));
-//           
-//            
-//            String[] projection = {
-//                    MediaStore.Audio.Playlists.Members.AUDIO_ID,
-//                    MediaStore.Audio.Playlists.Members.ARTIST,
-//                    MediaStore.Audio.Playlists.Members.TITLE,
-//                     MediaStore.Audio.Playlists.Members._ID
-//                 };
-//            playlists = null;
-//            playlists = this.managedQuery(
-//                     MediaStore.Audio.Playlists.Members.getContentUri("external",idoflist ),
-//                     projection,
-//                     MediaStore.Audio.Media.IS_MUSIC +" != 0 ",
-//                     null,
-//                     null);
-//            
-//            playlists.moveToFirst();
-//            
-//            Toast.makeText(this, ".Members.TITLE :"+
-//            playlists.getString(playlists.getColumnIndex(MediaStore.Audio.Playlists.Members.AUDIO_ID)), Toast.LENGTH_SHORT).show();
-//            
-//            Toast.makeText(this, "You have a total of :"+
-//                    playlists.getCount(), Toast.LENGTH_SHORT).show();
-//            
-//            
-	    return;
+
+		// ContentResolver cr = this.getContentResolver();
+		// final Uri uri=MediaStore.Audio.Playlists.EXTERNAL_CONTENT_URI;
+		// final String id=MediaStore.Audio.Playlists._ID;
+		// final String name=MediaStore.Audio.Playlists.NAME;
+		// final String[]columns={id,name};
+		//
+		// Cursor playlists= cr.query(uri, columns, null, null, null);
+		//
+		// Toast.makeText(this, "Found playlists"+
+		// playlists.getCount(), Toast.LENGTH_SHORT).show();
+		//
+		// playlists.moveToFirst();
+		// playlists.moveToNext();
+		// Toast.makeText(this, "name:"+
+		// playlists.getString(playlists.getColumnIndex(name)),
+		// Toast.LENGTH_SHORT).show();
+		//
+		//
+		// Long idoflist=playlists.getLong(playlists.getColumnIndex(id));
+		//
+		//
+		// String[] projection = {
+		// MediaStore.Audio.Playlists.Members.AUDIO_ID,
+		// MediaStore.Audio.Playlists.Members.ARTIST,
+		// MediaStore.Audio.Playlists.Members.TITLE,
+		// MediaStore.Audio.Playlists.Members._ID
+		// };
+		// playlists = null;
+		// playlists = this.managedQuery(
+		// MediaStore.Audio.Playlists.Members.getContentUri("external",idoflist
+		// ),
+		// projection,
+		// MediaStore.Audio.Media.IS_MUSIC +" != 0 ",
+		// null,
+		// null);
+		//
+		// playlists.moveToFirst();
+		//
+		// Toast.makeText(this, ".Members.TITLE :"+
+		// playlists.getString(playlists.getColumnIndex(MediaStore.Audio.Playlists.Members.AUDIO_ID)),
+		// Toast.LENGTH_SHORT).show();
+		//
+		// Toast.makeText(this, "You have a total of :"+
+		// playlists.getCount(), Toast.LENGTH_SHORT).show();
+		//
+		//
+		return;
 	}
 
 	/**
@@ -405,8 +486,10 @@ public class MainMusicPlayerActivity extends FragmentActivity{
 	 * @see android.support.v4.app.FragmentActivity#onSaveInstanceState(android.os.Bundle)
 	 */
 	protected void onSaveInstanceState(Bundle outState) {
-		outState.putString("tab", tabInfoHolder.mTabHost.getCurrentTabTag()); // save the tab
-																// selected
+		outState.putString("tab", tabInfoHolder.mTabHost.getCurrentTabTag()); // save
+																				// the
+																				// tab
+		// selected
 		super.onSaveInstanceState(outState);
 	}
 
@@ -447,7 +530,8 @@ public class MainMusicPlayerActivity extends FragmentActivity{
 		tabInfoHolder.mViewPager = (CustomViewPager) super
 				.findViewById(R.id.tabviewpager);
 		tabInfoHolder.mViewPager.setAdapter(this.mPagerAdapter);
-		tabInfoHolder.mViewPager.setOnPageChangeListener(myOnPageChangeListener);
+		tabInfoHolder.mViewPager
+				.setOnPageChangeListener(myOnPageChangeListener);
 	}
 
 	/**
@@ -459,21 +543,29 @@ public class MainMusicPlayerActivity extends FragmentActivity{
 		tabInfoHolder.mTabHost.setup();
 		TabInfo tabInfo = null;
 
-		MainMusicPlayerActivity.AddTab(this, tabInfoHolder.mTabHost, tabInfoHolder.mTabHost
-				.newTabSpec("Tab1").setIndicator("Songs"),
-				(tabInfo = new TabInfo("Tab1", ListFragment_SortBySongTitle.class, args)));
+		MainMusicPlayerActivity
+				.AddTab(this, tabInfoHolder.mTabHost, tabInfoHolder.mTabHost
+						.newTabSpec("Tab1").setIndicator("Songs"),
+						(tabInfo = new TabInfo("Tab1",
+								ListFragment_SortBySongTitle.class, args)));
 		this.mapTabInfo.put(tabInfo.tag, tabInfo);
-		MainMusicPlayerActivity.AddTab(this, tabInfoHolder.mTabHost, tabInfoHolder.mTabHost
-				.newTabSpec("Tab2").setIndicator("Artist"),
-				(tabInfo = new TabInfo("Tab2", ListFragment_SortByArtist.class, args)));
+		MainMusicPlayerActivity.AddTab(this, tabInfoHolder.mTabHost,
+				tabInfoHolder.mTabHost.newTabSpec("Tab2")
+						.setIndicator("Artist"), (tabInfo = new TabInfo("Tab2",
+						ListFragment_SortByArtist.class, args)));
 		this.mapTabInfo.put(tabInfo.tag, tabInfo);
-		MainMusicPlayerActivity.AddTab(this, tabInfoHolder.mTabHost, tabInfoHolder.mTabHost
-				.newTabSpec("Tab3").setIndicator("Album"),
-				(tabInfo = new TabInfo("Tab3", ListFragment_SortByAlbum.class, args)));
+		MainMusicPlayerActivity
+				.AddTab(this, tabInfoHolder.mTabHost, tabInfoHolder.mTabHost
+						.newTabSpec("Tab3").setIndicator("Album"),
+						(tabInfo = new TabInfo("Tab3",
+								ListFragment_SortByAlbum.class, args)));
 		this.mapTabInfo.put(tabInfo.tag, tabInfo);
-		MainMusicPlayerActivity.AddTab(this, tabInfoHolder.mTabHost, tabInfoHolder.mTabHost
-				.newTabSpec("Tab3").setIndicator("Playlist"),
-				(tabInfo = new TabInfo("Tab4", ListFragment_SortByPlayList.class, args)));
+		MainMusicPlayerActivity.AddTab(
+				this,
+				tabInfoHolder.mTabHost,
+				tabInfoHolder.mTabHost.newTabSpec("Tab3").setIndicator(
+						"Playlist"), (tabInfo = new TabInfo("Tab4",
+						ListFragment_SortByPlayList.class, args)));
 		this.mapTabInfo.put(tabInfo.tag, tabInfo);
 
 		// Default to first tab
@@ -500,22 +592,26 @@ public class MainMusicPlayerActivity extends FragmentActivity{
 	}
 
 	private OnTabChangeListener myOnTabChangedListener = new OnTabChangeListener() {
-		Singleton_TabInfoHolder tabInfoHolder=Singleton_TabInfoHolder.getInstance();
-	/**
-	 * (non-Javadoc)
-	 * 
-	 * @see android.widget.TabHost.OnTabChangeListener#onTabChanged(java.lang.String)
-	 */
-	public void onTabChanged(String tag) {
-		
-		// TabInfo newTab = this.mapTabInfo.get(tag);
-		int pos = tabInfoHolder.mTabHost.getCurrentTab();
-		tabInfoHolder.mViewPager.setCurrentItem(pos);
-	}
+		Singleton_TabInfoHolder tabInfoHolder = Singleton_TabInfoHolder
+				.getInstance();
+
+		/**
+		 * (non-Javadoc)
+		 * 
+		 * @see android.widget.TabHost.OnTabChangeListener#onTabChanged(java.lang.String)
+		 */
+		public void onTabChanged(String tag) {
+
+			// TabInfo newTab = this.mapTabInfo.get(tag);
+			int pos = tabInfoHolder.mTabHost.getCurrentTab();
+			tabInfoHolder.mViewPager.setCurrentItem(pos);
+		}
 	};
 
 	private OnPageChangeListener myOnPageChangeListener = new android.support.v4.view.ViewPager.OnPageChangeListener() {
-		Singleton_TabInfoHolder tabInfoHolder=Singleton_TabInfoHolder.getInstance();
+		Singleton_TabInfoHolder tabInfoHolder = Singleton_TabInfoHolder
+				.getInstance();
+
 		/*
 		 * (non-Javadoc)
 		 * 
