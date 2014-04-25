@@ -27,5 +27,6 @@ public class Singleton_TabInfoHolder {
 		mTabHost.getTabWidget().getChildTabViewAt(0).setEnabled(clickable);
 		mTabHost.getTabWidget().getChildTabViewAt(1).setEnabled(clickable);
 		mTabHost.getTabWidget().getChildTabViewAt(2).setEnabled(clickable);
+		mTabHost.getTabWidget().getChildTabViewAt(3).setEnabled(clickable);
 	}
 }

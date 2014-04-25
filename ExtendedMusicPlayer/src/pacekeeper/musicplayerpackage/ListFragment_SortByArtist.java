@@ -3,9 +3,7 @@
  */
 package pacekeeper.musicplayerpackage;
 
-import pacekeeper.musicplayerpackage.AlbumsCursorAdapter.AlbumsViewHolder;
 import pacekeeper.musicplayerpackage.ArtistsCursorAdapter.ArtistsViewHolder;
-import pacekeeper.musicplayerpackage.ListFragment_SortByAlbum.ListFragment_SortByAlbumChild;
 import pacekeeper.musicplayerpackage.MediaCursorAdapter.MediaViewHolder;
 import android.app.Activity;
 import android.database.Cursor;
