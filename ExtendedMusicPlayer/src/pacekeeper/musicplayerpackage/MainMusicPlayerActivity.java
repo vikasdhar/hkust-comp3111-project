@@ -156,6 +156,8 @@ public class MainMusicPlayerActivity extends FragmentActivity {
 		playerInfoHolder.player.stop();
 		playerInfoHolder.player.reset();
 		playButton.setImageResource(R.drawable.ic_action_play);
+		showAlbumArtButton.setImageDrawable(getResources().getDrawable(
+				R.drawable.ic_expandplayer_placeholder));
 		handler.removeCallbacks(updatePositionRunnable);
 		seekbar.setProgress(0);
 
@@ -287,6 +289,7 @@ public class MainMusicPlayerActivity extends FragmentActivity {
 					}
 					}
 				} else {
+					stopPlay();
 					Toast.makeText((Activity) v.getContext(),
 							"Please select a music!", LENGTH_SHORT).show();
 				}
@@ -335,6 +338,7 @@ public class MainMusicPlayerActivity extends FragmentActivity {
 					}
 
 				} else {
+					stopPlay();
 					Toast.makeText((Activity) v.getContext(),
 							"Please select a music!", LENGTH_SHORT).show();
 				}
@@ -346,7 +350,7 @@ public class MainMusicPlayerActivity extends FragmentActivity {
 				Intent intObj = new Intent(MainMusicPlayerActivity.this,
 						AssoMusicPlayerActivity.class);
 				
-				intObj.putExtra("address", (CharSequence) MainMusicPlayerActivity.this);
+				
 				startActivity(intObj);
 
 				break;
@@ -505,6 +509,24 @@ public class MainMusicPlayerActivity extends FragmentActivity {
 					.getString("tab")); // set the tab as per the saved state
 		}
 		super.onRestoreInstanceState(savedInstanceState);
+	}
+	
+	@Override
+	protected void onResume (){
+		super.onResume();
+		playerInfoHolder.player.setOnCompletionListener(onCompletion);
+		playerInfoHolder.player.setOnErrorListener(onError);
+		
+		playerInfoHolder.setAlbumArt(showAlbumArtButton, playerInfoHolder.currentFile, false);
+
+		// selectedFile.setText(songsList.getTitle(listPosition)
+		// + "-" + songsList.getArtist(listPosition));
+
+		songInfoTextView.setText(playerInfoHolder.songsList
+				.getTitle(playerInfoHolder.currentFile)
+				+ "-"
+				+ playerInfoHolder.songsList
+						.getArtist(playerInfoHolder.currentFile));
 	}
 
 	/**

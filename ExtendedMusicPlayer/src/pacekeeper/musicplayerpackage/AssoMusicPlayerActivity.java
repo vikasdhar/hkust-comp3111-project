@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -26,7 +27,7 @@ public class AssoMusicPlayerActivity extends Activity {
 	private ImageButton nextButton = null;
 	private ImageButton repeatButton = null;
 	private ImageButton shuffleButton = null;
-	private ImageView showAlbumArtButton = null;
+	private ImageView albumArtView = null;
 	private TextView textSongTitle = null;
 	private TextView textArtist = null;
 	private TextView textAlbum = null;
@@ -61,13 +62,13 @@ public class AssoMusicPlayerActivity extends Activity {
 		nextButton = (ImageButton) findViewById(R.id.assoplayer_next);
 		shuffleButton = (ImageButton) findViewById(R.id.assoplayer_shuffle);
 		repeatButton = (ImageButton) findViewById(R.id.assoplayer_repeat);
-		showAlbumArtButton = (ImageView) findViewById(R.id.assoplayer_showalbumart);
+		albumArtView = (ImageView) findViewById(R.id.assoplayer_showalbumart);
 
 		playButton.setOnClickListener(onButtonClick);
 		nextButton.setOnClickListener(onButtonClick);
 		prevButton.setOnClickListener(onButtonClick);
 		repeatButton.setOnClickListener(onButtonClick);
-		showAlbumArtButton.setOnClickListener(onButtonClick);
+		albumArtView.setOnClickListener(onButtonClick);
 		seekbar.setOnSeekBarChangeListener(seekBarChanged);
 
 		switch (playerInfoHolder.repeatMode) {
@@ -96,6 +97,13 @@ public class AssoMusicPlayerActivity extends Activity {
 	}
 
 	@Override
+	protected void onResume (){
+		super.onResume();
+		playerInfoHolder.player.setOnCompletionListener(onCompletion);
+		playerInfoHolder.player.setOnErrorListener(onError);
+	}
+	
+	@Override
 	protected void onDestroy() {
 		super.onDestroy();
 
@@ -108,7 +116,7 @@ public class AssoMusicPlayerActivity extends Activity {
 	 */
 	protected void resetStatic() {
 		if (!playerInfoHolder.isStarted) {
-			showAlbumArtButton.setImageDrawable(getResources().getDrawable(
+			albumArtView.setImageDrawable(getResources().getDrawable(
 					R.drawable.ic_expandplayer_placeholder));
 		} else {
 			updatePosition2();
@@ -118,17 +126,17 @@ public class AssoMusicPlayerActivity extends Activity {
 					.getArtist(playerInfoHolder.currentFile));
 			textAlbum.setText(playerInfoHolder.songsList
 					.getAlbum(playerInfoHolder.currentFile));
-			playerInfoHolder.setAlbumArt(showAlbumArtButton,
+			playerInfoHolder.setAlbumArt(albumArtView,
 					playerInfoHolder.currentFile, false);
 
 			// album art part; to resize after knowing the actual image height
 
-			ViewTreeObserver vto = showAlbumArtButton.getViewTreeObserver();
+			ViewTreeObserver vto = albumArtView.getViewTreeObserver();
 			vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
 				public boolean onPreDraw() {
 
-					int temp = showAlbumArtButton.getMeasuredWidth();
-					showAlbumArtButton.getLayoutParams().height = temp;
+					int temp = albumArtView.getMeasuredWidth();
+					albumArtView.getLayoutParams().height = temp;
 					return true;
 				}
 			});
@@ -150,16 +158,16 @@ public class AssoMusicPlayerActivity extends Activity {
 		handler.postDelayed(updatePositionRunnable2, UPDATE_FREQUENCY);
 	}
 
-	void startPlay(String file) {
+	public void startPlay(String file) {
 		Log.i("Selected: ", file);
 
-		playerInfoHolder.setAlbumArt(showAlbumArtButton, file, false);
-		ViewTreeObserver vto = showAlbumArtButton.getViewTreeObserver();
+		playerInfoHolder.setAlbumArt(albumArtView, file, false);
+		ViewTreeObserver vto = albumArtView.getViewTreeObserver();
 		vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
 			public boolean onPreDraw() {
 
-				int temp = showAlbumArtButton.getMeasuredWidth();
-				showAlbumArtButton.getLayoutParams().height = temp;
+				int temp = albumArtView.getMeasuredWidth();
+				albumArtView.getLayoutParams().height = temp;
 				return true;
 			}
 		});
@@ -201,6 +209,8 @@ public class AssoMusicPlayerActivity extends Activity {
 		playerInfoHolder.player.stop();
 		playerInfoHolder.player.reset();
 		playButton.setImageResource(R.drawable.ic_action_play);
+		albumArtView.setImageDrawable(getResources().getDrawable(
+				R.drawable.ic_expandplayer_placeholder));
 		handler.removeCallbacks(updatePositionRunnable2);
 		seekbar.setProgress(0);
 
@@ -241,6 +251,7 @@ public class AssoMusicPlayerActivity extends Activity {
 			case R.id.assoplayer_prev: {
 
 				if (playerInfoHolder.currentFile != null) {
+					stopPlay();
 					switch (playerInfoHolder.repeatMode) {
 
 					// Repeat all
@@ -269,6 +280,7 @@ public class AssoMusicPlayerActivity extends Activity {
 					}
 					}
 				} else {
+					stopPlay();
 					Toast.makeText((Activity) v.getContext(),
 							"Please select a music!", Toast.LENGTH_SHORT)
 							.show();
@@ -279,6 +291,7 @@ public class AssoMusicPlayerActivity extends Activity {
 			case R.id.assoplayer_next: {
 				
 				if (playerInfoHolder.currentFile != null) {
+					stopPlay();
 					switch (playerInfoHolder.repeatMode) {
 
 					// Repeat all
@@ -307,6 +320,7 @@ public class AssoMusicPlayerActivity extends Activity {
 					}
 					}
 				} else {
+					stopPlay();
 					Toast.makeText((Activity) v.getContext(),
 							"Please select a music!", Toast.LENGTH_SHORT)
 							.show();
@@ -359,6 +373,47 @@ public class AssoMusicPlayerActivity extends Activity {
 
 				Log.i("OnSeekBarChangeListener", "onProgressChanged");
 			}
+		}
+	};
+	
+	private MediaPlayer.OnCompletionListener onCompletion = new MediaPlayer.OnCompletionListener() {
+
+		@Override
+		public void onCompletion(MediaPlayer mp) {
+			stopPlay();
+			switch (playerInfoHolder.repeatMode) {
+
+			// Repeat all
+			case 2: {
+				playerInfoHolder.currentFile = playerInfoHolder.currentList
+						.nextFileLoop(playerInfoHolder.currentFile);
+				startPlay(playerInfoHolder.currentFile);
+				break;
+			}
+			// Repeat once
+			case 1: {
+				startPlay(playerInfoHolder.currentFile);
+				break;
+			}
+			// No repeat
+			case 0: {
+				playerInfoHolder.currentFile = playerInfoHolder.currentList
+						.nextFile(playerInfoHolder.currentFile);
+				if (playerInfoHolder.currentFile == null)
+					break;
+				else
+					startPlay(playerInfoHolder.currentFile);
+				break;
+			}
+			}
+		}
+	};
+	private MediaPlayer.OnErrorListener onError = new MediaPlayer.OnErrorListener() {
+
+		@Override
+		public boolean onError(MediaPlayer mp, int what, int extra) {
+			// returning false will call the OnCompletionListener
+			return false;
 		}
 	};
 }

@@ -246,9 +246,6 @@ public class MediaList {
 	}
 	
 	public String nextFile(String currentFile){
-		Toast.makeText(mainActivity,
-				" "+songsList.indexOf(currentFile),
-				Toast.LENGTH_SHORT).show();
 		if (songsList.indexOf(currentFile)>=songsList.size()-1||songsList.indexOf(currentFile)<0){
 			return null;
 		}
