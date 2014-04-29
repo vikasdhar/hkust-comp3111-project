@@ -92,10 +92,18 @@ public class ListFragment_SortBySongTitle extends ListFragment {
 			public void onClick(View v) {
 
 				Singleton_PlayerInfoHolder.getInstance().currentList = new MediaList(
-						mainMusicPlayerActivity,
+						mainMusicPlayerActivity, false,
 						MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
 						MediaStore.Audio.Media.IS_MUSIC + " != 0 ", null,
 						MediaStore.Audio.Media.TITLE_KEY);
+
+				// Shuffle mode
+				if (Singleton_PlayerInfoHolder.getInstance().isShuffle){
+					Singleton_PlayerInfoHolder.getInstance().currentList
+					.randomize();
+				}
+					
+
 				Singleton_PlayerInfoHolder.getInstance().currentFile = Singleton_PlayerInfoHolder
 						.getInstance().currentList.getPath(0);
 				mainMusicPlayerActivity.startPlay(Singleton_PlayerInfoHolder
@@ -149,7 +157,7 @@ public class ListFragment_SortBySongTitle extends ListFragment {
 
 		String[] whereVal = { (String) holder.path };
 		Singleton_PlayerInfoHolder.getInstance().currentList = new MediaList(
-				mainMusicPlayerActivity,
+				mainMusicPlayerActivity, false,
 				MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
 				MediaStore.Audio.Media.IS_MUSIC + " != 0 and "
 						+ MediaStore.Audio.Media.DATA + " = ?", whereVal,

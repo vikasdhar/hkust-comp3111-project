@@ -67,30 +67,8 @@ public class AssoMusicPlayerActivity extends Activity {
 		prevButton.setOnClickListener(onButtonClick);
 		repeatButton.setOnClickListener(onButtonClick);
 		albumArtView.setOnClickListener(onButtonClick);
+		shuffleButton.setOnClickListener(onButtonClick);
 		seekbar.setOnSeekBarChangeListener(seekBarChanged);
-
-		switch (playerInfoHolder.repeatMode) {
-
-		// Repeat all
-		case 2: {
-			repeatButton.setImageResource(R.drawable.ic_action_repeat_a);
-			break;
-		}
-		// Repeat once
-		case 1: {
-			repeatButton.setImageResource(R.drawable.ic_action_repeat_1);
-			break;
-		}
-		// No repeat
-		case 0: {
-			repeatButton.setImageResource(R.drawable.ic_action_repeat_once);
-			break;
-		}
-		}
-		// Intent intename = getIntent();
-		// String uname = (String) intename.getSerializableExtra("USERNAME");
-		// textSongTitle.setText(uname);
-
 		resetStatic();
 	}
 
@@ -145,6 +123,32 @@ public class AssoMusicPlayerActivity extends Activity {
 			} else {
 				playButton.setImageResource(R.drawable.ic_action_play);
 			}
+		}
+		
+		if (playerInfoHolder.isShuffle) {
+			shuffleButton.setImageResource(R.drawable.ic_action_shuffle);
+		}else{
+			shuffleButton.setImageResource(R.drawable.ic_action_mute);
+		}
+		
+		
+		switch (playerInfoHolder.repeatMode) {
+
+		// Repeat all
+		case 2: {
+			repeatButton.setImageResource(R.drawable.ic_action_repeat_a);
+			break;
+		}
+		// Repeat once
+		case 1: {
+			repeatButton.setImageResource(R.drawable.ic_action_repeat_1);
+			break;
+		}
+		// No repeat
+		case 0: {
+			repeatButton.setImageResource(R.drawable.ic_action_repeat_once);
+			break;
+		}
 		}
 	}
 
@@ -255,7 +259,7 @@ public class AssoMusicPlayerActivity extends Activity {
 			case R.id.assoplayer_prev: {
 
 				if (playerInfoHolder.currentFile != null) {
-					stopPlay();
+					
 					switch (playerInfoHolder.repeatMode) {
 
 					// Repeat all
@@ -295,7 +299,7 @@ public class AssoMusicPlayerActivity extends Activity {
 			case R.id.assoplayer_next: {
 
 				if (playerInfoHolder.currentFile != null) {
-					stopPlay();
+					
 					switch (playerInfoHolder.repeatMode) {
 
 					// Repeat all
@@ -354,7 +358,17 @@ public class AssoMusicPlayerActivity extends Activity {
 				}
 				}
 			}
-
+			case R.id.assoplayer_shuffle:{
+				if(playerInfoHolder.isShuffle){
+					playerInfoHolder.isShuffle=false;
+					shuffleButton.setImageResource(R.drawable.ic_action_mute);
+					playerInfoHolder.currentList.unrandomize();
+				}else{
+					playerInfoHolder.isShuffle=true;
+					shuffleButton.setImageResource(R.drawable.ic_action_shuffle);
+					playerInfoHolder.currentList.randomize();
+				}
+			}
 			}
 		}
 	};

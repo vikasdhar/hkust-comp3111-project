@@ -73,10 +73,16 @@ public class ListFragment_SortByPlayList extends ListFragment{
 					
 					String whereValue[] = { playListTitle };
 					Singleton_PlayerInfoHolder.getInstance().currentList = new MediaList(
-							mainMusicPlayerActivity,
+							mainMusicPlayerActivity,false,
 							MediaStore.Audio.Playlists.Members.getContentUri("external",playListID ),
 							MediaStore.Audio.Media.IS_MUSIC + " != 0 ",
 							null, MediaStore.Audio.Media.TITLE_KEY);
+					
+					// Shuffle mode
+					if (Singleton_PlayerInfoHolder.getInstance().isShuffle)
+						Singleton_PlayerInfoHolder.getInstance().currentList
+								.randomize();
+					
 					Singleton_PlayerInfoHolder.getInstance().currentFile = Singleton_PlayerInfoHolder
 							.getInstance().currentList.getPath(0);
 					mainMusicPlayerActivity
@@ -154,7 +160,7 @@ public class ListFragment_SortByPlayList extends ListFragment{
 			
 			String whereValue[] = { (String) holder.path };
 			Singleton_PlayerInfoHolder.getInstance().currentList = new MediaList(
-					mainMusicPlayerActivity,
+					mainMusicPlayerActivity,false,
 					MediaStore.Audio.Playlists.Members.getContentUri("external",playListID ),
 					MediaStore.Audio.Media.IS_MUSIC + " != 0 and "
 							+ MediaStore.Audio.Media.DATA + " =?", whereValue,

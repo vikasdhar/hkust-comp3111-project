@@ -402,7 +402,7 @@ public class MainMusicPlayerActivity extends FragmentActivity {
 		Singleton_PlayerInfoHolder.getInstance().albumsList = new AlbumList(
 				this);
 		Singleton_PlayerInfoHolder.getInstance().songsList = new MediaList(
-				this, MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
+				this,true, MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
 				MediaStore.Audio.Media.IS_MUSIC + " != 0", null,
 				MediaStore.Audio.Media.TITLE_KEY);
 
