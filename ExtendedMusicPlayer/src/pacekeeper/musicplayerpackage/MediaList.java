@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Random;
 
 import android.app.Activity;
 import android.database.Cursor;
@@ -35,8 +36,17 @@ public class MediaList {
 			this.albumArt = albumArt;
 		}
 	}
+	
+	private class AssociatedKey {
+		public AssociatedKey(String path, int key) {
+			this.filePath=path;
+			this.key=key;
+		}
+		String filePath;
+		int key;
+	}
 
-	private ArrayList<String> songsList;
+	private ArrayList<AssociatedKey> songsList;
 	private Song song;
 	private HashMap<Integer, Song> cachedSongs;
 	private Activity mainActivity;
@@ -55,15 +65,16 @@ public class MediaList {
 				where, whereVal,
 				orderBy);
 
-		this.songsList = new ArrayList<String>();
+		this.songsList = new ArrayList<AssociatedKey>();
 		this.cachedSongs = new HashMap<Integer, Song>();
+		//this.cachedSongs = new HashMap<String, Song>();
 		int count=0;
 		while (cursor.moveToNext()) {
 			String path = cursor.getString(0);
 			String currentAlbum = cursor.getString(5);
 			String currentAlbumArt = "";
 
-			this.songsList.add(path);
+			this.songsList.add(new AssociatedKey(path,songsList.size()));
 
 			if (currentAlbum != null)
 				currentAlbumArt = Singleton_PlayerInfoHolder.getInstance().albumsList
@@ -73,11 +84,15 @@ public class MediaList {
 					cursor.getString(3), cursor.getString(4), path,
 					currentAlbum, currentAlbumArt);
 
-			int key = this.songsList.indexOf(path);
-
+			//int key = this.songsList.indexOf(songsList.size()-1);
+			int key=songsList.size()-1;
 			if (!cachedSongs.containsKey(key))
+				
 				cachedSongs.put(key, song);
 		}
+		
+//		long seed = System.nanoTime();
+//		Collections.shuffle(songsList, new Random(seed));
 //		// Sorting
 //		Collections.sort(songsList, new Comparator<songKey>() {
 //			
@@ -92,33 +107,44 @@ public class MediaList {
 //		int index = Collections.binarySearch(songsList, path);
 //		if (index < 0)
 //			return -1;
-		return  this.songsList.indexOf(path);
+		int pos=positionOf(path);
+		return  songsList.get(pos).key;
 	}
 	
-	public boolean addSong(String filePath){
-		String _ID = Singleton_PlayerInfoHolder.getInstance().songsList.getID(filePath);
-		String title = Singleton_PlayerInfoHolder.getInstance().songsList.getID(filePath);
-		String artist = Singleton_PlayerInfoHolder.getInstance().songsList.getID(filePath);
-		String duration = Singleton_PlayerInfoHolder.getInstance().songsList.getID(filePath);
-		
-		String album = Singleton_PlayerInfoHolder.getInstance().songsList.getID(filePath);
-		String albumArt = Singleton_PlayerInfoHolder.getInstance().songsList.getID(filePath);
-		
-		if(!songsList.contains(filePath)){
-			songsList.add(filePath);
-			cachedSongs.put(songsList.indexOf(filePath), new Song(_ID, title,  artist,  duration,
-					filePath,  album,  albumArt));
-			return true;
+	public int positionOf(String path){
+		for(int i=0;i<songsList.size();i++){
+			if(songsList.get(i).filePath.equals(path)){
+				return i;
+			}
 		}
-		return false;
+		Toast.makeText(mainActivity, "Problem", Toast.LENGTH_SHORT).show();
+		return -1;
 	}
+	
+//	public boolean addSong(String filePath){
+//		String _ID = Singleton_PlayerInfoHolder.getInstance().songsList.getID(filePath);
+//		String title = Singleton_PlayerInfoHolder.getInstance().songsList.getID(filePath);
+//		String artist = Singleton_PlayerInfoHolder.getInstance().songsList.getID(filePath);
+//		String duration = Singleton_PlayerInfoHolder.getInstance().songsList.getID(filePath);
+//		
+//		String album = Singleton_PlayerInfoHolder.getInstance().songsList.getID(filePath);
+//		String albumArt = Singleton_PlayerInfoHolder.getInstance().songsList.getID(filePath);
+//		
+//		if(!songsList.contains(filePath)){
+//			songsList.add(filePath);
+//			cachedSongs.put(songsList.indexOf(filePath), new Song(_ID, title,  artist,  duration,
+//					filePath,  album,  albumArt));
+//			return true;
+//		}
+//		return false;
+//	}
 
 	public String matchWithAlbum(String album) {
 		String gottenAlbum = null;
 		for (int i = 0; i < songsList.size(); i++) {
-			gottenAlbum = cachedSongs.get(i).album;
+			gottenAlbum = cachedSongs.get(songsList.get(i).key).album;
 			if (gottenAlbum.equals(album)){		
-				return songsList.get(i);
+				return songsList.get(i).filePath;
 			}
 		}
 		return null;
@@ -131,42 +157,42 @@ public class MediaList {
 			position %= songsList.size();
 		return position;
 	}
-
-	public String getID(int position) {
-		return cachedSongs.get(position)._ID;
-	}
-
-	public String getTitle(int position) {
-		return cachedSongs.get(position).title;
-	}
-
-	public String getArtist(int position) {
-		return cachedSongs.get(position).artist;
-	}
-
-	public double getDuration(int position) {
-		String dur = cachedSongs.get(position).duration;
-		Long durationInMs = (long) 0.0;
-		if (dur!=null)durationInMs = Long.parseLong(dur);
-		
-		double durationInMin = ((double) durationInMs / 1000.0) / 60.0;
-
-		durationInMin = new BigDecimal(Double.toString(durationInMin))
-				.setScale(2, BigDecimal.ROUND_UP).doubleValue();
-		return durationInMin;
-	}
-
+//
+//	public String getID(int position) {
+//		return cachedSongs.get(position)._ID;
+//	}
+//
+//	public String getTitle(int position) {
+//		return cachedSongs.get(position).title;
+//	}
+//
+//	public String getArtist(int position) {
+//		return cachedSongs.get(position).artist;
+//	}
+//
+//	public double getDuration(int position) {
+//		String dur = cachedSongs.get(position).duration;
+//		Long durationInMs = (long) 0.0;
+//		if (dur!=null)durationInMs = Long.parseLong(dur);
+//		
+//		double durationInMin = ((double) durationInMs / 1000.0) / 60.0;
+//
+//		durationInMin = new BigDecimal(Double.toString(durationInMin))
+//				.setScale(2, BigDecimal.ROUND_UP).doubleValue();
+//		return durationInMin;
+//	}
+//
 	public String getPath(int position) {
-		return this.songsList.get(position);
+		return this.songsList.get(position).filePath;
 	}
-
-	public String getAlbum(int position) {
-		return cachedSongs.get(position).album;
-	}
-
-	public String getAlbumArt(int position) {
-		return cachedSongs.get(position).albumArt;
-	}
+//
+//	public String getAlbum(int position) {
+//		return cachedSongs.get(position).album;
+//	}
+//
+//	public String getAlbumArt(int position) {
+//		return cachedSongs.get(position).albumArt;
+//	}
 
 	public boolean existKey(String path) {
 		if (findKeybyPath(path) != -1)
@@ -241,28 +267,30 @@ public class MediaList {
 	}
 	
 	public String nextFileLoop(String currentFile){
-		int pos=adjustPos(songsList.indexOf(currentFile)+1);
-		return songsList.get(pos);
+		int pos=adjustPos(positionOf(currentFile)+1);
+		return songsList.get(pos).filePath;
 	}
 	
 	public String nextFile(String currentFile){
-		if (songsList.indexOf(currentFile)>=songsList.size()-1||songsList.indexOf(currentFile)<0){
+		if (positionOf(currentFile)>=songsList.size()-1||positionOf(currentFile)<0){
 			return null;
 		}
-		int pos=songsList.indexOf(currentFile)+1;
-		return songsList.get(pos);
+		int pos=positionOf(currentFile)+1;
+		return songsList.get(pos).filePath;
 	}
 	
 	public String prevFileLoop(String currentFile){
-		int pos=adjustPos(songsList.indexOf(currentFile)-1);
-		return songsList.get(pos);
+		int pos=adjustPos(positionOf(currentFile)-1);
+		return songsList.get(pos).filePath;
 	}
 	
 	public String prevFile(String currentFile){
-		if (songsList.indexOf(currentFile)>songsList.size()-1||songsList.indexOf(currentFile)<=0){
+		if (positionOf(currentFile)>songsList.size()-1||positionOf(currentFile)<=0){
 			return null;
 		}
-		int pos=songsList.indexOf(currentFile)-1;
-		return songsList.get(pos);
+		int pos=positionOf(currentFile)-1;
+		return songsList.get(pos).filePath;
 	}
+	
+
 }

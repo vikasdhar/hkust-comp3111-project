@@ -5,19 +5,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 
-import pacekeeper.musicplayerpackage.R;
-import android.support.v4.app.ListFragment;
 import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.ListFragment;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 import android.view.View;
@@ -26,9 +22,9 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
+import android.widget.TabHost.TabContentFactory;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.TabHost.TabContentFactory;
 
 /**
  * The <code>TabsViewPagerFragmentActivity</code> class implements the Fragment
@@ -155,6 +151,9 @@ public class MainMusicPlayerActivity extends FragmentActivity {
 	private void stopPlay() {
 		playerInfoHolder.player.stop();
 		playerInfoHolder.player.reset();
+
+		songInfoTextView.setText("No song selected");
+
 		playButton.setImageResource(R.drawable.ic_action_play);
 		showAlbumArtButton.setImageDrawable(getResources().getDrawable(
 				R.drawable.ic_expandplayer_placeholder));
@@ -349,8 +348,7 @@ public class MainMusicPlayerActivity extends FragmentActivity {
 
 				Intent intObj = new Intent(MainMusicPlayerActivity.this,
 						AssoMusicPlayerActivity.class);
-				
-				
+
 				startActivity(intObj);
 
 				break;
@@ -510,23 +508,28 @@ public class MainMusicPlayerActivity extends FragmentActivity {
 		}
 		super.onRestoreInstanceState(savedInstanceState);
 	}
-	
+
 	@Override
-	protected void onResume (){
+	protected void onResume() {
 		super.onResume();
 		playerInfoHolder.player.setOnCompletionListener(onCompletion);
 		playerInfoHolder.player.setOnErrorListener(onError);
-		
-		playerInfoHolder.setAlbumArt(showAlbumArtButton, playerInfoHolder.currentFile, false);
 
-		// selectedFile.setText(songsList.getTitle(listPosition)
-		// + "-" + songsList.getArtist(listPosition));
+		if (playerInfoHolder.player.isPlaying() == true) {
 
-		songInfoTextView.setText(playerInfoHolder.songsList
-				.getTitle(playerInfoHolder.currentFile)
-				+ "-"
-				+ playerInfoHolder.songsList
-						.getArtist(playerInfoHolder.currentFile));
+			playerInfoHolder.setAlbumArt(showAlbumArtButton,
+					playerInfoHolder.currentFile, false);
+
+			// selectedFile.setText(songsList.getTitle(listPosition)
+			// + "-" + songsList.getArtist(listPosition));
+
+			songInfoTextView.setText(playerInfoHolder.songsList
+					.getTitle(playerInfoHolder.currentFile)
+					+ "-"
+					+ playerInfoHolder.songsList
+							.getArtist(playerInfoHolder.currentFile));
+		} else
+			stopPlay();
 	}
 
 	/**

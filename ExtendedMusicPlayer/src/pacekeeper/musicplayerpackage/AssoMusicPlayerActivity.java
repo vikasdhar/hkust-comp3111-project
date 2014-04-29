@@ -47,8 +47,6 @@ public class AssoMusicPlayerActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-
-		   
 		setContentView(R.layout.assomusicplayeractivity_layout);
 
 		textSongTitle = (TextView) findViewById(R.id.assoplayer_song_title);
@@ -97,12 +95,12 @@ public class AssoMusicPlayerActivity extends Activity {
 	}
 
 	@Override
-	protected void onResume (){
+	protected void onResume() {
 		super.onResume();
 		playerInfoHolder.player.setOnCompletionListener(onCompletion);
 		playerInfoHolder.player.setOnErrorListener(onError);
 	}
-	
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
@@ -208,9 +206,15 @@ public class AssoMusicPlayerActivity extends Activity {
 	private void stopPlay() {
 		playerInfoHolder.player.stop();
 		playerInfoHolder.player.reset();
+		
+		textSongTitle.setText("No song selected");
+		textArtist.setText(" ");
+		textAlbum.setText(" ");
+		
 		playButton.setImageResource(R.drawable.ic_action_play);
 		albumArtView.setImageDrawable(getResources().getDrawable(
 				R.drawable.ic_expandplayer_placeholder));
+		
 		handler.removeCallbacks(updatePositionRunnable2);
 		seekbar.setProgress(0);
 
@@ -289,7 +293,7 @@ public class AssoMusicPlayerActivity extends Activity {
 			}
 
 			case R.id.assoplayer_next: {
-				
+
 				if (playerInfoHolder.currentFile != null) {
 					stopPlay();
 					switch (playerInfoHolder.repeatMode) {
@@ -375,7 +379,7 @@ public class AssoMusicPlayerActivity extends Activity {
 			}
 		}
 	};
-	
+
 	private MediaPlayer.OnCompletionListener onCompletion = new MediaPlayer.OnCompletionListener() {
 
 		@Override
@@ -387,6 +391,7 @@ public class AssoMusicPlayerActivity extends Activity {
 			case 2: {
 				playerInfoHolder.currentFile = playerInfoHolder.currentList
 						.nextFileLoop(playerInfoHolder.currentFile);
+
 				startPlay(playerInfoHolder.currentFile);
 				break;
 			}
@@ -399,9 +404,9 @@ public class AssoMusicPlayerActivity extends Activity {
 			case 0: {
 				playerInfoHolder.currentFile = playerInfoHolder.currentList
 						.nextFile(playerInfoHolder.currentFile);
-				if (playerInfoHolder.currentFile == null)
-					break;
-				else
+				if (playerInfoHolder.currentFile == null) {
+					
+				} else
 					startPlay(playerInfoHolder.currentFile);
 				break;
 			}
