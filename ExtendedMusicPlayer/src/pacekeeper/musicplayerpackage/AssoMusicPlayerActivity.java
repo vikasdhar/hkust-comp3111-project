@@ -28,6 +28,10 @@ public class AssoMusicPlayerActivity extends Activity {
 	private ImageButton repeatButton = null;
 	private ImageButton shuffleButton = null;
 	private ImageView albumArtView = null;
+	private int height;
+	private int width;
+	private View inflatedListView = null;
+
 	private TextView textSongTitle = null;
 	private TextView textArtist = null;
 	private TextView textAlbum = null;
@@ -61,6 +65,7 @@ public class AssoMusicPlayerActivity extends Activity {
 		shuffleButton = (ImageButton) findViewById(R.id.assoplayer_shuffle);
 		repeatButton = (ImageButton) findViewById(R.id.assoplayer_repeat);
 		albumArtView = (ImageView) findViewById(R.id.assoplayer_showalbumart);
+		inflatedListView = (View) findViewById(R.id.assoplayer_playlist);
 
 		playButton.setOnClickListener(onButtonClick);
 		nextButton.setOnClickListener(onButtonClick);
@@ -68,6 +73,7 @@ public class AssoMusicPlayerActivity extends Activity {
 		repeatButton.setOnClickListener(onButtonClick);
 		albumArtView.setOnClickListener(onButtonClick);
 		shuffleButton.setOnClickListener(onButtonClick);
+		albumArtView.setOnClickListener(onButtonClick);
 		seekbar.setOnSeekBarChangeListener(seekBarChanged);
 		resetStatic();
 	}
@@ -102,11 +108,9 @@ public class AssoMusicPlayerActivity extends Activity {
 					.getArtist(playerInfoHolder.currentFile));
 			textAlbum.setText(playerInfoHolder.songsList
 					.getAlbum(playerInfoHolder.currentFile));
-			playerInfoHolder.setAlbumArt(albumArtView,
-					playerInfoHolder.currentFile, false);
+			
 
 			// album art part; to resize after knowing the actual image height
-
 			ViewTreeObserver vto = albumArtView.getViewTreeObserver();
 			vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
 				public boolean onPreDraw() {
@@ -116,6 +120,8 @@ public class AssoMusicPlayerActivity extends Activity {
 					return true;
 				}
 			});
+			playerInfoHolder.setAlbumArt(albumArtView,
+					playerInfoHolder.currentFile, false);
 
 			seekbar.setMax(playerInfoHolder.player.getDuration());
 			if (playerInfoHolder.player.isPlaying()) {
@@ -124,14 +130,13 @@ public class AssoMusicPlayerActivity extends Activity {
 				playButton.setImageResource(R.drawable.ic_action_play);
 			}
 		}
-		
+
 		if (playerInfoHolder.isShuffle) {
 			shuffleButton.setImageResource(R.drawable.ic_action_shuffle);
-		}else{
+		} else {
 			shuffleButton.setImageResource(R.drawable.ic_action_mute);
 		}
-		
-		
+
 		switch (playerInfoHolder.repeatMode) {
 
 		// Repeat all
@@ -210,15 +215,15 @@ public class AssoMusicPlayerActivity extends Activity {
 	private void stopPlay() {
 		playerInfoHolder.player.stop();
 		playerInfoHolder.player.reset();
-		
+
 		textSongTitle.setText("No song selected");
 		textArtist.setText(" ");
 		textAlbum.setText(" ");
-		
+
 		playButton.setImageResource(R.drawable.ic_action_play);
 		albumArtView.setImageDrawable(getResources().getDrawable(
 				R.drawable.ic_expandplayer_placeholder));
-		
+
 		handler.removeCallbacks(updatePositionRunnable2);
 		seekbar.setProgress(0);
 
@@ -259,7 +264,7 @@ public class AssoMusicPlayerActivity extends Activity {
 			case R.id.assoplayer_prev: {
 
 				if (playerInfoHolder.currentFile != null) {
-					
+
 					switch (playerInfoHolder.repeatMode) {
 
 					// Repeat all
@@ -299,7 +304,7 @@ public class AssoMusicPlayerActivity extends Activity {
 			case R.id.assoplayer_next: {
 
 				if (playerInfoHolder.currentFile != null) {
-					
+
 					switch (playerInfoHolder.repeatMode) {
 
 					// Repeat all
@@ -358,16 +363,31 @@ public class AssoMusicPlayerActivity extends Activity {
 				}
 				}
 			}
-			case R.id.assoplayer_shuffle:{
-				if(playerInfoHolder.isShuffle){
-					playerInfoHolder.isShuffle=false;
+			case R.id.assoplayer_shuffle: {
+				if (playerInfoHolder.isShuffle) {
+					playerInfoHolder.isShuffle = false;
 					shuffleButton.setImageResource(R.drawable.ic_action_mute);
 					playerInfoHolder.currentList.unrandomize();
-				}else{
-					playerInfoHolder.isShuffle=true;
-					shuffleButton.setImageResource(R.drawable.ic_action_shuffle);
+				} else {
+					playerInfoHolder.isShuffle = true;
+					shuffleButton
+							.setImageResource(R.drawable.ic_action_shuffle);
 					playerInfoHolder.currentList.randomize();
 				}
+			}
+			case R.id.assoplayer_showalbumart: {
+
+				height = albumArtView.getHeight();
+				width = albumArtView.getWidth();
+
+				albumArtView.getLayoutParams().height = 0;
+				albumArtView.getLayoutParams().width = 0;
+				albumArtView.requestLayout();
+
+				inflatedListView.getLayoutParams().height = height;
+				inflatedListView.getLayoutParams().width = width;
+				inflatedListView.requestLayout();
+
 			}
 			}
 		}
@@ -419,7 +439,7 @@ public class AssoMusicPlayerActivity extends Activity {
 				playerInfoHolder.currentFile = playerInfoHolder.currentList
 						.nextFile(playerInfoHolder.currentFile);
 				if (playerInfoHolder.currentFile == null) {
-					
+
 				} else
 					startPlay(playerInfoHolder.currentFile);
 				break;
