@@ -108,7 +108,6 @@ public class AssoMusicPlayerActivity extends Activity {
 					.getArtist(playerInfoHolder.currentFile));
 			textAlbum.setText(playerInfoHolder.songsList
 					.getAlbum(playerInfoHolder.currentFile));
-			
 
 			// album art part; to resize after knowing the actual image height
 			ViewTreeObserver vto = albumArtView.getViewTreeObserver();
@@ -361,7 +360,9 @@ public class AssoMusicPlayerActivity extends Activity {
 					playerInfoHolder.repeatMode = 2;
 					break;
 				}
+
 				}
+				break;
 			}
 			case R.id.assoplayer_shuffle: {
 				if (playerInfoHolder.isShuffle) {
@@ -374,6 +375,7 @@ public class AssoMusicPlayerActivity extends Activity {
 							.setImageResource(R.drawable.ic_action_shuffle);
 					playerInfoHolder.currentList.randomize();
 				}
+				break;
 			}
 			case R.id.assoplayer_showalbumart: {
 
@@ -387,7 +389,7 @@ public class AssoMusicPlayerActivity extends Activity {
 				inflatedListView.getLayoutParams().height = height;
 				inflatedListView.getLayoutParams().width = width;
 				inflatedListView.requestLayout();
-
+				break;
 			}
 			}
 		}
