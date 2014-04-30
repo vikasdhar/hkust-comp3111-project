@@ -91,9 +91,9 @@ public class MediaCursorAdapter extends SimpleCursorAdapter {
 				//convertView = inflater.inflate(R.layout.listitem, parent, false);
 				convertView = inflater.inflate(R.layout.musicplayer_listitem, null);
 				holder = new MediaViewHolder();
-				holder.title = (TextView) convertView.findViewById(R.id.title);
-				holder.name = (TextView) convertView.findViewById(R.id.displayname);
-				holder.duration = (TextView) convertView.findViewById(R.id.duration);
+				holder.artistName = (TextView) convertView.findViewById(R.id.title);
+				holder.songTitle = (TextView) convertView.findViewById(R.id.displayname);
+				holder.songDuration = (TextView) convertView.findViewById(R.id.duration);
 				holder.albumArt = (ImageView) convertView.findViewById(R.id.smallalbumart);
 				convertView.setTag(holder);
 
@@ -102,10 +102,10 @@ public class MediaCursorAdapter extends SimpleCursorAdapter {
 			}
 			
 			
-			holder.name.setText(cursor.getString(cursor
+			holder.songTitle.setText(cursor.getString(cursor
 					.getColumnIndex(MediaStore.Audio.Media.TITLE)));
 
-			holder.title.setText(cursor.getString(cursor
+			holder.artistName.setText(cursor.getString(cursor
 					.getColumnIndex(MediaStore.Audio.Media.ARTIST)));
 
 			String tempDur= cursor.getString(cursor
@@ -119,7 +119,7 @@ public class MediaCursorAdapter extends SimpleCursorAdapter {
 			durationInMin = new BigDecimal(Double.toString(durationInMin))
 					.setScale(2, BigDecimal.ROUND_UP).doubleValue();
 
-			holder.duration.setText("" + durationInMin);
+			holder.songDuration.setText("" + durationInMin);
 			
 			String filePath= cursor.getString(cursor
 					.getColumnIndex(MediaStore.Audio.Media.DATA));
@@ -131,10 +131,10 @@ public class MediaCursorAdapter extends SimpleCursorAdapter {
 			return convertView;
 		}
 		
-		 class MediaViewHolder {
-			TextView title ;
-			TextView name ;
-			TextView duration ;
+		class MediaViewHolder {
+			TextView artistName ;
+			TextView songTitle ;
+			TextView songDuration ;
 			ImageView albumArt ;
 			String path;
 		}

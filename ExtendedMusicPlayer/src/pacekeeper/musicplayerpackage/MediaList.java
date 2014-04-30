@@ -196,31 +196,37 @@ public class MediaList {
 		return position;
 	}
 
-	//
-	// public String getID(int position) {
-	// return cachedSongs.get(position)._ID;
-	// }
-	//
-	// public String getTitle(int position) {
-	// return cachedSongs.get(position).title;
-	// }
-	//
-	// public String getArtist(int position) {
-	// return cachedSongs.get(position).artist;
-	// }
-	//
-	// public double getDuration(int position) {
-	// String dur = cachedSongs.get(position).duration;
-	// Long durationInMs = (long) 0.0;
-	// if (dur!=null)durationInMs = Long.parseLong(dur);
-	//
-	// double durationInMin = ((double) durationInMs / 1000.0) / 60.0;
-	//
-	// durationInMin = new BigDecimal(Double.toString(durationInMin))
-	// .setScale(2, BigDecimal.ROUND_UP).doubleValue();
-	// return durationInMin;
-	// }
-	//
+	public String[] getTitleArray(){
+		String[] titleArray= new String[songsList.size()];
+		for(int i=0;i<songsList.size();i++){
+			titleArray[i]=getTitle(i);
+		}
+		return titleArray;
+	}
+	 public String getID(int position) {
+	 return cachedSongs.get(songsList.get(position).key)._ID;
+	 }
+	
+	 public String getTitle(int position) {
+	 return cachedSongs.get(songsList.get(position).key).title;
+	 }
+	
+	 public String getArtist(int position) {
+	 return cachedSongs.get(songsList.get(position).key).artist;
+	 }
+	
+	 public double getDuration(int position) {
+	 String dur = cachedSongs.get(songsList.get(position).key).duration;
+	 Long durationInMs = (long) 0.0;
+	 if (dur!=null)durationInMs = Long.parseLong(dur);
+	
+	 double durationInMin = ((double) durationInMs / 1000.0) / 60.0;
+	
+	 durationInMin = new BigDecimal(Double.toString(durationInMin))
+	 .setScale(2, BigDecimal.ROUND_UP).doubleValue();
+	 return durationInMin;
+	 }
+	
 	public String getPath(int position) {
 		return this.songsList.get(position).filePath;
 	}

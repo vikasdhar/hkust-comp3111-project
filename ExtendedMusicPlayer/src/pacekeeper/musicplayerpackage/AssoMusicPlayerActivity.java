@@ -2,16 +2,23 @@ package pacekeeper.musicplayerpackage;
 
 import java.io.IOException;
 
+import pacekeeper.musicplayerpackage.MediaCursorAdapter.MediaViewHolder;
+import pacekeeper.musicplayerpackage.MyArrayAdaptor.InstantListViewHolder;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,7 +37,7 @@ public class AssoMusicPlayerActivity extends Activity {
 	private ImageView albumArtView = null;
 	private int height;
 	private int width;
-	private View inflatedListView = null;
+	private ListView inflatedListView = null;
 
 	private TextView textSongTitle = null;
 	private TextView textArtist = null;
@@ -65,7 +72,7 @@ public class AssoMusicPlayerActivity extends Activity {
 		shuffleButton = (ImageButton) findViewById(R.id.assoplayer_shuffle);
 		repeatButton = (ImageButton) findViewById(R.id.assoplayer_repeat);
 		albumArtView = (ImageView) findViewById(R.id.assoplayer_showalbumart);
-		inflatedListView = (View) findViewById(R.id.assoplayer_playlist);
+		inflatedListView = (ListView) findViewById(R.id.assoplayer_playlist);
 
 		playButton.setOnClickListener(onButtonClick);
 		nextButton.setOnClickListener(onButtonClick);
@@ -75,6 +82,42 @@ public class AssoMusicPlayerActivity extends Activity {
 		shuffleButton.setOnClickListener(onButtonClick);
 		albumArtView.setOnClickListener(onButtonClick);
 		seekbar.setOnSeekBarChangeListener(seekBarChanged);
+
+
+		OnItemClickListener onItemClickListener = new OnItemClickListener() {
+			// @Override
+			// public void onListItemClick(ListView list, View view, int
+			// position,
+			// long id) {
+			// super.onListItemClick(list, view, position, id);
+			// MediaViewHolder holder = (MediaViewHolder) view.getTag();
+			// Singleton_PlayerInfoHolder.getInstance().currentFile = (String)
+			// holder.path;
+			//
+			// String whereValue[] = { (String) holder.path };
+			// Singleton_PlayerInfoHolder.getInstance().currentList = new
+			// MediaList(
+			// mainMusicPlayerActivity,false,
+			// MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
+			// MediaStore.Audio.Media.IS_MUSIC + " != 0 and "
+			// + MediaStore.Audio.Media.DATA + " =?", whereValue,
+			// MediaStore.Audio.Media.TRACK);
+			//
+			// mainMusicPlayerActivity.startPlay(Singleton_PlayerInfoHolder
+			// .getInstance().currentFile);
+			//
+			// }
+
+			@Override
+			public void onItemClick(AdapterView<?> listView, View view,
+					int position, long id) {
+				InstantListViewHolder holder = (InstantListViewHolder) view
+						.getTag();
+				
+
+			}
+		};
+		inflatedListView.setOnItemClickListener(onItemClickListener);
 		resetStatic();
 	}
 
@@ -154,6 +197,18 @@ public class AssoMusicPlayerActivity extends Activity {
 			break;
 		}
 		}
+		MyArrayAdaptor arrayAdaptor;
+		if (playerInfoHolder.currentList != null) {
+			arrayAdaptor = new MyArrayAdaptor(this,
+					R.layout.musicplayer_listitem,
+					playerInfoHolder.currentList.getTitleArray(), true);
+
+		} else {
+			arrayAdaptor = new MyArrayAdaptor(this,
+					R.layout.musicplayer_listitem,
+					new String[] { "No song selected" }, false);
+		}
+		inflatedListView.setAdapter(arrayAdaptor);
 	}
 
 	protected void updatePosition2() {
