@@ -188,30 +188,30 @@ public class MainMusicPlayerActivity extends FragmentActivity {
 		@Override
 		public void onCompletion(MediaPlayer mp) {
 			stopPlay();
-			switch (playerInfoHolder.repeatMode) {
+			if (playerInfoHolder.currentFile != null) {
+				switch (playerInfoHolder.repeatMode) {
 
-			// Repeat all
-			case 2: {
-				playerInfoHolder.currentFile = playerInfoHolder.currentList
-						.nextFileLoop(playerInfoHolder.currentFile);
-				startPlay(playerInfoHolder.currentFile);
-				break;
-			}
-			// Repeat once
-			case 1: {
-				startPlay(playerInfoHolder.currentFile);
-				break;
-			}
-			// No repeat
-			case 0: {
-				playerInfoHolder.currentFile = playerInfoHolder.currentList
-						.nextFile(playerInfoHolder.currentFile);
-				if (playerInfoHolder.currentFile == null)
-					break;
-				else
+				// Repeat all
+				case 2: {
+					playerInfoHolder.currentFile = playerInfoHolder.currentList
+							.nextFileLoop(playerInfoHolder.currentFile);
 					startPlay(playerInfoHolder.currentFile);
-				break;
-			}
+					break;
+				}
+				// Repeat once
+				case 1: {
+					startPlay(playerInfoHolder.currentFile);
+					break;
+				}
+				// No repeat
+				case 0: {
+					playerInfoHolder.currentFile = playerInfoHolder.currentList
+							.nextFile(playerInfoHolder.currentFile);
+					if (playerInfoHolder.currentFile != null)
+						startPlay(playerInfoHolder.currentFile);
+					break;
+				}
+				}
 			}
 		}
 	};
@@ -402,7 +402,7 @@ public class MainMusicPlayerActivity extends FragmentActivity {
 		Singleton_PlayerInfoHolder.getInstance().albumsList = new AlbumList(
 				this);
 		Singleton_PlayerInfoHolder.getInstance().songsList = new MediaList(
-				this,true, MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
+				this, true, MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
 				MediaStore.Audio.Media.IS_MUSIC + " != 0", null,
 				MediaStore.Audio.Media.TITLE_KEY);
 

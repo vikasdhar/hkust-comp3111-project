@@ -22,6 +22,7 @@ public class MyArrayAdaptor extends ArrayAdapter<String> {
 	private LayoutInflater inflater;
 	private String[] songTitleList;
 	private boolean containItem;
+	
 	class InstantListViewHolder {
 		TextView artistName ;
 		TextView songTitle ;
@@ -73,6 +74,7 @@ public class MyArrayAdaptor extends ArrayAdapter<String> {
 			holder.songDuration.setText(" ");
 			holder.albumArt.setImageDrawable(assoActivity.getResources().getDrawable(
 					R.drawable.ic_expandplayer_placeholder));
+			holder.path=null;
 			return convertView;
 		}
 		

@@ -2,16 +2,13 @@ package pacekeeper.musicplayerpackage;
 
 import java.io.IOException;
 
-import pacekeeper.musicplayerpackage.MediaCursorAdapter.MediaViewHolder;
 import pacekeeper.musicplayerpackage.MyArrayAdaptor.InstantListViewHolder;
-
 import android.app.Activity;
-import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.MediaStore;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.AdapterView;
@@ -35,6 +32,8 @@ public class AssoMusicPlayerActivity extends Activity {
 	private ImageButton repeatButton = null;
 	private ImageButton shuffleButton = null;
 	private ImageView albumArtView = null;
+
+	private boolean isListInflated;
 	private int height;
 	private int width;
 	private ListView inflatedListView = null;
@@ -83,42 +82,79 @@ public class AssoMusicPlayerActivity extends Activity {
 		albumArtView.setOnClickListener(onButtonClick);
 		seekbar.setOnSeekBarChangeListener(seekBarChanged);
 
-
 		OnItemClickListener onItemClickListener = new OnItemClickListener() {
-			// @Override
-			// public void onListItemClick(ListView list, View view, int
-			// position,
-			// long id) {
-			// super.onListItemClick(list, view, position, id);
-			// MediaViewHolder holder = (MediaViewHolder) view.getTag();
-			// Singleton_PlayerInfoHolder.getInstance().currentFile = (String)
-			// holder.path;
-			//
-			// String whereValue[] = { (String) holder.path };
-			// Singleton_PlayerInfoHolder.getInstance().currentList = new
-			// MediaList(
-			// mainMusicPlayerActivity,false,
-			// MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
-			// MediaStore.Audio.Media.IS_MUSIC + " != 0 and "
-			// + MediaStore.Audio.Media.DATA + " =?", whereValue,
-			// MediaStore.Audio.Media.TRACK);
-			//
-			// mainMusicPlayerActivity.startPlay(Singleton_PlayerInfoHolder
-			// .getInstance().currentFile);
-			//
-			// }
-
 			@Override
 			public void onItemClick(AdapterView<?> listView, View view,
 					int position, long id) {
 				InstantListViewHolder holder = (InstantListViewHolder) view
 						.getTag();
-				
+
+				Singleton_PlayerInfoHolder.getInstance().currentFile = (String) holder.path;
+				if (Singleton_PlayerInfoHolder.getInstance().currentFile != null) {
+					startPlay(Singleton_PlayerInfoHolder.getInstance().currentFile);
+				}
 
 			}
 		};
+
 		inflatedListView.setOnItemClickListener(onItemClickListener);
-		resetStatic();
+
+		SwipeListViewTouchListener touchListener = new SwipeListViewTouchListener(
+				inflatedListView,
+				new SwipeListViewTouchListener.OnSwipeCallback() {
+					@Override
+					public void onSwipeLeft(ListView listView,
+							int[] reverseSortedPositions) {
+						// Log.i(this.getClass().getName(),
+						// "swipe left : pos="+reverseSortedPositions[0]);
+						// TODO : YOUR CODE HERE FOR LEFT ACTION
+						Toast.makeText(AssoMusicPlayerActivity.this,
+								"it work on left", Toast.LENGTH_SHORT).show();
+					}
+
+					@Override
+					public void onSwipeRight(ListView listView,
+							int[] reverseSortedPositions) {
+						// Log.i(ProfileMenuActivity.class.getClass().getName(),
+						// "swipe right : pos="+reverseSortedPositions[0]);
+						// TODO : YOUR CODE HERE FOR RIGHT ACTION
+						if (AssoMusicPlayerActivity.this.playerInfoHolder.currentList != null) {
+							if (AssoMusicPlayerActivity.this.playerInfoHolder.currentFile
+									.equals(AssoMusicPlayerActivity.this.playerInfoHolder.currentList
+											.getPath(reverseSortedPositions[0]))) {
+
+								playerInfoHolder.currentFile = playerInfoHolder.currentList
+										.nextFile(playerInfoHolder.currentFile);
+								if (playerInfoHolder.currentFile == null) {
+									Toast.makeText(
+											(Activity) listView.getContext(),
+											"This is the last song!",
+											Toast.LENGTH_SHORT).show();
+									AssoMusicPlayerActivity.this.stopPlay();
+								} else {
+
+									startPlay(playerInfoHolder.currentFile);
+								}
+							}
+							Toast.makeText((Activity) listView.getContext(),
+									"I am here", Toast.LENGTH_SHORT).show();
+							AssoMusicPlayerActivity.this.playerInfoHolder.currentList
+									.deleteSong(reverseSortedPositions[0]);
+							setInstantPlayList();
+							listView.setSelection(reverseSortedPositions[0] - 3);
+						}
+					}
+				}, false, // example : left action =without dismiss
+				true, // example : right action without dismiss animation
+				false, false);
+		inflatedListView.setOnTouchListener(touchListener);
+		// Setting this scroll listener is required to ensure that during
+		// ListView scrolling,
+		// we don't look for swipes.
+		inflatedListView
+				.setOnScrollListener(touchListener.makeScrollListener());
+
+		resetStatus();
 	}
 
 	@Override
@@ -135,11 +171,34 @@ public class AssoMusicPlayerActivity extends Activity {
 		handler.removeCallbacks(updatePositionRunnable2);
 	}
 
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		switch (keyCode) {
+		case KeyEvent.KEYCODE_BACK:
+			if (isListInflated) {
+				isListInflated = false;
+				height = inflatedListView.getHeight();
+				width = inflatedListView.getWidth();
+
+				inflatedListView.getLayoutParams().height = 0;
+				inflatedListView.getLayoutParams().width = 0;
+				inflatedListView.requestLayout();
+
+				albumArtView.getLayoutParams().height = height;
+				albumArtView.getLayoutParams().width = width;
+				albumArtView.requestLayout();
+				return true;
+			}
+			break;
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+
 	/**
 	 * Reset the state base on MusicPlayer_with_songslist
 	 * 
 	 */
-	protected void resetStatic() {
+	protected void resetStatus() {
 		if (!playerInfoHolder.isStarted) {
 			albumArtView.setImageDrawable(getResources().getDrawable(
 					R.drawable.ic_expandplayer_placeholder));
@@ -197,6 +256,10 @@ public class AssoMusicPlayerActivity extends Activity {
 			break;
 		}
 		}
+		setInstantPlayList();
+	}
+
+	protected void setInstantPlayList() {
 		MyArrayAdaptor arrayAdaptor;
 		if (playerInfoHolder.currentList != null) {
 			arrayAdaptor = new MyArrayAdaptor(this,
@@ -424,16 +487,18 @@ public class AssoMusicPlayerActivity extends Activity {
 					playerInfoHolder.isShuffle = false;
 					shuffleButton.setImageResource(R.drawable.ic_action_mute);
 					playerInfoHolder.currentList.unrandomize();
+					setInstantPlayList();
 				} else {
 					playerInfoHolder.isShuffle = true;
 					shuffleButton
 							.setImageResource(R.drawable.ic_action_shuffle);
 					playerInfoHolder.currentList.randomize();
+					setInstantPlayList();
 				}
 				break;
 			}
 			case R.id.assoplayer_showalbumart: {
-
+				isListInflated = true;
 				height = albumArtView.getHeight();
 				width = albumArtView.getWidth();
 
@@ -476,31 +541,31 @@ public class AssoMusicPlayerActivity extends Activity {
 		@Override
 		public void onCompletion(MediaPlayer mp) {
 			stopPlay();
-			switch (playerInfoHolder.repeatMode) {
+			if (playerInfoHolder.currentFile != null) {
+				switch (playerInfoHolder.repeatMode) {
 
-			// Repeat all
-			case 2: {
-				playerInfoHolder.currentFile = playerInfoHolder.currentList
-						.nextFileLoop(playerInfoHolder.currentFile);
+				// Repeat all
+				case 2: {
+					playerInfoHolder.currentFile = playerInfoHolder.currentList
+							.nextFileLoop(playerInfoHolder.currentFile);
 
-				startPlay(playerInfoHolder.currentFile);
-				break;
-			}
-			// Repeat once
-			case 1: {
-				startPlay(playerInfoHolder.currentFile);
-				break;
-			}
-			// No repeat
-			case 0: {
-				playerInfoHolder.currentFile = playerInfoHolder.currentList
-						.nextFile(playerInfoHolder.currentFile);
-				if (playerInfoHolder.currentFile == null) {
-
-				} else
 					startPlay(playerInfoHolder.currentFile);
-				break;
-			}
+					break;
+				}
+				// Repeat once
+				case 1: {
+					startPlay(playerInfoHolder.currentFile);
+					break;
+				}
+				// No repeat
+				case 0: {
+					playerInfoHolder.currentFile = playerInfoHolder.currentList
+							.nextFile(playerInfoHolder.currentFile);
+					if (playerInfoHolder.currentFile != null)
+						startPlay(playerInfoHolder.currentFile);
+					break;
+				}
+				}
 			}
 		}
 	};
