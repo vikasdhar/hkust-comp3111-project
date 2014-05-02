@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
+import pacekeeper.soundtouchandroid.STMediaPlayerAdaptor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaMetadataRetriever;
@@ -25,7 +26,7 @@ public class Singleton_PlayerInfoHolder {
 	 * @param 2:List repeat
 	 */
 	static int repeatMode = 2;
-	static MediaPlayer player = null;
+	static STMediaPlayerAdaptor player = null;
 	static String currentFile = null;
 	static MediaList songsList;
 	static MediaList currentList;

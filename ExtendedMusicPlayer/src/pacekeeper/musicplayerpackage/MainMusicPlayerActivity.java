@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 
+import pacekeeper.soundtouchandroid.STMediaPlayerAdaptor;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -420,7 +421,12 @@ public class MainMusicPlayerActivity extends FragmentActivity {
 		nextButton = (ImageButton) findViewById(R.id.next);
 		showAlbumArtButton = (ImageView) findViewById(R.id.showalbumart);
 
-		playerInfoHolder.player = new MediaPlayer();
+		try {
+			playerInfoHolder.player = new STMediaPlayerAdaptor(this);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		playerInfoHolder.player.setOnCompletionListener(onCompletion);
 		playerInfoHolder.player.setOnErrorListener(onError);
@@ -492,6 +498,8 @@ public class MainMusicPlayerActivity extends FragmentActivity {
 																				// the
 																				// tab
 		// selected
+		//outState.putString("currentFile", playerInfoHolder.currentFile);
+		Log.i("onSaveInstanceState", "currentFile: " + playerInfoHolder.currentFile);
 		super.onSaveInstanceState(outState);
 	}
 
@@ -505,6 +513,8 @@ public class MainMusicPlayerActivity extends FragmentActivity {
 		if (savedInstanceState != null) {
 			tabInfoHolder.mTabHost.setCurrentTabByTag(savedInstanceState
 					.getString("tab")); // set the tab as per the saved state
+			//playerInfoHolder.currentFile = savedInstanceState.getString("currentFile");
+			Log.i("onRestoreInstanceState", "currentFile: " + playerInfoHolder.currentFile);
 		}
 		super.onRestoreInstanceState(savedInstanceState);
 	}
@@ -515,7 +525,7 @@ public class MainMusicPlayerActivity extends FragmentActivity {
 		playerInfoHolder.player.setOnCompletionListener(onCompletion);
 		playerInfoHolder.player.setOnErrorListener(onError);
 
-		if (playerInfoHolder.player.isPlaying() == true) {
+		if (playerInfoHolder.player.isPlaying() == true && playerInfoHolder.currentFile != null) {
 
 			playerInfoHolder.setAlbumArt(showAlbumArtButton,
 					playerInfoHolder.currentFile, false);
