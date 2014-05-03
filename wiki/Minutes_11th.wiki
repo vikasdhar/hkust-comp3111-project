@@ -1,5 +1,5 @@
 =COMP 3111: Introduction to Software Engineering=    
-=Minutes of the 9th Project Scrum Meeting=
+=Minutes of the 11th Project Scrum Meeting=
  
 =Pace-Keeper=
 ----
