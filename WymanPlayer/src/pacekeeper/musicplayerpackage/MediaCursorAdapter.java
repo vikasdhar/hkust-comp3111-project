@@ -128,6 +128,7 @@ public class MediaCursorAdapter extends SimpleCursorAdapter {
 			
 			Singleton_PlayerInfoHolder.setAlbumArt(holder.albumArt,filePath,true);
 			
+			holder.position=position;
 			return convertView;
 		}
 		
@@ -137,5 +138,6 @@ public class MediaCursorAdapter extends SimpleCursorAdapter {
 			TextView songDuration ;
 			ImageView albumArt ;
 			String path;
+			int position;
 		}
 	}

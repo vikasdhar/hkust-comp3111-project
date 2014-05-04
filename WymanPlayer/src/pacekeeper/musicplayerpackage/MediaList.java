@@ -156,17 +156,17 @@ public class MediaList {
 	}
 
 	public boolean addSong(String filePath) {
-		String _ID = Singleton_PlayerInfoHolder.getInstance().songsList
+		String _ID = Singleton_PlayerInfoHolder.getInstance().allSongsList
 				.getID(filePath);
-		String title = Singleton_PlayerInfoHolder.getInstance().songsList
+		String title = Singleton_PlayerInfoHolder.getInstance().allSongsList
 				.getTitle(filePath);
-		String artist = Singleton_PlayerInfoHolder.getInstance().songsList
+		String artist = Singleton_PlayerInfoHolder.getInstance().allSongsList
 				.getArtist(filePath);
-		String duration = Singleton_PlayerInfoHolder.getInstance().songsList
+		String duration = Singleton_PlayerInfoHolder.getInstance().allSongsList
 				.getDuration2String(filePath);
-		String album = Singleton_PlayerInfoHolder.getInstance().songsList
+		String album = Singleton_PlayerInfoHolder.getInstance().allSongsList
 				.getAlbum(filePath);
-		String albumArt = Singleton_PlayerInfoHolder.getInstance().songsList
+		String albumArt = Singleton_PlayerInfoHolder.getInstance().allSongsList
 				.getAlbumArt(filePath);
 
 		if (positionOf(filePath)==-1) {

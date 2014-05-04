@@ -79,7 +79,7 @@
             android:id="@+id/assoplayer_playlist"
             android:layout_width="fill_parent"
             android:layout_height="0dp" 
-            android:background="@drawable/color_purple"/>
+            android:background="@drawable/color_green"/>
 
 
     <LinearLayout

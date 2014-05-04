@@ -123,7 +123,7 @@ public class AlbumsCursorAdapter extends SimpleCursorAdapter {
 
 		holder.numberofAlbums.setText("#Songs: " + numberOfSongs);
 
-		String file = Singleton_PlayerInfoHolder.getInstance().songsList
+		String file = Singleton_PlayerInfoHolder.getInstance().allSongsList
 		.matchWithAlbum(currentAlbum);
 		
 		

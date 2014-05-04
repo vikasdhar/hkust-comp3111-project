@@ -27,9 +27,9 @@ public class Singleton_PlayerInfoHolder {
 	 * @param 2:List repeat
 	 */
 	static int repeatMode = 2;
-	static STMediaPlayer player = null;
+	static MediaPlayer player = null;
 	static String currentFile = null;
-	static MediaList songsList;
+	static MediaList allSongsList;
 	static MediaList currentList;
 	static AlbumList albumsList;
 
@@ -42,7 +42,7 @@ public class Singleton_PlayerInfoHolder {
 	
 	public static void setAlbumArt(ImageView imageview, String file, boolean compress) {
 
-		String albumArtpath = songsList
+		String albumArtpath = allSongsList
 				.getAlbumArt(file);
 
 		if (albumArtpath != null) {

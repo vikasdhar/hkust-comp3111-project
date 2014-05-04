@@ -46,6 +46,7 @@ public class ListFragment_SortByArtist extends ListFragment {
 		private TextView artistIndicater;
 		private ImageButton playAllButton;
 
+		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
@@ -75,6 +76,12 @@ public class ListFragment_SortByArtist extends ListFragment {
 				setListAdapter(mediaAdapter);
 
 			}
+//			
+//			localSongsList= new MediaList(
+//					mainMusicPlayerActivity, false, MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
+//					MediaStore.Audio.Media.IS_MUSIC + " != 0 and "
+//									+ MediaStore.Audio.Media.ARTIST + " =?", whereValue,
+//					MediaStore.Audio.Media.TITLE_KEY);
 
 			artistIndicater = (TextView) view
 					.findViewById(R.id.sortByArtistChild_artistIndicator);
@@ -120,9 +127,6 @@ public class ListFragment_SortByArtist extends ListFragment {
 							// Log.i(this.getClass().getName(),
 							// "swipe left : pos="+reverseSortedPositions[0]);
 							// TODO : YOUR CODE HERE FOR LEFT ACTION
-							Toast.makeText(mainMusicPlayerActivity,
-									"it work on left", Toast.LENGTH_SHORT)
-									.show();
 						}
 
 						@Override
@@ -131,9 +135,58 @@ public class ListFragment_SortByArtist extends ListFragment {
 							// Log.i(ProfileMenuActivity.class.getClass().getName(),
 							// "swipe right : pos="+reverseSortedPositions[0]);
 							// TODO : YOUR CODE HERE FOR RIGHT ACTION
-							Toast.makeText(mainMusicPlayerActivity,
-									"it work on right", Toast.LENGTH_SHORT)
-									.show();
+							View view = (View) listView.getChildAt(0);
+
+							MediaViewHolder holder = (MediaViewHolder) view
+									.getTag();
+
+							view = (View) listView
+									.getChildAt(reverseSortedPositions[0]
+											- holder.position);
+							if (view == null)
+								Toast.makeText(
+										mainMusicPlayerActivity,
+										reverseSortedPositions[0] + " "
+												+ listView.getChildCount(),
+										Toast.LENGTH_SHORT).show();
+
+							holder = (MediaViewHolder) view.getTag();
+
+							if (Singleton_PlayerInfoHolder.getInstance().currentList != null) {
+								if (Singleton_PlayerInfoHolder.getInstance().currentList
+										.addSong(holder.path)) {
+									Toast.makeText(
+											mainMusicPlayerActivity,
+											holder.songTitle.getText()
+													+ " is added to current playlist successfully!",
+											Toast.LENGTH_SHORT).show();
+								} else {
+									Toast.makeText(
+											mainMusicPlayerActivity,
+											holder.songTitle.getText()
+													+ " already exists in the current playlist!",
+											Toast.LENGTH_SHORT).show();
+								}
+
+							} else {
+								String[] whereValue = { holder.path };
+								Singleton_PlayerInfoHolder.getInstance().currentList = new MediaList(
+										mainMusicPlayerActivity,
+										false,
+										MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
+										MediaStore.Audio.Media.IS_MUSIC
+												+ " != 0 and "
+												+ MediaStore.Audio.Media.DATA
+												+ " =?", whereValue, null);
+								Singleton_PlayerInfoHolder.getInstance().currentFile = holder.path;
+								mainMusicPlayerActivity.startPlay(holder.path);
+								Toast.makeText(
+										mainMusicPlayerActivity,
+										holder.songTitle.getText()
+												+ " is added to current playlist successfully!",
+										Toast.LENGTH_SHORT).show();
+
+							}
 						}
 					}, false, // example : left action =without dismiss
 					false, // example : right action without dismiss animation

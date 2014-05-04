@@ -118,10 +118,10 @@ public class MainMusicPlayerActivity extends FragmentActivity {
 		// selectedFile.setText(songsList.getTitle(listPosition)
 		// + "-" + songsList.getArtist(listPosition));
 
-		songInfoTextView.setText(playerInfoHolder.songsList
+		songInfoTextView.setText(playerInfoHolder.allSongsList
 				.getTitle(playerInfoHolder.currentFile)
 				+ "-"
-				+ playerInfoHolder.songsList
+				+ playerInfoHolder.allSongsList
 						.getArtist(playerInfoHolder.currentFile));
 
 		seekbar.setProgress(0);
@@ -403,7 +403,7 @@ public class MainMusicPlayerActivity extends FragmentActivity {
 
 		Singleton_PlayerInfoHolder.getInstance().albumsList = new AlbumList(
 				this);
-		Singleton_PlayerInfoHolder.getInstance().songsList = new MediaList(
+		Singleton_PlayerInfoHolder.getInstance().allSongsList = new MediaList(
 				this, true, MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
 				MediaStore.Audio.Media.IS_MUSIC + " != 0", null,
 				MediaStore.Audio.Media.TITLE_KEY);
@@ -422,12 +422,13 @@ public class MainMusicPlayerActivity extends FragmentActivity {
 		nextButton = (ImageButton) findViewById(R.id.next);
 		showAlbumArtButton = (ImageView) findViewById(R.id.showalbumart);
 
-		try {
-			playerInfoHolder.player = new STMediaPlayer(this);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		// try {
+		// playerInfoHolder.player = new STMediaPlayer(this);
+		// } catch (IOException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		playerInfoHolder.player = new MediaPlayer();
 
 		playerInfoHolder.player.setOnCompletionListener(onCompletion);
 		playerInfoHolder.player.setOnErrorListener(onError);
@@ -499,8 +500,9 @@ public class MainMusicPlayerActivity extends FragmentActivity {
 																				// the
 																				// tab
 		// selected
-		outState.putString("currentFile", playerInfoHolder.currentFile);
-		Log.i("onSaveInstanceState", "currentFile: " + playerInfoHolder.currentFile);
+		// outState.putString("currentFile", playerInfoHolder.currentFile);
+		Log.i("onSaveInstanceState", "currentFile: "
+				+ playerInfoHolder.currentFile);
 		super.onSaveInstanceState(outState);
 	}
 
@@ -514,8 +516,10 @@ public class MainMusicPlayerActivity extends FragmentActivity {
 		if (savedInstanceState != null) {
 			tabInfoHolder.mTabHost.setCurrentTabByTag(savedInstanceState
 					.getString("tab")); // set the tab as per the saved state
-			playerInfoHolder.currentFile = savedInstanceState.getString("currentFile");
-			Log.i("onRestoreInstanceState", "currentFile: " + playerInfoHolder.currentFile);
+			// playerInfoHolder.currentFile =
+			// savedInstanceState.getString("currentFile");
+			Log.i("onRestoreInstanceState", "currentFile: "
+					+ playerInfoHolder.currentFile);
 		}
 		super.onRestoreInstanceState(savedInstanceState);
 	}
@@ -525,17 +529,18 @@ public class MainMusicPlayerActivity extends FragmentActivity {
 		super.onResume();
 		playerInfoHolder.player.setOnCompletionListener(onCompletion);
 		playerInfoHolder.player.setOnErrorListener(onError);
-		if (playerInfoHolder.player.isPlaying() == true && playerInfoHolder.currentFile != null) {
+		if (playerInfoHolder.player.isPlaying() == true
+				&& playerInfoHolder.currentFile != null) {
 			playerInfoHolder.setAlbumArt(showAlbumArtButton,
 					playerInfoHolder.currentFile, false);
 
 			// selectedFile.setText(songsList.getTitle(listPosition)
 			// + "-" + songsList.getArtist(listPosition));
 
-			songInfoTextView.setText(playerInfoHolder.songsList
+			songInfoTextView.setText(playerInfoHolder.allSongsList
 					.getTitle(playerInfoHolder.currentFile)
 					+ "-"
-					+ playerInfoHolder.songsList
+					+ playerInfoHolder.allSongsList
 							.getArtist(playerInfoHolder.currentFile));
 
 		} else

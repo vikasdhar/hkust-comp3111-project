@@ -108,8 +108,7 @@ public class AssoMusicPlayerActivity extends Activity {
 						// Log.i(this.getClass().getName(),
 						// "swipe left : pos="+reverseSortedPositions[0]);
 						// TODO : YOUR CODE HERE FOR LEFT ACTION
-						Toast.makeText(AssoMusicPlayerActivity.this,
-								"it work on left", Toast.LENGTH_SHORT).show();
+
 					}
 
 					@Override
@@ -119,6 +118,15 @@ public class AssoMusicPlayerActivity extends Activity {
 						// "swipe right : pos="+reverseSortedPositions[0]);
 						// TODO : YOUR CODE HERE FOR RIGHT ACTION
 						if (AssoMusicPlayerActivity.this.playerInfoHolder.currentList != null) {
+							String songTitle = AssoMusicPlayerActivity.this.playerInfoHolder.currentList
+									.getTitle(reverseSortedPositions[0]);
+
+							Toast.makeText(
+									AssoMusicPlayerActivity.this,
+									songTitle
+											+ " is deleted from current playlist successfully!",
+									Toast.LENGTH_SHORT).show();
+							
 							if (AssoMusicPlayerActivity.this.playerInfoHolder.currentFile
 									.equals(AssoMusicPlayerActivity.this.playerInfoHolder.currentList
 											.getPath(reverseSortedPositions[0]))) {
@@ -136,12 +144,11 @@ public class AssoMusicPlayerActivity extends Activity {
 									startPlay(playerInfoHolder.currentFile);
 								}
 							}
-							Toast.makeText((Activity) listView.getContext(),
-									"I am here", Toast.LENGTH_SHORT).show();
 							AssoMusicPlayerActivity.this.playerInfoHolder.currentList
 									.deleteSong(reverseSortedPositions[0]);
 							setInstantPlayList();
 							listView.setSelection(reverseSortedPositions[0] - 3);
+
 						}
 					}
 				}, false, // example : left action =without dismiss
@@ -204,11 +211,11 @@ public class AssoMusicPlayerActivity extends Activity {
 					R.drawable.ic_expandplayer_placeholder));
 		} else {
 			updatePosition2();
-			textSongTitle.setText(playerInfoHolder.songsList
+			textSongTitle.setText(playerInfoHolder.allSongsList
 					.getTitle(playerInfoHolder.currentFile));
-			textArtist.setText(playerInfoHolder.songsList
+			textArtist.setText(playerInfoHolder.allSongsList
 					.getArtist(playerInfoHolder.currentFile));
-			textAlbum.setText(playerInfoHolder.songsList
+			textAlbum.setText(playerInfoHolder.allSongsList
 					.getAlbum(playerInfoHolder.currentFile));
 
 			// album art part; to resize after knowing the actual image height
@@ -296,11 +303,11 @@ public class AssoMusicPlayerActivity extends Activity {
 			}
 		});
 
-		textSongTitle.setText(playerInfoHolder.songsList
+		textSongTitle.setText(playerInfoHolder.allSongsList
 				.getTitle(playerInfoHolder.currentFile));
-		textArtist.setText(playerInfoHolder.songsList
+		textArtist.setText(playerInfoHolder.allSongsList
 				.getArtist(playerInfoHolder.currentFile));
-		textAlbum.setText(playerInfoHolder.songsList
+		textAlbum.setText(playerInfoHolder.allSongsList
 				.getAlbum(playerInfoHolder.currentFile));
 
 		seekbar.setProgress(0);
