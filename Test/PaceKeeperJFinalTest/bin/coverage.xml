@@ -1,0 +1,3635 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- EMMA v2.0.5312 report, generated Mon May 05 20:42:37 CST 2014 -->
+
+<report>
+  <stats>
+    <packages value="6"/>
+    <classes value="102"/>
+    <methods value="513"/>
+    <srcfiles value="42"/>
+    <srclines value="2697"/>
+  </stats>
+  <data>
+    <all name="all classes">
+      <coverage type="class, %" value="52%  (53/102)"/>
+      <coverage type="method, %" value="41%  (209/513)"/>
+      <coverage type="block, %" value="45%  (5837/12900)"/>
+      <coverage type="line, %" value="44%  (1183.7/2697)"/>
+
+      <package name="com.comp3111.achievement">
+        <coverage type="class, %" value="12%  (2/16)"/>
+        <coverage type="method, %" value="5%   (3/64)"/>
+        <coverage type="block, %" value="11%  (217/1983)"/>
+        <coverage type="line, %" value="9%   (35/375)"/>
+
+        <srcfile name="AchievementActivity.java">
+          <coverage type="class, %" value="0%   (0/2)"/>
+          <coverage type="method, %" value="0%   (0/16)"/>
+          <coverage type="block, %" value="0%   (0/371)"/>
+          <coverage type="line, %" value="0%   (0/65)"/>
+
+          <class name="AchievementActivity">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/12)"/>
+            <coverage type="block, %" value="0%   (0/357)"/>
+            <coverage type="line, %" value="0%   (0/61)"/>
+
+            <method name="AchievementActivity (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/19)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="access$000 (AchievementActivity): ActionBar">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="finish_percentage (String): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/14)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="get_achievement_from_db (): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/21)"/>
+              <coverage type="line, %" value="0%   (0/5)"/>
+            </method>
+            <method name="get_latest (String): ArrayList">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/47)"/>
+              <coverage type="line, %" value="0%   (0/9)"/>
+            </method>
+            <method name="num_of_ach_finished (String): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/34)"/>
+              <coverage type="line, %" value="0%   (0/5)"/>
+            </method>
+            <method name="onCreate (Bundle): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/84)"/>
+              <coverage type="line, %" value="0%   (0/15)"/>
+            </method>
+            <method name="onTabReselected (ActionBar$Tab, FragmentTransaction): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onTabSelected (ActionBar$Tab, FragmentTransaction): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="onTabUnselected (ActionBar$Tab, FragmentTransaction): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="retrieve_order (int, String): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/37)"/>
+              <coverage type="line, %" value="0%   (0/6)"/>
+            </method>
+            <method name="update_ach (int, String, String): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/90)"/>
+              <coverage type="line, %" value="0%   (0/13)"/>
+            </method>
+          </class>
+          <class name="AchievementActivity$1">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/4)"/>
+            <coverage type="block, %" value="0%   (0/14)"/>
+            <coverage type="line, %" value="0%   (0/5)"/>
+
+            <method name="AchievementActivity$1 (AchievementActivity): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onPageScrollStateChanged (int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onPageScrolled (int, float, int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onPageSelected (int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="J_ACH_Fragment.java">
+          <coverage type="class, %" value="0%   (0/5)"/>
+          <coverage type="method, %" value="0%   (0/15)"/>
+          <coverage type="block, %" value="0%   (0/302)"/>
+          <coverage type="line, %" value="0%   (0/52)"/>
+
+          <class name="J_ACH_Fragment">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/7)"/>
+            <coverage type="block, %" value="0%   (0/224)"/>
+            <coverage type="line, %" value="0%   (0/40)"/>
+
+            <method name="J_ACH_Fragment (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/67)"/>
+              <coverage type="line, %" value="0%   (0/4)"/>
+            </method>
+            <method name="access$000 (J_ACH_Fragment, int, String, int, int, int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/8)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="animateProgress (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/16)"/>
+              <coverage type="line, %" value="0%   (0/4)"/>
+            </method>
+            <method name="animateRegion (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/25)"/>
+              <coverage type="line, %" value="0%   (0/8)"/>
+            </method>
+            <method name="onCreateView (LayoutInflater, ViewGroup, Bundle): View">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/55)"/>
+              <coverage type="line, %" value="0%   (0/11)"/>
+            </method>
+            <method name="setUserVisibleHint (boolean): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/14)"/>
+              <coverage type="line, %" value="0%   (0/5)"/>
+            </method>
+            <method name="showContribution (int, String, int, int, int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/39)"/>
+              <coverage type="line, %" value="0%   (0/8)"/>
+            </method>
+          </class>
+          <class name="J_ACH_Fragment$1">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/2)"/>
+            <coverage type="block, %" value="0%   (0/19)"/>
+            <coverage type="line, %" value="0%   (0/3)"/>
+
+            <method name="J_ACH_Fragment$1 (J_ACH_Fragment): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onClick (View): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/13)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+          </class>
+          <class name="J_ACH_Fragment$2">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/2)"/>
+            <coverage type="block, %" value="0%   (0/21)"/>
+            <coverage type="line, %" value="0%   (0/3)"/>
+
+            <method name="J_ACH_Fragment$2 (J_ACH_Fragment): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onClick (View): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/15)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+          </class>
+          <class name="J_ACH_Fragment$3">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/2)"/>
+            <coverage type="block, %" value="0%   (0/21)"/>
+            <coverage type="line, %" value="0%   (0/3)"/>
+
+            <method name="J_ACH_Fragment$3 (J_ACH_Fragment): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onClick (View): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/15)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+          </class>
+          <class name="J_ACH_Fragment$4">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/2)"/>
+            <coverage type="block, %" value="0%   (0/17)"/>
+            <coverage type="line, %" value="0%   (0/7)"/>
+
+            <method name="J_ACH_Fragment$4 (J_ACH_Fragment): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="run (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/11)"/>
+              <coverage type="line, %" value="0%   (0/6)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="JointStatActivity.java">
+          <coverage type="class, %" value="0%   (0/1)"/>
+          <coverage type="method, %" value="0%   (0/6)"/>
+          <coverage type="block, %" value="0%   (0/206)"/>
+          <coverage type="line, %" value="0%   (0/45)"/>
+
+          <class name="JointStatActivity">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/6)"/>
+            <coverage type="block, %" value="0%   (0/206)"/>
+            <coverage type="line, %" value="0%   (0/45)"/>
+
+            <method name="JointStatActivity (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="animateCircles (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/48)"/>
+              <coverage type="line, %" value="0%   (0/11)"/>
+            </method>
+            <method name="inflateContributors (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/39)"/>
+              <coverage type="line, %" value="0%   (0/8)"/>
+            </method>
+            <method name="onCreate (Bundle): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/100)"/>
+              <coverage type="line, %" value="0%   (0/19)"/>
+            </method>
+            <method name="onOptionsItemSelected (MenuItem): boolean">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/11)"/>
+              <coverage type="line, %" value="0%   (0/4)"/>
+            </method>
+            <method name="setupActionBar (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/5)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="P_ACH_Fragment.java">
+          <coverage type="class, %" value="0%   (0/3)"/>
+          <coverage type="method, %" value="0%   (0/8)"/>
+          <coverage type="block, %" value="0%   (0/383)"/>
+          <coverage type="line, %" value="0%   (0/78)"/>
+
+          <class name="P_ACH_Fragment">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/4)"/>
+            <coverage type="block, %" value="0%   (0/255)"/>
+            <coverage type="line, %" value="0%   (0/62)"/>
+
+            <method name="P_ACH_Fragment (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/22)"/>
+              <coverage type="line, %" value="0%   (0/6)"/>
+            </method>
+            <method name="onCreateView (LayoutInflater, ViewGroup, Bundle): View">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/203)"/>
+              <coverage type="line, %" value="0%   (0/46)"/>
+            </method>
+            <method name="onDestroy (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="setUserVisibleHint (boolean): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/27)"/>
+              <coverage type="line, %" value="0%   (0/8)"/>
+            </method>
+          </class>
+          <class name="P_ACH_Fragment$1">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/2)"/>
+            <coverage type="block, %" value="0%   (0/64)"/>
+            <coverage type="line, %" value="0%   (0/9)"/>
+
+            <method name="P_ACH_Fragment$1 (P_ACH_Fragment, Achievement): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/9)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onClick (View): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/55)"/>
+              <coverage type="line, %" value="0%   (0/8)"/>
+            </method>
+          </class>
+          <class name="P_ACH_Fragment$2">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/2)"/>
+            <coverage type="block, %" value="0%   (0/64)"/>
+            <coverage type="line, %" value="0%   (0/9)"/>
+
+            <method name="P_ACH_Fragment$2 (P_ACH_Fragment, Achievement): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/9)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onClick (View): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/55)"/>
+              <coverage type="line, %" value="0%   (0/8)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="STAT_Fragment.java">
+          <coverage type="class, %" value="0%   (0/2)"/>
+          <coverage type="method, %" value="0%   (0/5)"/>
+          <coverage type="block, %" value="0%   (0/305)"/>
+          <coverage type="line, %" value="0%   (0/57)"/>
+
+          <class name="STAT_Fragment">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/3)"/>
+            <coverage type="block, %" value="0%   (0/273)"/>
+            <coverage type="line, %" value="0%   (0/52)"/>
+
+            <method name="STAT_Fragment (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="onCreateView (LayoutInflater, ViewGroup, Bundle): View">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/256)"/>
+              <coverage type="line, %" value="0%   (0/48)"/>
+            </method>
+            <method name="roundOneDecimal (double): double">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/11)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+          </class>
+          <class name="STAT_Fragment$1">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/2)"/>
+            <coverage type="block, %" value="0%   (0/32)"/>
+            <coverage type="line, %" value="0%   (0/6)"/>
+
+            <method name="STAT_Fragment$1 (STAT_Fragment, String): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/9)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onClick (View): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/23)"/>
+              <coverage type="line, %" value="0%   (0/5)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="TabsPagerAdapter.java">
+          <coverage type="class, %" value="0%   (0/1)"/>
+          <coverage type="method, %" value="0%   (0/3)"/>
+          <coverage type="block, %" value="0%   (0/22)"/>
+          <coverage type="line, %" value="0%   (0/8)"/>
+
+          <class name="TabsPagerAdapter">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/3)"/>
+            <coverage type="block, %" value="0%   (0/22)"/>
+            <coverage type="line, %" value="0%   (0/8)"/>
+
+            <method name="TabsPagerAdapter (FragmentManager): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="getCount (): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/2)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getItem (int): Fragment">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/16)"/>
+              <coverage type="line, %" value="0%   (0/5)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="PersonalAchievement.java">
+          <coverage type="class, %" value="100% (1/1)"/>
+          <coverage type="method, %" value="25%  (2/8)"/>
+          <coverage type="block, %" value="54%  (193/358)"/>
+          <coverage type="line, %" value="46%  (26/57)"/>
+
+          <class name="PersonalAchievement">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="25%  (2/8)"/>
+            <coverage type="block, %" value="54%  (193/358)"/>
+            <coverage type="line, %" value="46%  (26/57)"/>
+
+            <method name="check_if_achieve (String, int): ArrayList">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/49)"/>
+              <coverage type="line, %" value="0%   (0/7)"/>
+            </method>
+            <method name="get_acheivement (int): Achievement">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="get_acheivement_by_id (int): Achievement">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/27)"/>
+              <coverage type="line, %" value="0%   (0/5)"/>
+            </method>
+            <method name="get_num_of_p_ach (): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="reset_record (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/17)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="store_record (int, String): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/62)"/>
+              <coverage type="line, %" value="0%   (0/14)"/>
+            </method>
+            <method name="PersonalAchievement (Context): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (134/134)"/>
+              <coverage type="line, %" value="100% (17/17)"/>
+            </method>
+            <method name="update_record_from_db (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (59/59)"/>
+              <coverage type="line, %" value="100% (9/9)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="Achievement.java">
+          <coverage type="class, %" value="100% (1/1)"/>
+          <coverage type="method, %" value="33%  (1/3)"/>
+          <coverage type="block, %" value="67%  (24/36)"/>
+          <coverage type="line, %" value="69%  (9/13)"/>
+
+          <class name="Achievement">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="33%  (1/3)"/>
+            <coverage type="block, %" value="67%  (24/36)"/>
+            <coverage type="line, %" value="69%  (9/13)"/>
+
+            <method name="ach_name (): String">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="issucceed (): boolean">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/9)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="Achievement (String, String, int): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (24/24)"/>
+              <coverage type="line, %" value="100% (9/9)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="com.comp3111.ui">
+        <coverage type="class, %" value="33%  (3/9)"/>
+        <coverage type="method, %" value="19%  (8/42)"/>
+        <coverage type="block, %" value="29%  (393/1376)"/>
+        <coverage type="line, %" value="38%  (96.8/256)"/>
+
+        <srcfile name="CircleView.java">
+          <coverage type="class, %" value="0%   (0/2)"/>
+          <coverage type="method, %" value="0%   (0/11)"/>
+          <coverage type="block, %" value="0%   (0/413)"/>
+          <coverage type="line, %" value="0%   (0/61)"/>
+
+          <class name="CircleView">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/9)"/>
+            <coverage type="block, %" value="0%   (0/340)"/>
+            <coverage type="line, %" value="0%   (0/53)"/>
+
+            <method name="CircleView (Context): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/58)"/>
+              <coverage type="line, %" value="0%   (0/13)"/>
+            </method>
+            <method name="CircleView (Context, AttributeSet): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/61)"/>
+              <coverage type="line, %" value="0%   (0/14)"/>
+            </method>
+            <method name="CircleView (Context, AttributeSet, int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/62)"/>
+              <coverage type="line, %" value="0%   (0/14)"/>
+            </method>
+            <method name="animateCircle (int, float): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/21)"/>
+              <coverage type="line, %" value="0%   (0/5)"/>
+            </method>
+            <method name="init (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/33)"/>
+              <coverage type="line, %" value="0%   (0/8)"/>
+            </method>
+            <method name="onDraw (Canvas): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/67)"/>
+              <coverage type="line, %" value="0%   (0/7)"/>
+            </method>
+            <method name="setColor (int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/26)"/>
+              <coverage type="line, %" value="0%   (0/9)"/>
+            </method>
+            <method name="setPercentage (float): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/8)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="setStartOffset (int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+          </class>
+          <class name="CircleView$1">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/2)"/>
+            <coverage type="block, %" value="0%   (0/73)"/>
+            <coverage type="line, %" value="0%   (0/9)"/>
+
+            <method name="CircleView$1 (CircleView): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="run (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/67)"/>
+              <coverage type="line, %" value="0%   (0/8)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="SwipeListViewTouchListener.java">
+          <coverage type="class, %" value="33%  (2/6)"/>
+          <coverage type="method, %" value="24%  (6/25)"/>
+          <coverage type="block, %" value="34%  (264/773)"/>
+          <coverage type="line, %" value="45%  (68.8/154)"/>
+
+          <class name="SwipeListViewTouchListener$2">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/2)"/>
+            <coverage type="block, %" value="0%   (0/35)"/>
+            <coverage type="line, %" value="0%   (0/5)"/>
+
+            <method name="SwipeListViewTouchListener$2 (SwipeListViewTouchListener, View, int, boolean): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/15)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onAnimationEnd (Animator): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/20)"/>
+              <coverage type="line, %" value="0%   (0/4)"/>
+            </method>
+          </class>
+          <class name="SwipeListViewTouchListener$3">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/2)"/>
+            <coverage type="block, %" value="0%   (0/117)"/>
+            <coverage type="line, %" value="0%   (0/19)"/>
+
+            <method name="SwipeListViewTouchListener$3 (SwipeListViewTouchListener, boolean, int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/12)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onAnimationEnd (Animator): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/105)"/>
+              <coverage type="line, %" value="0%   (0/18)"/>
+            </method>
+          </class>
+          <class name="SwipeListViewTouchListener$4">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/2)"/>
+            <coverage type="block, %" value="0%   (0/25)"/>
+            <coverage type="line, %" value="0%   (0/4)"/>
+
+            <method name="SwipeListViewTouchListener$4 (SwipeListViewTouchListener, ViewGroup$LayoutParams, View): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/12)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onAnimationUpdate (ValueAnimator): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/13)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+          </class>
+          <class name="SwipeListViewTouchListener$PendingSwipeData">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/2)"/>
+            <coverage type="block, %" value="0%   (0/18)"/>
+            <coverage type="line, %" value="0%   (0/5)"/>
+
+            <method name="SwipeListViewTouchListener$PendingSwipeData (SwipeListViewTouchListener, int, View): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/12)"/>
+              <coverage type="line, %" value="0%   (0/4)"/>
+            </method>
+            <method name="compareTo (SwipeListViewTouchListener$PendingSwipeData): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+          </class>
+          <class name="SwipeListViewTouchListener$1">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="67%  (2/3)"/>
+            <coverage type="block, %" value="41%  (7/17)"/>
+            <coverage type="line, %" value="50%  (2/4)"/>
+
+            <method name="onScrollStateChanged (AbsListView, int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/10)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="SwipeListViewTouchListener$1 (SwipeListViewTouchListener): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (6/6)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="onScroll (AbsListView, int, int, int): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (1/1)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+          </class>
+          <class name="SwipeListViewTouchListener">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="29%  (4/14)"/>
+            <coverage type="block, %" value="46%  (257/561)"/>
+            <coverage type="line, %" value="56%  (67.8/121)"/>
+
+            <method name="access$000 (SwipeListViewTouchListener): boolean">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="access$100 (SwipeListViewTouchListener): boolean">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="access$200 (SwipeListViewTouchListener, View, int, boolean, boolean): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/7)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="access$300 (SwipeListViewTouchListener): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="access$306 (SwipeListViewTouchListener): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/8)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="access$400 (SwipeListViewTouchListener): List">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="access$500 (SwipeListViewTouchListener): ListView">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="access$600 (SwipeListViewTouchListener): SwipeListViewTouchListener$OnSwipeCallback">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="performSwipeAction (View, int, boolean, boolean): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/72)"/>
+              <coverage type="line, %" value="0%   (0/12)"/>
+            </method>
+            <method name="setEnabled (boolean): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/8)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="onTouch (View, MotionEvent): boolean">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="48%  (179/370)"/>
+              <coverage type="line, %" value="53%  (43.9/82)"/>
+            </method>
+            <method name="SwipeListViewTouchListener (ListView, SwipeListViewTouchListener$OnSwipeCallback): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (56/56)"/>
+              <coverage type="line, %" value="100% (17/17)"/>
+            </method>
+            <method name="SwipeListViewTouchListener (ListView, SwipeListViewTouchListener$OnSwipeCallback, boolean, boolean, boolean, boolean): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (17/17)"/>
+              <coverage type="line, %" value="100% (6/6)"/>
+            </method>
+            <method name="makeScrollListener (): AbsListView$OnScrollListener">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (5/5)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="ExpandAnimation.java">
+          <coverage type="class, %" value="100% (1/1)"/>
+          <coverage type="method, %" value="33%  (2/6)"/>
+          <coverage type="block, %" value="68%  (129/190)"/>
+          <coverage type="line, %" value="68%  (28/41)"/>
+
+          <class name="ExpandAnimation">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="33%  (2/6)"/>
+            <coverage type="block, %" value="68%  (129/190)"/>
+            <coverage type="line, %" value="68%  (28/41)"/>
+
+            <method name="getHeight (): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getWidth (): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="setHeight (int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="setWidth (int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="applyTransformation (float, Transformation): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="70%  (76/109)"/>
+              <coverage type="line, %" value="74%  (14/19)"/>
+            </method>
+            <method name="ExpandAnimation (View, int, int, int, int, int, int): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="82%  (53/65)"/>
+              <coverage type="line, %" value="88%  (14/16)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="com.smp.soundtouchandroid">
+        <coverage type="class, %" value="43%  (3/7)"/>
+        <coverage type="method, %" value="37%  (29/79)"/>
+        <coverage type="block, %" value="35%  (571/1648)"/>
+        <coverage type="line, %" value="36%  (146.8/413)"/>
+
+        <srcfile name="Constants.java">
+          <coverage type="class, %" value="0%   (0/1)"/>
+          <coverage type="method, %" value="0%   (0/1)"/>
+          <coverage type="block, %" value="0%   (0/3)"/>
+          <coverage type="line, %" value="0%   (0/1)"/>
+
+          <class name="Constants">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/1)"/>
+            <coverage type="block, %" value="0%   (0/3)"/>
+            <coverage type="line, %" value="0%   (0/1)"/>
+
+            <method name="Constants (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="JLayerMp3Decoder.java">
+          <coverage type="class, %" value="0%   (0/1)"/>
+          <coverage type="method, %" value="0%   (0/13)"/>
+          <coverage type="block, %" value="0%   (0/420)"/>
+          <coverage type="line, %" value="0%   (0/117)"/>
+
+          <class name="JLayerMp3Decoder">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/13)"/>
+            <coverage type="block, %" value="0%   (0/420)"/>
+            <coverage type="line, %" value="0%   (0/117)"/>
+
+            <method name="JLayerMp3Decoder (String): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/40)"/>
+              <coverage type="line, %" value="0%   (0/8)"/>
+            </method>
+            <method name="JLayerMp3Decoder (String, long): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="close (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/11)"/>
+              <coverage type="line, %" value="0%   (0/6)"/>
+            </method>
+            <method name="decode (String, int, int): byte []">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/167)"/>
+              <coverage type="line, %" value="0%   (0/41)"/>
+            </method>
+            <method name="decodeChunk (): byte []">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/103)"/>
+              <coverage type="line, %" value="0%   (0/28)"/>
+            </method>
+            <method name="determineFormat (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/68)"/>
+              <coverage type="line, %" value="0%   (0/24)"/>
+            </method>
+            <method name="getChannels (): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getDuration (): long">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/5)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getPlayedDuration (): long">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/5)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getSamplingRate (): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="resetEOS (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="sawOutputEOS (): boolean">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="seek (long): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/5)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="SoundTouchAndroidException.java">
+          <coverage type="class, %" value="0%   (0/1)"/>
+          <coverage type="method, %" value="0%   (0/1)"/>
+          <coverage type="block, %" value="0%   (0/4)"/>
+          <coverage type="line, %" value="0%   (0/2)"/>
+
+          <class name="SoundTouchAndroidException">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/1)"/>
+            <coverage type="block, %" value="0%   (0/4)"/>
+            <coverage type="line, %" value="0%   (0/2)"/>
+
+            <method name="SoundTouchAndroidException (String): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="SoundTouchPlayable.java">
+          <coverage type="class, %" value="50%  (1/2)"/>
+          <coverage type="method, %" value="41%  (14/34)"/>
+          <coverage type="block, %" value="37%  (285/762)"/>
+          <coverage type="line, %" value="44%  (76.9/174)"/>
+
+          <class name="SoundTouchPlayable$1">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/2)"/>
+            <coverage type="block, %" value="0%   (0/38)"/>
+            <coverage type="line, %" value="0%   (0/6)"/>
+
+            <method name="SoundTouchPlayable$1 (SoundTouchPlayable): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="run (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/32)"/>
+              <coverage type="line, %" value="0%   (0/5)"/>
+            </method>
+          </class>
+          <class name="SoundTouchPlayable">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="44%  (14/32)"/>
+            <coverage type="block, %" value="39%  (285/724)"/>
+            <coverage type="line, %" value="46%  (76.9/168)"/>
+
+            <method name="SoundTouchPlayable (SoundTouchPlayable$OnProgressChangedListener, String, int, float, float): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/10)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="SoundTouchPlayable (String, int, float, float): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/56)"/>
+              <coverage type="line, %" value="0%   (0/14)"/>
+            </method>
+            <method name="access$000 (SoundTouchPlayable): Mp3Decoder">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="access$100 (SoundTouchPlayable): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="access$200 (SoundTouchPlayable): SoundTouchPlayable$OnProgressChangedListener">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="createSoundTouchPlayable (String, int, float, float): SoundTouchPlayable">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/19)"/>
+              <coverage type="line, %" value="0%   (0/5)"/>
+            </method>
+            <method name="getChannels (): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getDuration (): long">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getFileName (): String">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getPlayedDuration (): long">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/16)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="getSamplingRate (): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getSessionId (): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="seekTo (double, boolean): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/13)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="seekTo (long, boolean): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/65)"/>
+              <coverage type="line, %" value="0%   (0/12)"/>
+            </method>
+            <method name="setBypassSoundTouch (boolean): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="setTempoChange (float): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/5)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="setVolume (float, float): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/20)"/>
+              <coverage type="line, %" value="0%   (0/4)"/>
+            </method>
+            <method name="stop (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/28)"/>
+              <coverage type="line, %" value="0%   (0/8)"/>
+            </method>
+            <method name="run (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="6%   (6/108)"/>
+              <coverage type="line, %" value="12%  (2/16)"/>
+            </method>
+            <method name="playFile (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="61%  (45/74)"/>
+              <coverage type="line, %" value="57%  (11.4/20)"/>
+            </method>
+            <method name="pauseWait (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="70%  (16/23)"/>
+              <coverage type="line, %" value="72%  (5/7)"/>
+            </method>
+            <method name="pause (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="70%  (23/33)"/>
+              <coverage type="line, %" value="90%  (6.3/7)"/>
+            </method>
+            <method name="play (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="74%  (29/39)"/>
+              <coverage type="line, %" value="94%  (8.5/9)"/>
+            </method>
+            <method name="processChunk (byte [], boolean): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="80%  (35/44)"/>
+              <coverage type="line, %" value="89%  (9.8/11)"/>
+            </method>
+            <method name="setupAudio (int, float, float): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="84%  (42/50)"/>
+              <coverage type="line, %" value="82%  (9/11)"/>
+            </method>
+            <method name="SoundTouchPlayable (AssetFileDescriptor, int, float, float): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (49/49)"/>
+              <coverage type="line, %" value="100% (13/13)"/>
+            </method>
+            <method name="createSoundTouchPlayable (AssetFileDescriptor, int, float, float): SoundTouchPlayable">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (19/19)"/>
+              <coverage type="line, %" value="100% (5/5)"/>
+            </method>
+            <method name="getPitchSemi (): float">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (4/4)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="getTempo (): float">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (4/4)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="isPaused (): boolean">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="setPitchSemi (float): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (5/5)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="setTempo (float): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (5/5)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="SoundTouch.java">
+          <coverage type="class, %" value="100% (1/1)"/>
+          <coverage type="method, %" value="50%  (9/18)"/>
+          <coverage type="block, %" value="56%  (71/126)"/>
+          <coverage type="line, %" value="56%  (23/41)"/>
+
+          <class name="SoundTouch">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="50%  (9/18)"/>
+            <coverage type="block, %" value="56%  (71/126)"/>
+            <coverage type="line, %" value="56%  (23/41)"/>
+
+            <method name="clearBuffer (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="finish (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/5)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="getBytesPerSample (): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getChannels (): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getSamplingRate (): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="setBytesPerSample (int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="setChannels (int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="setSamplingRate (int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="setTempoChange (float): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/25)"/>
+              <coverage type="line, %" value="0%   (0/5)"/>
+            </method>
+            <method name="&lt;static initializer&gt;">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="SoundTouch (int, int, int, int, float, float): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (28/28)"/>
+              <coverage type="line, %" value="100% (9/9)"/>
+            </method>
+            <method name="getBytes (byte []): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (7/7)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="getOutputBufferSize (): long">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (4/4)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="getPitchSemi (): float">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="getTempo (): float">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="putBytes (byte []): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (7/7)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="setPitchSemi (float): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (8/8)"/>
+              <coverage type="line, %" value="100% (3/3)"/>
+            </method>
+            <method name="setTempo (float): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (8/8)"/>
+              <coverage type="line, %" value="100% (3/3)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="MediaCodecMp3Decoder.java">
+          <coverage type="class, %" value="100% (1/1)"/>
+          <coverage type="method, %" value="50%  (6/12)"/>
+          <coverage type="block, %" value="65%  (215/333)"/>
+          <coverage type="line, %" value="60%  (46.9/78)"/>
+
+          <class name="MediaCodecMp3Decoder">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="50%  (6/12)"/>
+            <coverage type="block, %" value="65%  (215/333)"/>
+            <coverage type="line, %" value="60%  (46.9/78)"/>
+
+            <method name="MediaCodecMp3Decoder (String): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/63)"/>
+              <coverage type="line, %" value="0%   (0/14)"/>
+            </method>
+            <method name="close (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/13)"/>
+              <coverage type="line, %" value="0%   (0/5)"/>
+            </method>
+            <method name="getDuration (): long">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getPlayedDuration (): long">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="resetEOS (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="seek (long): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/15)"/>
+              <coverage type="line, %" value="0%   (0/4)"/>
+            </method>
+            <method name="decodeChunk (): byte []">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="89%  (77/87)"/>
+              <coverage type="line, %" value="89%  (16/18)"/>
+            </method>
+            <method name="advanceInput (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="89%  (57/64)"/>
+              <coverage type="line, %" value="87%  (13.8/16)"/>
+            </method>
+            <method name="MediaCodecMp3Decoder (AssetFileDescriptor): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (68/68)"/>
+              <coverage type="line, %" value="100% (14/14)"/>
+            </method>
+            <method name="getChannels (): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (5/5)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="getSamplingRate (): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (5/5)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="sawOutputEOS (): boolean">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="com.comp3111.pacekeeper">
+        <coverage type="class, %" value="51%  (26/51)"/>
+        <coverage type="method, %" value="44%  (92/211)"/>
+        <coverage type="block, %" value="55%  (3195/5781)"/>
+        <coverage type="line, %" value="52%  (600.8/1164)"/>
+
+        <srcfile name="AdvancedSettingsActivity.java">
+          <coverage type="class, %" value="0%   (0/11)"/>
+          <coverage type="method, %" value="0%   (0/47)"/>
+          <coverage type="block, %" value="0%   (0/724)"/>
+          <coverage type="line, %" value="0%   (0/125)"/>
+
+          <class name="AdvancedSettingsActivity">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/7)"/>
+            <coverage type="block, %" value="0%   (0/528)"/>
+            <coverage type="line, %" value="0%   (0/85)"/>
+
+            <method name="AdvancedSettingsActivity (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="OK_update_data (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/71)"/>
+              <coverage type="line, %" value="0%   (0/11)"/>
+            </method>
+            <method name="dialog (String): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="init_bar_position (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/155)"/>
+              <coverage type="line, %" value="0%   (0/11)"/>
+            </method>
+            <method name="onClick (View): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/14)"/>
+              <coverage type="line, %" value="0%   (0/8)"/>
+            </method>
+            <method name="onCreate (Bundle): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/231)"/>
+              <coverage type="line, %" value="0%   (0/41)"/>
+            </method>
+            <method name="retrieve_saved_data (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/53)"/>
+              <coverage type="line, %" value="0%   (0/12)"/>
+            </method>
+          </class>
+          <class name="AdvancedSettingsActivity$1">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/4)"/>
+            <coverage type="block, %" value="0%   (0/20)"/>
+            <coverage type="line, %" value="0%   (0/5)"/>
+
+            <method name="AdvancedSettingsActivity$1 (AdvancedSettingsActivity): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onProgressChanged (SeekBar, int, boolean): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/12)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="onStartTrackingTouch (SeekBar): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onStopTrackingTouch (SeekBar): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+          </class>
+          <class name="AdvancedSettingsActivity$10">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/4)"/>
+            <coverage type="block, %" value="0%   (0/20)"/>
+            <coverage type="line, %" value="0%   (0/5)"/>
+
+            <method name="AdvancedSettingsActivity$10 (AdvancedSettingsActivity): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onProgressChanged (SeekBar, int, boolean): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/12)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="onStartTrackingTouch (SeekBar): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onStopTrackingTouch (SeekBar): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+          </class>
+          <class name="AdvancedSettingsActivity$2">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/4)"/>
+            <coverage type="block, %" value="0%   (0/20)"/>
+            <coverage type="line, %" value="0%   (0/5)"/>
+
+            <method name="AdvancedSettingsActivity$2 (AdvancedSettingsActivity): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onProgressChanged (SeekBar, int, boolean): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/12)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="onStartTrackingTouch (SeekBar): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onStopTrackingTouch (SeekBar): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+          </class>
+          <class name="AdvancedSettingsActivity$3">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/4)"/>
+            <coverage type="block, %" value="0%   (0/20)"/>
+            <coverage type="line, %" value="0%   (0/5)"/>
+
+            <method name="AdvancedSettingsActivity$3 (AdvancedSettingsActivity): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onProgressChanged (SeekBar, int, boolean): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/12)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="onStartTrackingTouch (SeekBar): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onStopTrackingTouch (SeekBar): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+          </class>
+          <class name="AdvancedSettingsActivity$4">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/4)"/>
+            <coverage type="block, %" value="0%   (0/18)"/>
+            <coverage type="line, %" value="0%   (0/5)"/>
+
+            <method name="AdvancedSettingsActivity$4 (AdvancedSettingsActivity): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onProgressChanged (SeekBar, int, boolean): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/10)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="onStartTrackingTouch (SeekBar): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onStopTrackingTouch (SeekBar): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+          </class>
+          <class name="AdvancedSettingsActivity$5">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/4)"/>
+            <coverage type="block, %" value="0%   (0/18)"/>
+            <coverage type="line, %" value="0%   (0/5)"/>
+
+            <method name="AdvancedSettingsActivity$5 (AdvancedSettingsActivity): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onProgressChanged (SeekBar, int, boolean): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/10)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="onStartTrackingTouch (SeekBar): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onStopTrackingTouch (SeekBar): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+          </class>
+          <class name="AdvancedSettingsActivity$6">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/4)"/>
+            <coverage type="block, %" value="0%   (0/20)"/>
+            <coverage type="line, %" value="0%   (0/5)"/>
+
+            <method name="AdvancedSettingsActivity$6 (AdvancedSettingsActivity): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onProgressChanged (SeekBar, int, boolean): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/12)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="onStartTrackingTouch (SeekBar): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onStopTrackingTouch (SeekBar): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+          </class>
+          <class name="AdvancedSettingsActivity$7">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/4)"/>
+            <coverage type="block, %" value="0%   (0/20)"/>
+            <coverage type="line, %" value="0%   (0/5)"/>
+
+            <method name="AdvancedSettingsActivity$7 (AdvancedSettingsActivity): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onProgressChanged (SeekBar, int, boolean): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/12)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="onStartTrackingTouch (SeekBar): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onStopTrackingTouch (SeekBar): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+          </class>
+          <class name="AdvancedSettingsActivity$8">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/4)"/>
+            <coverage type="block, %" value="0%   (0/20)"/>
+            <coverage type="line, %" value="0%   (0/5)"/>
+
+            <method name="AdvancedSettingsActivity$8 (AdvancedSettingsActivity): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onProgressChanged (SeekBar, int, boolean): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/12)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="onStartTrackingTouch (SeekBar): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onStopTrackingTouch (SeekBar): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+          </class>
+          <class name="AdvancedSettingsActivity$9">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/4)"/>
+            <coverage type="block, %" value="0%   (0/20)"/>
+            <coverage type="line, %" value="0%   (0/5)"/>
+
+            <method name="AdvancedSettingsActivity$9 (AdvancedSettingsActivity): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onProgressChanged (SeekBar, int, boolean): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/12)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="onStartTrackingTouch (SeekBar): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onStopTrackingTouch (SeekBar): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="ExtendedMusicActivity.java">
+          <coverage type="class, %" value="0%   (0/4)"/>
+          <coverage type="method, %" value="0%   (0/16)"/>
+          <coverage type="block, %" value="0%   (0/191)"/>
+          <coverage type="line, %" value="0%   (0/55)"/>
+
+          <class name="ExtendedMusicActivity">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/8)"/>
+            <coverage type="block, %" value="0%   (0/99)"/>
+            <coverage type="line, %" value="0%   (0/31)"/>
+
+            <method name="ExtendedMusicActivity (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="onBackPressed (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/7)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="onCreate (Bundle): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/63)"/>
+              <coverage type="line, %" value="0%   (0/16)"/>
+            </method>
+            <method name="onCreateOptionsMenu (Menu): boolean">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/7)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="onOptionsItemSelected (MenuItem): boolean">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/11)"/>
+              <coverage type="line, %" value="0%   (0/4)"/>
+            </method>
+            <method name="onTabReselected (ActionBar$Tab, FragmentTransaction): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onTabSelected (ActionBar$Tab, FragmentTransaction): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="onTabUnselected (ActionBar$Tab, FragmentTransaction): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+          </class>
+          <class name="ExtendedMusicActivity$1">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/2)"/>
+            <coverage type="block, %" value="0%   (0/14)"/>
+            <coverage type="line, %" value="0%   (0/3)"/>
+
+            <method name="ExtendedMusicActivity$1 (ExtendedMusicActivity, ActionBar): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/9)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onPageSelected (int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/5)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+          </class>
+          <class name="ExtendedMusicActivity$DummySectionFragment">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/2)"/>
+            <coverage type="block, %" value="0%   (0/23)"/>
+            <coverage type="line, %" value="0%   (0/7)"/>
+
+            <method name="ExtendedMusicActivity$DummySectionFragment (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="onCreateView (LayoutInflater, ViewGroup, Bundle): View">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/20)"/>
+              <coverage type="line, %" value="0%   (0/5)"/>
+            </method>
+          </class>
+          <class name="ExtendedMusicActivity$SectionsPagerAdapter">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/4)"/>
+            <coverage type="block, %" value="0%   (0/55)"/>
+            <coverage type="line, %" value="0%   (0/15)"/>
+
+            <method name="ExtendedMusicActivity$SectionsPagerAdapter (ExtendedMusicActivity, FragmentManager): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/7)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="getCount (): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/2)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getItem (int): Fragment">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/19)"/>
+              <coverage type="line, %" value="0%   (0/5)"/>
+            </method>
+            <method name="getPageTitle (int): CharSequence">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/27)"/>
+              <coverage type="line, %" value="0%   (0/6)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="ResultActivity.java">
+          <coverage type="class, %" value="0%   (0/1)"/>
+          <coverage type="method, %" value="0%   (0/8)"/>
+          <coverage type="block, %" value="0%   (0/380)"/>
+          <coverage type="line, %" value="0%   (0/101)"/>
+
+          <class name="ResultActivity">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/8)"/>
+            <coverage type="block, %" value="0%   (0/380)"/>
+            <coverage type="line, %" value="0%   (0/101)"/>
+
+            <method name="ResultActivity (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="checkGoalType (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/69)"/>
+              <coverage type="line, %" value="0%   (0/21)"/>
+            </method>
+            <method name="check_achievement (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/59)"/>
+              <coverage type="line, %" value="0%   (0/12)"/>
+            </method>
+            <method name="initJourneyStat (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/139)"/>
+              <coverage type="line, %" value="0%   (0/37)"/>
+            </method>
+            <method name="initPaceDistGraph (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/59)"/>
+              <coverage type="line, %" value="0%   (0/16)"/>
+            </method>
+            <method name="onCreate (Bundle): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/33)"/>
+              <coverage type="line, %" value="0%   (0/10)"/>
+            </method>
+            <method name="onCreateOptionsMenu (Menu): boolean">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/7)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="roundOneDecimal (double): double">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/11)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="SettingActivity.java">
+          <coverage type="class, %" value="0%   (0/4)"/>
+          <coverage type="method, %" value="0%   (0/14)"/>
+          <coverage type="block, %" value="0%   (0/191)"/>
+          <coverage type="line, %" value="0%   (0/57)"/>
+
+          <class name="CARDialogPreference">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/4)"/>
+            <coverage type="block, %" value="0%   (0/44)"/>
+            <coverage type="line, %" value="0%   (0/16)"/>
+
+            <method name="CARDialogPreference (Context, AttributeSet): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/8)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="onClick (DialogInterface, int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/11)"/>
+              <coverage type="line, %" value="0%   (0/5)"/>
+            </method>
+            <method name="onDialogClosed (boolean): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/8)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="restart_app (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/17)"/>
+              <coverage type="line, %" value="0%   (0/5)"/>
+            </method>
+          </class>
+          <class name="RESETDialogPreference">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/5)"/>
+            <coverage type="block, %" value="0%   (0/82)"/>
+            <coverage type="line, %" value="0%   (0/26)"/>
+
+            <method name="RESETDialogPreference (Context, AttributeSet): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/22)"/>
+              <coverage type="line, %" value="0%   (0/6)"/>
+            </method>
+            <method name="delete_sql_database (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/11)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="onClick (DialogInterface, int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/24)"/>
+              <coverage type="line, %" value="0%   (0/9)"/>
+            </method>
+            <method name="onDialogClosed (boolean): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/8)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="restart_app (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/17)"/>
+              <coverage type="line, %" value="0%   (0/5)"/>
+            </method>
+          </class>
+          <class name="SettingActivity">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/3)"/>
+            <coverage type="block, %" value="0%   (0/57)"/>
+            <coverage type="line, %" value="0%   (0/14)"/>
+
+            <method name="SettingActivity (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="deleteFiles (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/37)"/>
+              <coverage type="line, %" value="0%   (0/8)"/>
+            </method>
+            <method name="onCreate (Bundle): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/17)"/>
+              <coverage type="line, %" value="0%   (0/5)"/>
+            </method>
+          </class>
+          <class name="SettingActivity$1">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/2)"/>
+            <coverage type="block, %" value="0%   (0/8)"/>
+            <coverage type="line, %" value="0%   (0/2)"/>
+
+            <method name="SettingActivity$1 (SettingActivity): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onPreferenceClick (Preference): boolean">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/2)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="SocialActivity.java">
+          <coverage type="class, %" value="0%   (0/1)"/>
+          <coverage type="method, %" value="0%   (0/3)"/>
+          <coverage type="block, %" value="0%   (0/17)"/>
+          <coverage type="line, %" value="0%   (0/6)"/>
+
+          <class name="SocialActivity">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/3)"/>
+            <coverage type="block, %" value="0%   (0/17)"/>
+            <coverage type="line, %" value="0%   (0/6)"/>
+
+            <method name="SocialActivity (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onCreate (Bundle): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/7)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="onCreateOptionsMenu (Menu): boolean">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/7)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="ProfileActivity.java">
+          <coverage type="class, %" value="50%  (1/2)"/>
+          <coverage type="method, %" value="30%  (3/10)"/>
+          <coverage type="block, %" value="66%  (349/525)"/>
+          <coverage type="line, %" value="61%  (62/102)"/>
+
+          <class name="ProfileActivity$1">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/2)"/>
+            <coverage type="block, %" value="0%   (0/7)"/>
+            <coverage type="line, %" value="0%   (0/2)"/>
+
+            <method name="ProfileActivity$1 (ProfileActivity): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onClick (DialogInterface, int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+          </class>
+          <class name="ProfileActivity">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="38%  (3/8)"/>
+            <coverage type="block, %" value="67%  (349/518)"/>
+            <coverage type="line, %" value="61%  (62/101)"/>
+
+            <method name="dialog (String): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/19)"/>
+              <coverage type="line, %" value="0%   (0/5)"/>
+            </method>
+            <method name="end_activity (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/21)"/>
+              <coverage type="line, %" value="0%   (0/6)"/>
+            </method>
+            <method name="onBackPressed (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/7)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="onClick (View): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/18)"/>
+              <coverage type="line, %" value="0%   (0/6)"/>
+            </method>
+            <method name="update_to_database (int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/104)"/>
+              <coverage type="line, %" value="0%   (0/19)"/>
+            </method>
+            <method name="ProfileActivity (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (39/39)"/>
+              <coverage type="line, %" value="100% (13/13)"/>
+            </method>
+            <method name="get_profile_data (int): String []">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (147/147)"/>
+              <coverage type="line, %" value="100% (18/18)"/>
+            </method>
+            <method name="onCreate (Bundle): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (163/163)"/>
+              <coverage type="line, %" value="100% (31/31)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="ProfileListActivity.java">
+          <coverage type="class, %" value="70%  (7/10)"/>
+          <coverage type="method, %" value="68%  (32/47)"/>
+          <coverage type="block, %" value="69%  (1186/1709)"/>
+          <coverage type="line, %" value="69%  (227.8/332)"/>
+
+          <class name="ProfileListActivity$2$1">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/2)"/>
+            <coverage type="block, %" value="0%   (0/14)"/>
+            <coverage type="line, %" value="0%   (0/4)"/>
+
+            <method name="ProfileListActivity$2$1 (ProfileListActivity$2): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onClick (DialogInterface, int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/8)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+          </class>
+          <class name="ProfileListActivity$2$2">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/2)"/>
+            <coverage type="block, %" value="0%   (0/239)"/>
+            <coverage type="line, %" value="0%   (0/39)"/>
+
+            <method name="ProfileListActivity$2$2 (ProfileListActivity$2, ArrayAdapter, View, int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/15)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onClick (DialogInterface, int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/224)"/>
+              <coverage type="line, %" value="0%   (0/38)"/>
+            </method>
+          </class>
+          <class name="ProfileListActivity$4">
+            <coverage type="class, %" value="0%   (0/1)"/>
+            <coverage type="method, %" value="0%   (0/2)"/>
+            <coverage type="block, %" value="0%   (0/9)"/>
+            <coverage type="line, %" value="0%   (0/3)"/>
+
+            <method name="ProfileListActivity$4 (ProfileListActivity): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/6)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onClick (DialogInterface, int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+          </class>
+          <class name="ProfileListActivity$2">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="50%  (1/2)"/>
+            <coverage type="block, %" value="9%   (6/68)"/>
+            <coverage type="line, %" value="7%   (1/15)"/>
+
+            <method name="onItemLongClick (AdapterView, View, int, long): boolean">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/62)"/>
+              <coverage type="line, %" value="0%   (0/14)"/>
+            </method>
+            <method name="ProfileListActivity$2 (ProfileListActivity): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (6/6)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+          </class>
+          <class name="ProfileListActivity$3">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="33%  (1/3)"/>
+            <coverage type="block, %" value="16%  (6/38)"/>
+            <coverage type="line, %" value="11%  (1/9)"/>
+
+            <method name="onSwipeLeft (ListView, int [], int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/16)"/>
+              <coverage type="line, %" value="0%   (0/4)"/>
+            </method>
+            <method name="onSwipeRight (ListView, int [], int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/16)"/>
+              <coverage type="line, %" value="0%   (0/4)"/>
+            </method>
+            <method name="ProfileListActivity$3 (ProfileListActivity): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (6/6)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+          </class>
+          <class name="ProfileListActivity$1">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="100% (2/2)"/>
+            <coverage type="block, %" value="79%  (31/39)"/>
+            <coverage type="line, %" value="75%  (9/12)"/>
+
+            <method name="onItemClick (AdapterView, View, int, long): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="76%  (25/33)"/>
+              <coverage type="line, %" value="73%  (8/11)"/>
+            </method>
+            <method name="ProfileListActivity$1 (ProfileListActivity): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (6/6)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+          </class>
+          <class name="ProfileListActivity">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="81%  (21/26)"/>
+            <coverage type="block, %" value="85%  (836/984)"/>
+            <coverage type="line, %" value="83%  (156.8/189)"/>
+
+            <method name="access$100 (ProfileListActivity): DataBaseHelper">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="access$302 (ProfileListActivity, int []): int []">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/5)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="del_item (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/95)"/>
+              <coverage type="line, %" value="0%   (0/15)"/>
+            </method>
+            <method name="dialog (String): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/17)"/>
+              <coverage type="line, %" value="0%   (0/5)"/>
+            </method>
+            <method name="onActivityResult (int, int, Intent): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/25)"/>
+              <coverage type="line, %" value="0%   (0/11)"/>
+            </method>
+            <method name="get_apply_profile_location (): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="94%  (48/51)"/>
+              <coverage type="line, %" value="90%  (9.9/11)"/>
+            </method>
+            <method name="&lt;static initializer&gt;">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (38/38)"/>
+              <coverage type="line, %" value="100% (4/4)"/>
+            </method>
+            <method name="ProfileListActivity (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (15/15)"/>
+              <coverage type="line, %" value="100% (6/6)"/>
+            </method>
+            <method name="access$000 (): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (2/2)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="access$002 (int): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (4/4)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="access$200 (ProfileListActivity): int []">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="access$300 (ProfileListActivity): int []">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="access$400 (): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (2/2)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="access$500 (ProfileListActivity): boolean">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="access$502 (ProfileListActivity, boolean): boolean">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (5/5)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="access$602 (int): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (4/4)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="add_item (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (145/145)"/>
+              <coverage type="line, %" value="100% (32/32)"/>
+            </method>
+            <method name="change_apply_profile (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (33/33)"/>
+              <coverage type="line, %" value="100% (9/9)"/>
+            </method>
+            <method name="change_setting_data (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (71/71)"/>
+              <coverage type="line, %" value="100% (13/13)"/>
+            </method>
+            <method name="get_all_profile_color (): int []">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (69/69)"/>
+              <coverage type="line, %" value="100% (12/12)"/>
+            </method>
+            <method name="get_all_profile_description (): String []">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (57/57)"/>
+              <coverage type="line, %" value="100% (12/12)"/>
+            </method>
+            <method name="get_all_profile_id (): int []">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (69/69)"/>
+              <coverage type="line, %" value="100% (12/12)"/>
+            </method>
+            <method name="get_all_profile_name (): String []">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (57/57)"/>
+              <coverage type="line, %" value="100% (12/12)"/>
+            </method>
+            <method name="list_refresh (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (169/169)"/>
+              <coverage type="line, %" value="100% (23/23)"/>
+            </method>
+            <method name="onClick (View): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (6/6)"/>
+              <coverage type="line, %" value="100% (3/3)"/>
+            </method>
+            <method name="onCreate (Bundle): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (33/33)"/>
+              <coverage type="line, %" value="100% (9/9)"/>
+            </method>
+          </class>
+          <class name="ProfileListActivity$ProfileListAdapter">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="80%  (4/5)"/>
+            <coverage type="block, %" value="95%  (232/243)"/>
+            <coverage type="line, %" value="96%  (43/45)"/>
+
+            <method name="getItem (int): Object">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/5)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getView (int, View, ViewGroup): View">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="97%  (180/186)"/>
+              <coverage type="line, %" value="97%  (31/32)"/>
+            </method>
+            <method name="ProfileListActivity$ProfileListAdapter (ProfileListActivity, Context, ArrayList, int, String [], int []): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (45/45)"/>
+              <coverage type="line, %" value="100% (10/10)"/>
+            </method>
+            <method name="getCount (): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (4/4)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="getItemId (int): long">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+          </class>
+          <class name="ProfileListActivity$ProfileListAdapter$ItemButton_Click">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="100% (2/2)"/>
+            <coverage type="block, %" value="100% (54/54)"/>
+            <coverage type="line, %" value="100% (12/12)"/>
+
+            <method name="ProfileListActivity$ProfileListAdapter$ItemButton_Click (ProfileListActivity$ProfileListAdapter, int, ViewGroup, View): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (15/15)"/>
+              <coverage type="line, %" value="100% (5/5)"/>
+            </method>
+            <method name="onClick (View): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (39/39)"/>
+              <coverage type="line, %" value="100% (7/7)"/>
+            </method>
+          </class>
+          <class name="ProfileListActivity$ProfileListAdapter$ViewTag">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="100% (1/1)"/>
+            <coverage type="block, %" value="100% (21/21)"/>
+            <coverage type="line, %" value="100% (7/7)"/>
+
+            <method name="ProfileListActivity$ProfileListAdapter$ViewTag (ProfileListActivity$ProfileListAdapter, ImageView, TextView, TextView, ImageButton, ImageView): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (21/21)"/>
+              <coverage type="line, %" value="100% (7/7)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="MusicActivity.java">
+          <coverage type="class, %" value="100% (14/14)"/>
+          <coverage type="method, %" value="84%  (42/50)"/>
+          <coverage type="block, %" value="78%  (1264/1624)"/>
+          <coverage type="line, %" value="76%  (218/287)"/>
+
+          <class name="MusicActivity$8">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="50%  (1/2)"/>
+            <coverage type="block, %" value="9%   (6/67)"/>
+            <coverage type="line, %" value="7%   (1/14)"/>
+
+            <method name="onClick (View): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/61)"/>
+              <coverage type="line, %" value="0%   (0/13)"/>
+            </method>
+            <method name="MusicActivity$8 (MusicActivity): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (6/6)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+          </class>
+          <class name="MusicActivity$6">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="50%  (1/2)"/>
+            <coverage type="block, %" value="26%  (6/23)"/>
+            <coverage type="line, %" value="20%  (1/5)"/>
+
+            <method name="onClick (View): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/17)"/>
+              <coverage type="line, %" value="0%   (0/4)"/>
+            </method>
+            <method name="MusicActivity$6 (MusicActivity): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (6/6)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+          </class>
+          <class name="MusicActivity$2">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="50%  (1/2)"/>
+            <coverage type="block, %" value="46%  (6/13)"/>
+            <coverage type="line, %" value="33%  (1/3)"/>
+
+            <method name="updateGoalStateCallback (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/7)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="MusicActivity$2 (MusicActivity): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (6/6)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+          </class>
+          <class name="MusicActivity$3">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="50%  (1/2)"/>
+            <coverage type="block, %" value="46%  (6/13)"/>
+            <coverage type="line, %" value="33%  (1/3)"/>
+
+            <method name="updateGoalStateCallback (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/7)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="MusicActivity$3 (MusicActivity): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (6/6)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+          </class>
+          <class name="MusicActivity$4">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="50%  (1/2)"/>
+            <coverage type="block, %" value="46%  (6/13)"/>
+            <coverage type="line, %" value="33%  (1/3)"/>
+
+            <method name="updateGoalStateCallback (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/7)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="MusicActivity$4 (MusicActivity): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (6/6)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+          </class>
+          <class name="MusicActivity$5">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="50%  (1/2)"/>
+            <coverage type="block, %" value="46%  (6/13)"/>
+            <coverage type="line, %" value="33%  (1/3)"/>
+
+            <method name="updateGoalStateCallback (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/7)"/>
+              <coverage type="line, %" value="0%   (0/2)"/>
+            </method>
+            <method name="MusicActivity$5 (MusicActivity): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (6/6)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+          </class>
+          <class name="MusicActivity$9">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="100% (3/3)"/>
+            <coverage type="block, %" value="57%  (198/346)"/>
+            <coverage type="line, %" value="51%  (22/43)"/>
+
+            <method name="PedoThreadCallback (int, float, float): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="52%  (159/307)"/>
+              <coverage type="line, %" value="48%  (19/40)"/>
+            </method>
+            <method name="MusicActivity$9 (MusicActivity, Context, int, GraphViewSeries, ImageView, ImageView, ImageView, ImageView, ImageView): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (26/26)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="onSensorChangedCallback (float): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (13/13)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+          </class>
+          <class name="MusicActivity">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="89%  (16/18)"/>
+            <coverage type="block, %" value="88%  (769/875)"/>
+            <coverage type="line, %" value="87%  (150/173)"/>
+
+            <method name="onBackPressed (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/11)"/>
+              <coverage type="line, %" value="0%   (0/5)"/>
+            </method>
+            <method name="succeed_pa_list_to_cc (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/92)"/>
+              <coverage type="line, %" value="0%   (0/16)"/>
+            </method>
+            <method name="InitViewsListener (ViewGroup, ViewGroup, ViewGroup): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="99%  (303/306)"/>
+              <coverage type="line, %" value="96%  (53/55)"/>
+            </method>
+            <method name="InitExtra (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (95/95)"/>
+              <coverage type="line, %" value="100% (21/21)"/>
+            </method>
+            <method name="InitImageView (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (69/69)"/>
+              <coverage type="line, %" value="100% (13/13)"/>
+            </method>
+            <method name="InitPostView (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (80/80)"/>
+              <coverage type="line, %" value="100% (14/14)"/>
+            </method>
+            <method name="InitViewPager (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (82/82)"/>
+              <coverage type="line, %" value="100% (14/14)"/>
+            </method>
+            <method name="MusicActivity (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (26/26)"/>
+              <coverage type="line, %" value="100% (7/7)"/>
+            </method>
+            <method name="RequestMode (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (50/50)"/>
+              <coverage type="line, %" value="100% (14/14)"/>
+            </method>
+            <method name="access$000 (MusicActivity): ImageView">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="access$100 (MusicActivity): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="access$102 (MusicActivity, int): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (5/5)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="access$200 (MusicActivity): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="access$300 (MusicActivity): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="access$400 (MusicActivity): ImageView">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="onCreate (Bundle): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (26/26)"/>
+              <coverage type="line, %" value="100% (10/10)"/>
+            </method>
+            <method name="onCreateOptionsMenu (Menu): boolean">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (7/7)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="roundOneDecimal (double): double">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (11/11)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+          </class>
+          <class name="MusicActivity$1">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="100% (2/2)"/>
+            <coverage type="block, %" value="100% (31/31)"/>
+            <coverage type="line, %" value="100% (10/10)"/>
+
+            <method name="MusicActivity$1 (MusicActivity, Dialog): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (9/9)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="onClick (View): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (22/22)"/>
+              <coverage type="line, %" value="100% (9/9)"/>
+            </method>
+          </class>
+          <class name="MusicActivity$10">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="100% (2/2)"/>
+            <coverage type="block, %" value="100% (64/64)"/>
+            <coverage type="line, %" value="100% (15/15)"/>
+
+            <method name="MusicActivity$10 (MusicActivity): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (6/6)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="onClick (View): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (58/58)"/>
+              <coverage type="line, %" value="100% (14/14)"/>
+            </method>
+          </class>
+          <class name="MusicActivity$11">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="100% (2/2)"/>
+            <coverage type="block, %" value="100% (23/23)"/>
+            <coverage type="line, %" value="100% (4/4)"/>
+
+            <method name="MusicActivity$11 (MusicActivity): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (6/6)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="onPreDraw (): boolean">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (17/17)"/>
+              <coverage type="line, %" value="100% (3/3)"/>
+            </method>
+          </class>
+          <class name="MusicActivity$7">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="100% (2/2)"/>
+            <coverage type="block, %" value="100% (13/13)"/>
+            <coverage type="line, %" value="100% (3/3)"/>
+
+            <method name="MusicActivity$7 (MusicActivity): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (6/6)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="updateGoalStateCallback (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (7/7)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+          </class>
+          <class name="MusicActivity$MyOnPageChangeListener">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="100% (4/4)"/>
+            <coverage type="block, %" value="100% (87/87)"/>
+            <coverage type="line, %" value="100% (11/11)"/>
+
+            <method name="MusicActivity$MyOnPageChangeListener (MusicActivity): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (6/6)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="onPageScrollStateChanged (int): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (1/1)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="onPageScrolled (int, float, int): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (1/1)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="onPageSelected (int): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (79/79)"/>
+              <coverage type="line, %" value="100% (8/8)"/>
+            </method>
+          </class>
+          <class name="MusicActivity$MyPagerAdapter">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="100% (5/5)"/>
+            <coverage type="block, %" value="100% (43/43)"/>
+            <coverage type="line, %" value="100% (9/9)"/>
+
+            <method name="MusicActivity$MyPagerAdapter (MusicActivity, List): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (9/9)"/>
+              <coverage type="line, %" value="100% (3/3)"/>
+            </method>
+            <method name="destroyItem (View, int, Object): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (9/9)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="getCount (): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (4/4)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="instantiateItem (View, int): Object">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (14/14)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="isViewFromObject (View, Object): boolean">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (7/7)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="GreetActivity.java">
+          <coverage type="class, %" value="100% (2/2)"/>
+          <coverage type="method, %" value="90%  (9/10)"/>
+          <coverage type="block, %" value="89%  (187/211)"/>
+          <coverage type="line, %" value="88%  (44/50)"/>
+
+          <class name="GreetActivity">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="100% (6/6)"/>
+            <coverage type="block, %" value="88%  (168/191)"/>
+            <coverage type="line, %" value="89%  (40/45)"/>
+
+            <method name="onClick (View): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="41%  (16/39)"/>
+              <coverage type="line, %" value="50%  (5/10)"/>
+            </method>
+            <method name="GreetActivity (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="clicktest (int, int): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (64/64)"/>
+              <coverage type="line, %" value="100% (9/9)"/>
+            </method>
+            <method name="onCreate (Bundle): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (58/58)"/>
+              <coverage type="line, %" value="100% (16/16)"/>
+            </method>
+            <method name="onResume (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (10/10)"/>
+              <coverage type="line, %" value="100% (4/4)"/>
+            </method>
+            <method name="onTouchEvent (MotionEvent): boolean">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (17/17)"/>
+              <coverage type="line, %" value="100% (5/5)"/>
+            </method>
+          </class>
+          <class name="GreetActivity$1">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="75%  (3/4)"/>
+            <coverage type="block, %" value="95%  (19/20)"/>
+            <coverage type="line, %" value="83%  (5/6)"/>
+
+            <method name="onAnimationRepeat (Animation): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="GreetActivity$1 (GreetActivity): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (6/6)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="onAnimationEnd (Animation): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (12/12)"/>
+              <coverage type="line, %" value="100% (3/3)"/>
+            </method>
+            <method name="onAnimationStart (Animation): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (1/1)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="GoalActivity.java">
+          <coverage type="class, %" value="100% (2/2)"/>
+          <coverage type="method, %" value="100% (6/6)"/>
+          <coverage type="block, %" value="100% (209/209)"/>
+          <coverage type="line, %" value="100% (49/49)"/>
+
+          <class name="GoalActivity">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="100% (4/4)"/>
+            <coverage type="block, %" value="100% (176/176)"/>
+            <coverage type="line, %" value="100% (40/40)"/>
+
+            <method name="&lt;static initializer&gt;">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (90/90)"/>
+              <coverage type="line, %" value="100% (7/7)"/>
+            </method>
+            <method name="GoalActivity (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="onClick (View): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (56/56)"/>
+              <coverage type="line, %" value="100% (24/24)"/>
+            </method>
+            <method name="onCreate (Bundle): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (27/27)"/>
+              <coverage type="line, %" value="100% (7/7)"/>
+            </method>
+          </class>
+          <class name="GoalActivity$GoalSelectionListener">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="100% (2/2)"/>
+            <coverage type="block, %" value="100% (33/33)"/>
+            <coverage type="line, %" value="100% (9/9)"/>
+
+            <method name="GoalActivity$GoalSelectionListener (GoalActivity, int, String): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (12/12)"/>
+              <coverage type="line, %" value="100% (4/4)"/>
+            </method>
+            <method name="onClick (DialogInterface, int): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (21/21)"/>
+              <coverage type="line, %" value="100% (5/5)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="com.comp3111.local_database">
+        <coverage type="class, %" value="100% (3/3)"/>
+        <coverage type="method, %" value="61%  (11/18)"/>
+        <coverage type="block, %" value="57%  (332/582)"/>
+        <coverage type="line, %" value="42%  (62/149)"/>
+
+        <srcfile name="JSONHandler.java">
+          <coverage type="class, %" value="100% (1/1)"/>
+          <coverage type="method, %" value="56%  (5/9)"/>
+          <coverage type="block, %" value="46%  (155/338)"/>
+          <coverage type="line, %" value="33%  (33/99)"/>
+
+          <class name="JSONHandler">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="56%  (5/9)"/>
+            <coverage type="block, %" value="46%  (155/338)"/>
+            <coverage type="line, %" value="33%  (33/99)"/>
+
+            <method name="JSONHandler (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="createCurrentRecord (): boolean">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/67)"/>
+              <coverage type="line, %" value="0%   (0/21)"/>
+            </method>
+            <method name="writeAggregatedRecords (): boolean">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/51)"/>
+              <coverage type="line, %" value="0%   (0/18)"/>
+            </method>
+            <method name="writeToJSON (String, String): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/20)"/>
+              <coverage type="line, %" value="0%   (0/7)"/>
+            </method>
+            <method name="readFromRecord (String): boolean">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="71%  (45/63)"/>
+              <coverage type="line, %" value="58%  (11/19)"/>
+            </method>
+            <method name="readAggregatedRecord (): boolean">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="74%  (56/76)"/>
+              <coverage type="line, %" value="59%  (13/22)"/>
+            </method>
+            <method name="ifFileExists (String): boolean">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="83%  (10/12)"/>
+              <coverage type="line, %" value="75%  (3/4)"/>
+            </method>
+            <method name="ifRecordExists (String): boolean">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="92%  (23/25)"/>
+              <coverage type="line, %" value="80%  (4/5)"/>
+            </method>
+            <method name="&lt;static initializer&gt;">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (21/21)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="DataBaseHelper.java">
+          <coverage type="class, %" value="100% (1/1)"/>
+          <coverage type="method, %" value="57%  (4/7)"/>
+          <coverage type="block, %" value="71%  (166/233)"/>
+          <coverage type="line, %" value="55%  (26/47)"/>
+
+          <class name="DataBaseHelper">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="57%  (4/7)"/>
+            <coverage type="block, %" value="71%  (166/233)"/>
+            <coverage type="line, %" value="55%  (26/47)"/>
+
+            <method name="getCount (String): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/24)"/>
+              <coverage type="line, %" value="0%   (0/6)"/>
+            </method>
+            <method name="onCreate (SQLiteDatabase): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/30)"/>
+              <coverage type="line, %" value="0%   (0/10)"/>
+            </method>
+            <method name="onUpgrade (SQLiteDatabase, int, int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/13)"/>
+              <coverage type="line, %" value="0%   (0/5)"/>
+            </method>
+            <method name="&lt;static initializer&gt;">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (5/5)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="DataBaseHelper (Context): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (7/7)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="get_applying_profile (): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (17/17)"/>
+              <coverage type="line, %" value="100% (5/5)"/>
+            </method>
+            <method name="get_applying_profile_data (): String []">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (137/137)"/>
+              <coverage type="line, %" value="100% (17/17)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="Global_value.java">
+          <coverage type="class, %" value="100% (1/1)"/>
+          <coverage type="method, %" value="100% (2/2)"/>
+          <coverage type="block, %" value="100% (11/11)"/>
+          <coverage type="line, %" value="100% (3/3)"/>
+
+          <class name="Global_value">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="100% (2/2)"/>
+            <coverage type="block, %" value="100% (11/11)"/>
+            <coverage type="line, %" value="100% (3/3)"/>
+
+            <method name="Global_value (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="onCreate (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (8/8)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+      <package name="com.comp3111.pedometer">
+        <coverage type="class, %" value="100% (16/16)"/>
+        <coverage type="method, %" value="67%  (66/99)"/>
+        <coverage type="block, %" value="74%  (1129/1530)"/>
+        <coverage type="line, %" value="71%  (242.3/340)"/>
+
+        <srcfile name="TimeGoal.java">
+          <coverage type="class, %" value="100% (1/1)"/>
+          <coverage type="method, %" value="43%  (3/7)"/>
+          <coverage type="block, %" value="10%  (10/99)"/>
+          <coverage type="line, %" value="21%  (4/19)"/>
+
+          <class name="TimeGoal">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="43%  (3/7)"/>
+            <coverage type="block, %" value="10%  (10/99)"/>
+            <coverage type="line, %" value="21%  (4/19)"/>
+
+            <method name="endGoalState (): boolean">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/2)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getText (): String">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/57)"/>
+              <coverage type="line, %" value="0%   (0/7)"/>
+            </method>
+            <method name="updateGoalState (): boolean">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/29)"/>
+              <coverage type="line, %" value="0%   (0/6)"/>
+            </method>
+            <method name="updateGoalStateCallback (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="TimeGoal (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (6/6)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="getPlaceholder (): String">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (2/2)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="getTitle (): String">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (2/2)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="DistanceGoal.java">
+          <coverage type="class, %" value="100% (1/1)"/>
+          <coverage type="method, %" value="43%  (3/7)"/>
+          <coverage type="block, %" value="19%  (10/52)"/>
+          <coverage type="line, %" value="31%  (4/13)"/>
+
+          <class name="DistanceGoal">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="43%  (3/7)"/>
+            <coverage type="block, %" value="19%  (10/52)"/>
+            <coverage type="line, %" value="31%  (4/13)"/>
+
+            <method name="endGoalState (): boolean">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/2)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getText (): String">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/10)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="updateGoalState (): boolean">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/29)"/>
+              <coverage type="line, %" value="0%   (0/6)"/>
+            </method>
+            <method name="updateGoalStateCallback (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="DistanceGoal (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (6/6)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="getPlaceholder (): String">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (2/2)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="getTitle (): String">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (2/2)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="StepGoal.java">
+          <coverage type="class, %" value="100% (1/1)"/>
+          <coverage type="method, %" value="43%  (3/7)"/>
+          <coverage type="block, %" value="19%  (10/52)"/>
+          <coverage type="line, %" value="31%  (4/13)"/>
+
+          <class name="StepGoal">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="43%  (3/7)"/>
+            <coverage type="block, %" value="19%  (10/52)"/>
+            <coverage type="line, %" value="31%  (4/13)"/>
+
+            <method name="endGoalState (): boolean">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/2)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getText (): String">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/10)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="updateGoalState (): boolean">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/29)"/>
+              <coverage type="line, %" value="0%   (0/6)"/>
+            </method>
+            <method name="updateGoalStateCallback (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="StepGoal (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (6/6)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="getPlaceholder (): String">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (2/2)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="getTitle (): String">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (2/2)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="SpeedAdjuster.java">
+          <coverage type="class, %" value="100% (2/2)"/>
+          <coverage type="method, %" value="71%  (12/17)"/>
+          <coverage type="block, %" value="69%  (191/276)"/>
+          <coverage type="line, %" value="66%  (42.5/64)"/>
+
+          <class name="SpeedAdjuster$1">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="100% (2/2)"/>
+            <coverage type="block, %" value="68%  (54/79)"/>
+            <coverage type="line, %" value="67%  (10/15)"/>
+
+            <method name="run (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="66%  (48/73)"/>
+              <coverage type="line, %" value="64%  (9/14)"/>
+            </method>
+            <method name="SpeedAdjuster$1 (SoundTouchPlayable): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (6/6)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+          </class>
+          <class name="SpeedAdjuster">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="67%  (10/15)"/>
+            <coverage type="block, %" value="70%  (137/197)"/>
+            <coverage type="line, %" value="67%  (33.5/50)"/>
+
+            <method name="SpeedAdjuster (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="access$002 (float): float">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="access$600 (): float">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/2)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="access$700 (): float">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/2)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="access$702 (float): float">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/4)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="rampToSpeed (SoundTouchPlayable, int): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="65%  (35/54)"/>
+              <coverage type="line, %" value="58%  (11/19)"/>
+            </method>
+            <method name="react (Pedometer, SoundTouchPlayable): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="66%  (50/76)"/>
+              <coverage type="line, %" value="56%  (10/18)"/>
+            </method>
+            <method name="&lt;static initializer&gt;">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (21/21)"/>
+              <coverage type="line, %" value="100% (9/9)"/>
+            </method>
+            <method name="access$000 (): float">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (2/2)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="access$100 (): float">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (2/2)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="access$200 (): float">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (2/2)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="access$302 (int): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (4/4)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="access$402 (boolean): boolean">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (4/4)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="access$500 (): Handler">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (2/2)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="setStepDurationThreshold (Pedometer, float): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (15/15)"/>
+              <coverage type="line, %" value="100% (3/3)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="AggregatedRecords.java">
+          <coverage type="class, %" value="100% (1/1)"/>
+          <coverage type="method, %" value="40%  (2/5)"/>
+          <coverage type="block, %" value="74%  (158/213)"/>
+          <coverage type="line, %" value="68%  (34/50)"/>
+
+          <class name="AggregatedRecords">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="40%  (2/5)"/>
+            <coverage type="block, %" value="74%  (158/213)"/>
+            <coverage type="line, %" value="68%  (34/50)"/>
+
+            <method name="addCurrentRecord (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/27)"/>
+              <coverage type="line, %" value="0%   (0/8)"/>
+            </method>
+            <method name="rescanRecords (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/16)"/>
+              <coverage type="line, %" value="0%   (0/5)"/>
+            </method>
+            <method name="toJSON (): String">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/12)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="AggregatedRecords (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (26/26)"/>
+              <coverage type="line, %" value="100% (8/8)"/>
+            </method>
+            <method name="recalculateStat (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (132/132)"/>
+              <coverage type="line, %" value="100% (26/26)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="StatisticsInfo.java">
+          <coverage type="class, %" value="100% (2/2)"/>
+          <coverage type="method, %" value="60%  (12/20)"/>
+          <coverage type="block, %" value="75%  (162/215)"/>
+          <coverage type="line, %" value="66%  (28.9/44)"/>
+
+          <class name="StatisticsInfo">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="56%  (9/16)"/>
+            <coverage type="block, %" value="71%  (119/167)"/>
+            <coverage type="line, %" value="64%  (27/42)"/>
+
+            <method name="getDateString (): String">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getStepsize (): StatisticsInfo$stepSize">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getTotalSteps (): int">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="getWeight (): double">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="get_PA_list (): ArrayList">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="setStepSize (StatisticsInfo$stepSize): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/21)"/>
+              <coverage type="line, %" value="0%   (0/7)"/>
+            </method>
+            <method name="toJSON (): String">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/12)"/>
+              <coverage type="line, %" value="0%   (0/3)"/>
+            </method>
+            <method name="StatisticsInfo (double): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (55/55)"/>
+              <coverage type="line, %" value="100% (13/13)"/>
+            </method>
+            <method name="addTime (double): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (7/7)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="getCaloriesBurn (): double">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (12/12)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="getDistancePerTime (): double">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (10/10)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="getDistanceTravelled (): double">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (13/13)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="getStepPerTime (): double">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (11/11)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="getTimeLasted (): double">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="setTotalSteps (int): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (4/4)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="setWeight (double): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (4/4)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+          </class>
+          <class name="StatisticsInfo$stepSize">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="75%  (3/4)"/>
+            <coverage type="block, %" value="90%  (43/48)"/>
+            <coverage type="line, %" value="94%  (1.9/2)"/>
+
+            <method name="valueOf (String): StatisticsInfo$stepSize">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/5)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="&lt;static initializer&gt;">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (34/34)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="StatisticsInfo$stepSize (String, int): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (5/5)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="values (): StatisticsInfo$stepSize []">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (4/4)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="ConsistentContents.java">
+          <coverage type="class, %" value="100% (1/1)"/>
+          <coverage type="method, %" value="50%  (1/2)"/>
+          <coverage type="block, %" value="82%  (14/17)"/>
+          <coverage type="line, %" value="75%  (3/4)"/>
+
+          <class name="ConsistentContents">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="50%  (1/2)"/>
+            <coverage type="block, %" value="82%  (14/17)"/>
+            <coverage type="line, %" value="75%  (3/4)"/>
+
+            <method name="ConsistentContents (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/3)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="&lt;static initializer&gt;">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (14/14)"/>
+              <coverage type="line, %" value="100% (3/3)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="Goal.java">
+          <coverage type="class, %" value="100% (2/2)"/>
+          <coverage type="method, %" value="100% (7/7)"/>
+          <coverage type="block, %" value="87%  (48/55)"/>
+          <coverage type="line, %" value="83%  (10/12)"/>
+
+          <class name="Goal$1">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="100% (2/2)"/>
+            <coverage type="block, %" value="74%  (20/27)"/>
+            <coverage type="line, %" value="67%  (4/6)"/>
+
+            <method name="run (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="61%  (11/18)"/>
+              <coverage type="line, %" value="60%  (3/5)"/>
+            </method>
+            <method name="Goal$1 (Goal, long): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (9/9)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+          </class>
+          <class name="Goal">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="100% (5/5)"/>
+            <coverage type="block, %" value="100% (28/28)"/>
+            <coverage type="line, %" value="100% (7/7)"/>
+
+            <method name="&lt;static initializer&gt;">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (7/7)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="Goal (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="access$000 (): Handler">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (2/2)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="pauseGoal (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (4/4)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="startGoal (long): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (12/12)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="Pedometer.java">
+          <coverage type="class, %" value="100% (2/2)"/>
+          <coverage type="method, %" value="88%  (15/17)"/>
+          <coverage type="block, %" value="95%  (374/394)"/>
+          <coverage type="line, %" value="92%  (72.9/79)"/>
+
+          <class name="Pedometer">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="87%  (13/15)"/>
+            <coverage type="block, %" value="95%  (344/364)"/>
+            <coverage type="line, %" value="92%  (68.9/75)"/>
+
+            <method name="PedoThreadCallback (int, float, float): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="onSensorChangedCallback (float): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="&lt;static initializer&gt;">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="88%  (7/8)"/>
+              <coverage type="line, %" value="87%  (0.9/1)"/>
+            </method>
+            <method name="Pedometer (Context, int): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="89%  (78/88)"/>
+              <coverage type="line, %" value="90%  (18/20)"/>
+            </method>
+            <method name="pedoThreadRunAlgorithm (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="96%  (88/92)"/>
+              <coverage type="line, %" value="94%  (15/16)"/>
+            </method>
+            <method name="pStepDurationCount (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="96%  (73/76)"/>
+              <coverage type="line, %" value="91%  (10/11)"/>
+            </method>
+            <method name="access$000 (Pedometer): int">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="getAverageStepDuration (): float">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="getDefaultAverageStepDuration (): float">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (4/4)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="onAccuracyChanged (Sensor, int): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (1/1)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="onSensorChanged (SensorEvent): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (40/40)"/>
+              <coverage type="line, %" value="100% (7/7)"/>
+            </method>
+            <method name="resetAverageStepDuration (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (4/4)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="setPForce (float): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (4/4)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="startSensor (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (26/26)"/>
+              <coverage type="line, %" value="100% (6/6)"/>
+            </method>
+            <method name="stopSensor (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (13/13)"/>
+              <coverage type="line, %" value="100% (4/4)"/>
+            </method>
+          </class>
+          <class name="Pedometer$1">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="100% (2/2)"/>
+            <coverage type="block, %" value="100% (30/30)"/>
+            <coverage type="line, %" value="100% (5/5)"/>
+
+            <method name="Pedometer$1 (Pedometer): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (6/6)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="run (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (24/24)"/>
+              <coverage type="line, %" value="100% (4/4)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="QuickStartGoal.java">
+          <coverage type="class, %" value="100% (1/1)"/>
+          <coverage type="method, %" value="71%  (5/7)"/>
+          <coverage type="block, %" value="95%  (94/99)"/>
+          <coverage type="line, %" value="84%  (16/19)"/>
+
+          <class name="QuickStartGoal">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="71%  (5/7)"/>
+            <coverage type="block, %" value="95%  (94/99)"/>
+            <coverage type="line, %" value="84%  (16/19)"/>
+
+            <method name="endGoalState (): boolean">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/2)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="updateGoalStateCallback (): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/1)"/>
+              <coverage type="line, %" value="0%   (0/1)"/>
+            </method>
+            <method name="updateGoalState (): boolean">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="93%  (27/29)"/>
+              <coverage type="line, %" value="83%  (5/6)"/>
+            </method>
+            <method name="QuickStartGoal (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (6/6)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="getPlaceholder (): String">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (2/2)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="getText (): String">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (57/57)"/>
+              <coverage type="line, %" value="100% (7/7)"/>
+            </method>
+            <method name="getTitle (): String">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (2/2)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="PedometerSettings.java">
+          <coverage type="class, %" value="100% (1/1)"/>
+          <coverage type="method, %" value="100% (2/2)"/>
+          <coverage type="block, %" value="100% (28/28)"/>
+          <coverage type="line, %" value="100% (13/13)"/>
+
+          <class name="PedometerSettings">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="100% (2/2)"/>
+            <coverage type="block, %" value="100% (28/28)"/>
+            <coverage type="line, %" value="100% (13/13)"/>
+
+            <method name="&lt;static initializer&gt;">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (25/25)"/>
+              <coverage type="line, %" value="100% (12/12)"/>
+            </method>
+            <method name="PedometerSettings (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="UserSettings.java">
+          <coverage type="class, %" value="100% (1/1)"/>
+          <coverage type="method, %" value="100% (1/1)"/>
+          <coverage type="block, %" value="100% (30/30)"/>
+          <coverage type="line, %" value="100% (10/10)"/>
+
+          <class name="UserSettings">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="100% (1/1)"/>
+            <coverage type="block, %" value="100% (30/30)"/>
+            <coverage type="line, %" value="100% (10/10)"/>
+
+            <method name="UserSettings (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (30/30)"/>
+              <coverage type="line, %" value="100% (10/10)"/>
+            </method>
+          </class>
+        </srcfile>
+      </package>
+    </all>
+  </data>
+</report>
