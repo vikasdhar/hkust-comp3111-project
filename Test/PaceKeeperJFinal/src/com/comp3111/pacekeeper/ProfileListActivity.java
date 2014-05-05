@@ -573,7 +573,8 @@ public class ProfileListActivity extends Activity implements
 						(ImageView) convertView.findViewById(valueViewID[4]));
 				convertView.setTag(itemView);
 			}
-
+			ImageView iv = (ImageView) convertView.findViewById(valueViewID[4]);
+			iv.setTag("hihi"+position);
 			HashMap<String, Object> appInfo = list.get(position);
 			if (appInfo != null) {
 

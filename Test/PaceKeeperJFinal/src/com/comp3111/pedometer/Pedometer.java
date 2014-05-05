@@ -98,62 +98,10 @@ public class Pedometer extends PedometerSettings implements SensorEventListener{
 	}
 	
 	// separated thread for polling action 
-	final Runnable PedoThread = new Runnable() {
-			public void pStepDurationCount(){
-				// first it must be "active" steps
-				// if "active", record the time (by replacing oldest time) and calculate its average
-				if(pCurrentStepDuration < pStepDurationDiscardThreshold){
-						// just minus the farest value and add the most recent one
-						pAverageStepDuration *= pStepDurationSample;
-						pAverageStepDuration += pCurrentStepDuration - pStepDuration[pLastStepDurationArrayPos];
-						Log.i("msg", "Current: " + pCurrentStepDuration + "; laststep: " + pStepDuration[pLastStepDurationArrayPos]);
-						pAverageStepDuration /= pStepDurationSample;
-					//}
-					// store last duration value and do array pointer rotation
-					pStepDuration[pLastStepDurationArrayPos] = pCurrentStepDuration;
-					pLastStepDurationArrayPos++;
-					if(pLastStepDurationArrayPos >= pStepDurationSample){
-						pLastStepDurationArrayPos = 0;
-					}
-				}
-				// it this state, just invalidate and recount from next step
-				pCurrentStepDuration = 0;
-			}
-		
+	final Runnable PedoThread = new Runnable() {		
 		   @Override
 		   public void run() {
-			    // step estimation algorithm by comparing diff to situations
-				pForceDiff = pForce - pLastForceValue;
-				// Firstly, g-force must exceed noise level and it is a positive slope/diff
-				if(pForce > pForceBaseThreshold && pForceDiff > 0){
-					// steps only count if exceed "moving threshold" determined by force from walking
-					if(pForceDiff > pThreshold){
-						// ... and it is human-possible
-						if(pStepDelay <= 0){
-							// ... it could also be a pace change to fast (and exert more force), so try to re-adjust the threshold by stepping up :)
-							if(pForceDiff > pUpperThreshold){
-								pThreshold = pUpperThresholdRetainProportion * pThreshold + (1-pUpperThresholdRetainProportion) * pForceDiff;
-							}
-							pStep++;
-							pStepDelay = pStepDelayNumber;	
-							// calculate new average for step duration value			
-							pStepDurationCount();
-						}else{
-							// ... but it could then be the user being too violent, so let him calm before recounting a step
-							pStepDelay = pStepDelayNumber;
-						}
-					}else{
-						// ... it could also be a pace change to slow (and exert less force), so try to re-adjust the threshold by watering down :)
-						pThreshold = pLowerThresholdRetainProportion * pThreshold + (1-pLowerThresholdRetainProportion) * pForceDiff;
-						pStepDelay--;
-					}
-				}else{
-					// still reduce the delay, otherwise delay counter only decrease as "spike" occurs
-					pStepDelay--;
-				}
-				// update last values for next iteration
-				pLastForceValue = pForce;
-				pCurrentStepDuration++;
+			   pedoThreadRunAlgorithm();
 				// callback function and continuation
 				PedoThreadCallback(pStep, pThreshold, pAverageStepDuration);
 				pHandler.postDelayed(this, pInterval);
@@ -170,6 +118,67 @@ public class Pedometer extends PedometerSettings implements SensorEventListener{
 	public float getDefaultAverageStepDuration(){
 		resetAverageStepDuration();	// to ensure the value is updated
 		return pDefaultAverageStepDuration;
+	}
+
+	public void setPForce(float f) {
+		// TODO Auto-generated method stub
+		pForce = f;
+	}
+	
+	public void pStepDurationCount(){
+		// first it must be "active" steps
+		// if "active", record the time (by replacing oldest time) and calculate its average
+		if(pCurrentStepDuration < pStepDurationDiscardThreshold){
+				// just minus the farest value and add the most recent one
+				pAverageStepDuration *= pStepDurationSample;
+				pAverageStepDuration += pCurrentStepDuration - pStepDuration[pLastStepDurationArrayPos];
+				Log.i("msg", "Current: " + pCurrentStepDuration + "; laststep: " + pStepDuration[pLastStepDurationArrayPos]);
+				pAverageStepDuration /= pStepDurationSample;
+			//}
+			// store last duration value and do array pointer rotation
+			pStepDuration[pLastStepDurationArrayPos] = pCurrentStepDuration;
+			pLastStepDurationArrayPos++;
+			if(pLastStepDurationArrayPos >= pStepDurationSample){
+				pLastStepDurationArrayPos = 0;
+			}
+		}
+		// it this state, just invalidate and recount from next step
+		pCurrentStepDuration = 0;
+	}
+
+	public void pedoThreadRunAlgorithm() {
+		// TODO Auto-generated method stub// step estimation algorithm by comparing diff to situations
+		pForceDiff = pForce - pLastForceValue;
+		// Firstly, g-force must exceed noise level and it is a positive slope/diff
+		if(pForce > pForceBaseThreshold && pForceDiff > 0){
+			// steps only count if exceed "moving threshold" determined by force from walking
+			if(pForceDiff > pThreshold){
+				// ... and it is human-possible
+				if(pStepDelay <= 0){
+					// ... it could also be a pace change to fast (and exert more force), so try to re-adjust the threshold by stepping up :)
+					if(pForceDiff > pUpperThreshold){
+						pThreshold = pUpperThresholdRetainProportion * pThreshold + (1-pUpperThresholdRetainProportion) * pForceDiff;
+					}
+					pStep++;
+					pStepDelay = pStepDelayNumber;	
+					// calculate new average for step duration value			
+					pStepDurationCount();
+				}else{
+					// ... but it could then be the user being too violent, so let him calm before recounting a step
+					pStepDelay = pStepDelayNumber;
+				}
+			}else{
+				// ... it could also be a pace change to slow (and exert less force), so try to re-adjust the threshold by watering down :)
+				pThreshold = pLowerThresholdRetainProportion * pThreshold + (1-pLowerThresholdRetainProportion) * pForceDiff;
+				pStepDelay--;
+			}
+		}else{
+			// still reduce the delay, otherwise delay counter only decrease as "spike" occurs
+			pStepDelay--;
+		}
+		// update last values for next iteration
+		pLastForceValue = pForce;
+		pCurrentStepDuration++;
 	}
 
 }
