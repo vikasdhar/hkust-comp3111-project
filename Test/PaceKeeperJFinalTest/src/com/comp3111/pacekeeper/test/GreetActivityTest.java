@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.comp3111.pacekeeper.GreetActivity;
 import com.comp3111.pacekeeper.MusicActivity;
+import com.comp3111.pacekeeper.ProfileActivity;
 import com.comp3111.pacekeeper.R;
 import com.comp3111.pedometer.Pedometer;
 import com.robotium.solo.Solo;
@@ -79,6 +80,10 @@ public class GreetActivityTest extends android.test.ActivityInstrumentationTestC
 	  mShaker.pedoThreadRunAlgorithm();
 	  mShaker.setPForce(1.0f);
 	  mShaker.pedoThreadRunAlgorithm();
+	  
+	  // stop journey
+	  solo.drag(xStart, xEnd, 1000, 1000, 12);	
+	  solo.clickOnButton("Stop journey");
 	  
   }
 
@@ -150,8 +155,8 @@ public class GreetActivityTest extends android.test.ActivityInstrumentationTestC
 	  boolean goalDetermined = solo.searchText("Cardio Goal");
 	  assertTrue("Cardio Goal is not set", goalDetermined);
   }
-  
-  public void testCalibrateActivity() {
+
+  public void testProfileActivity() {
 	  Display display = solo.getCurrentActivity().getWindowManager().getDefaultDisplay();
 	  @SuppressWarnings("deprecation")
 	  int width = display.getWidth();
@@ -165,25 +170,55 @@ public class GreetActivityTest extends android.test.ActivityInstrumentationTestC
 	  // edit a profile
 	  solo.clickOnText("Default");
 	  solo.clickOnImageButton(0);
-	  //getCurrentListViews
-	  /*
-	  // fill contents
-	  activity = getActivity();
-	  EditText textname = (EditText) activity.findViewById(com.comp3111.pacekeeper.R.id.Name);
-	  EditText textemail = (EditText) activity.findViewById(com.comp3111.pacekeeper.R.id.Email);
-	  EditText textage = (EditText) activity.findViewById(com.comp3111.pacekeeper.R.id.Age);
-	  EditText textjogging = (EditText) activity.findViewById(com.comp3111.pacekeeper.R.id.jogging);
-	  EditText textwalking = (EditText) activity.findViewById(com.comp3111.pacekeeper.R.id.walking);
-	  EditText textsprinting = (EditText) activity.findViewById(com.comp3111.pacekeeper.R.id.sprinting);
+	  // test for Profile activity
+	  activityMonitor = getInstrumentation().addMonitor(ProfileActivity.class.getName(), null, false);
+	  ProfileActivity startedActivity = (ProfileActivity) activityMonitor.waitForActivityWithTimeout(2000);
+	  assertNotNull(startedActivity);
+	  // click "OK" for current profile
+	  solo.clickOnButton("OK");
+  }
 
-	  solo.enterText(textname, "TestName");
-	  solo.enterText(textemail, "TestEmail");
-	  solo.enterText(textage, "TestAge");
-	  solo.enterText(textjogging, "TestJogging");
-	  solo.enterText(textwalking, "TestWalking");
-	  solo.enterText(textsprinting, "TestSprinting");
-	  // click the add_profile button
-	  solo.clickOnButton("ok");*/
+  public void testAchievementActivity() throws InterruptedException {
+	  Display display = solo.getCurrentActivity().getWindowManager().getDefaultDisplay();
+	  @SuppressWarnings("deprecation")
+	  int width = display.getWidth();
+	  int height = display.getHeight();
+	  // test for achievement activity
+	  viewId = activity.findViewById(com.comp3111.pacekeeper.R.id.greet_stat);
+	  TouchUtils.clickView(this, viewId);
+	  solo.assertCurrentActivity("Expected AchievementActivity", "AchievementActivity");
+	  // dragging test
+	  float xStart = width - 100 ;
+	  float xEnd = 100;
+	  solo.drag(xStart, xEnd, 1000, 1000, 12);	  
+	  solo.drag(xStart, xEnd, 1000, 1000, 12);
+	  // click on one contribution
+	  solo.wait(2000);
+	  solo.clickOnView(solo.getCurrentActivity().findViewById(com.comp3111.pacekeeper.R.id.j_ach_btn_calories));
+	  solo.goBack();
+	  solo.drag(xEnd, xStart, 1000, 1000, 12);
+	  solo.goBack();
+	  solo.drag(xEnd, xStart, 1000, 1000, 12);	 
+  }
+  
+  public void testSettingActivity() {
+	  Display display = solo.getCurrentActivity().getWindowManager().getDefaultDisplay();
+	  @SuppressWarnings("deprecation")
+	  int width = display.getWidth();
+	  int height = display.getHeight();
+	  // test for achievement activity
+	  viewId = activity.findViewById(com.comp3111.pacekeeper.R.id.greet_options);
+	  TouchUtils.clickView(this, viewId);
+	  solo.assertCurrentActivity("Expected SettingActivity", "SettingActivity");
+	  // click on advanced setting
+	  solo.clickOnMenuItem("Advanced settings");
+	  solo.goBack();
+	  // clear app data
+	  solo.clickOnMenuItem("Clear All Records");
+	  solo.clickOnText("Yes");
+	  solo.clickOnMenuItem("Reset Application");
+	  solo.clickOnText("Yes");
+	  
   }
 
 } 
