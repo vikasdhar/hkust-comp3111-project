@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/p_ach_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:id="@+id/f_j_ach_scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin" >
+
+            <TextView
+                android:id="@+id/j_ach_region_rep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="12dp"
+                android:text="Region represented"
+                android:textColor="#555555"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+            
+            <TextView
+                android:id="@+id/j_ach_region_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_gravity="center"
+                android:text="Sai Kung"
+                android:textColor="#555555"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <RelativeLayout
+                android:id="@+id/j_ach_map"
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <ImageView
+                    android:id="@+id/j_ach_map_base"
+                    android:layout_width="wrap_content"
+                    android:layout_height="300dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/map_region_hk" />
+
+                <ImageView
+                    android:id="@+id/j_ach_map_loc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="300dp"
+                    android:src="@drawable/map_region13" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/j_ach_your_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="12dp"
+                android:text="All contributions"
+                android:textColor="#555555"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <RelativeLayout
+                android:id="@+id/j_ach_btn_steps"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:background="@drawable/light_blue_button_selector" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:text="Steps"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#0092c8"
+                    android:textSize="16dp"
+                    android:textStyle="italic" />
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_action_collapse_light_blue" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/j_ach_btn_dist"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:background="@drawable/light_purple_button_selector" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:text="Distance"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#9123c8"
+                    android:textSize="16dp"
+                    android:textStyle="italic" />
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_action_collapse_light_purple" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/j_ach_btn_calories"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:background="@drawable/light_red_button_selector" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:text="Calories"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#c90000"
+                    android:textSize="16dp"
+                    android:textStyle="italic" />
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_action_collapse_light_red" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
