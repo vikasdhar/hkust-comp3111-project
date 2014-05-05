@@ -181,6 +181,15 @@ public class GreetActivityTest extends android.test.ActivityInstrumentationTestC
 	  assertNotNull(startedActivity);
 	  // click "OK" for current profile
 	  solo.clickOnButton("OK");
+	  solo.clickOnButton("OK");
+	  // cancel editing a profile
+	  solo.clickOnText("Default");
+	  solo.clickOnImageButton(0);
+	  // test for Profile activity
+	  activityMonitor = getInstrumentation().addMonitor(ProfileActivity.class.getName(), null, false);
+	  startedActivity = (ProfileActivity) activityMonitor.waitForActivityWithTimeout(2000);
+	  assertNotNull(startedActivity);
+	  solo.goBack();
   }
 
   public void testAchievementActivity() {
