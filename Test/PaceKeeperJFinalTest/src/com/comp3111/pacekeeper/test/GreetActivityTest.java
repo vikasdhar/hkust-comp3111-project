@@ -198,17 +198,12 @@ public class GreetActivityTest extends android.test.ActivityInstrumentationTestC
 	  solo.drag(xStart, xEnd, 1000, 1000, 12);	  
 	  solo.drag(xStart, xEnd, 1000, 1000, 12);
 	  // click on one contribution
-	  try {
-		  solo.wait(2000);
-		  solo.clickOnView(solo.getCurrentActivity().findViewById(com.comp3111.pacekeeper.R.id.j_ach_btn_calories));
-		  solo.goBack();
-		  solo.drag(xEnd, xStart, 1000, 1000, 12);
-		  solo.goBack();
-		  solo.drag(xEnd, xStart, 1000, 1000, 12);	 
-	} catch (InterruptedException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+	  solo.sleep(2000);
+	  solo.clickOnView(solo.getCurrentActivity().findViewById(com.comp3111.pacekeeper.R.id.j_ach_btn_calories));
+	  solo.goBack();
+	  solo.drag(xEnd, xStart, 1000, 1000, 12);
+	  solo.goBack();
+	  solo.drag(xEnd, xStart, 1000, 1000, 12);	 
   }
   
   public void testSettingActivity() {
