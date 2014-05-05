@@ -21,6 +21,7 @@ public class GreetActivityTest extends android.test.ActivityInstrumentationTestC
   private GreetActivity activity;
   private ActivityMonitor activityMonitor;
   private Solo solo;
+  private com.smp.soundtouchandroid.Constants ConstantTest = new com.smp.soundtouchandroid.Constants();
   
   public GreetActivityTest() {
     super(GreetActivity.class);
@@ -80,6 +81,10 @@ public class GreetActivityTest extends android.test.ActivityInstrumentationTestC
 	  mShaker.pedoThreadRunAlgorithm();
 	  mShaker.setPForce(1.0f);
 	  mShaker.pedoThreadRunAlgorithm();
+	  
+	  // extended music activity
+	  solo.clickOnScreen(width / 2, (int) (height * 0.25));
+	  solo.goBack();
 	  
 	  // stop journey
 	  solo.drag(xStart, xEnd, 1000, 1000, 12);	
@@ -178,7 +183,7 @@ public class GreetActivityTest extends android.test.ActivityInstrumentationTestC
 	  solo.clickOnButton("OK");
   }
 
-  public void testAchievementActivity() throws InterruptedException {
+  public void testAchievementActivity() {
 	  Display display = solo.getCurrentActivity().getWindowManager().getDefaultDisplay();
 	  @SuppressWarnings("deprecation")
 	  int width = display.getWidth();
@@ -193,12 +198,17 @@ public class GreetActivityTest extends android.test.ActivityInstrumentationTestC
 	  solo.drag(xStart, xEnd, 1000, 1000, 12);	  
 	  solo.drag(xStart, xEnd, 1000, 1000, 12);
 	  // click on one contribution
-	  solo.wait(2000);
-	  solo.clickOnView(solo.getCurrentActivity().findViewById(com.comp3111.pacekeeper.R.id.j_ach_btn_calories));
-	  solo.goBack();
-	  solo.drag(xEnd, xStart, 1000, 1000, 12);
-	  solo.goBack();
-	  solo.drag(xEnd, xStart, 1000, 1000, 12);	 
+	  try {
+		  solo.wait(2000);
+		  solo.clickOnView(solo.getCurrentActivity().findViewById(com.comp3111.pacekeeper.R.id.j_ach_btn_calories));
+		  solo.goBack();
+		  solo.drag(xEnd, xStart, 1000, 1000, 12);
+		  solo.goBack();
+		  solo.drag(xEnd, xStart, 1000, 1000, 12);	 
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
   }
   
   public void testSettingActivity() {
@@ -216,6 +226,9 @@ public class GreetActivityTest extends android.test.ActivityInstrumentationTestC
 	  // clear app data
 	  solo.clickOnMenuItem("Clear All Records");
 	  solo.clickOnText("Yes");
+	  viewId = activity.findViewById(com.comp3111.pacekeeper.R.id.greet_options);
+	  TouchUtils.clickView(this, viewId);
+	  solo.assertCurrentActivity("Expected SettingActivity", "SettingActivity");
 	  solo.clickOnMenuItem("Reset Application");
 	  solo.clickOnText("Yes");
 	  
