@@ -1,0 +1,25 @@
+[EMMA v2.0.5312 report, generated Mon May 05 22:07:51 CST 2014]
+-------------------------------------------------------------------------------
+OVERALL COVERAGE SUMMARY:
+
+[class, %]	[method, %]	[block, %]	[line, %]	[name]
+89%  (89/100)!	69%  (335/483)!	75%  (9148/12236)!	75%  (1885.4/2521)!	all classes
+
+OVERALL STATS SUMMARY:
+
+total packages:	6
+total classes:	100
+total methods:	483
+total executable files:	40
+total executable lines:	2521
+
+COVERAGE BREAKDOWN BY PACKAGE:
+
+[class, %]	[method, %]	[block, %]	[line, %]	[name]
+56%  (5/9)!	40%  (17/42)!	49%  (680/1376)!	56%  (143.5/256)!	com.comp3111.ui
+67%  (4/6)!	67%  (35/52)!	67%  (666/1001)!	73%  (178.1/243)!	com.smp.soundtouchandroid
+88%  (14/16)!	77%  (49/64)	70%  (1398/1983)!	71%  (265.4/375)!	com.comp3111.achievement
+100% (16/16)	72%  (71/99)	78%  (1186/1530)!	76%  (258.3/340)!	com.comp3111.pedometer
+94%  (47/50)!	70%  (146/208)	82%  (4722/5764)	80%  (928.1/1158)	com.comp3111.pacekeeper
+100% (3/3)	94%  (17/18)	85%  (496/582)	75%  (112/149)!	com.comp3111.local_database
+-------------------------------------------------------------------------------
